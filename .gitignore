@@ -1,0 +1,6 @@
+*
+!*/
+!.gitignore
+
+!_config.yml
+!/**/*.md
