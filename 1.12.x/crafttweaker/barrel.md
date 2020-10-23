@@ -1,5 +1,7 @@
-# Barrel
+# Barrel Recipes
+
 Barrel recipe manager has three methods for manipulating recipes:
+
 ```java
 // Import barrel methods into your script
 import mods.terrafirmacraft.Barrel;

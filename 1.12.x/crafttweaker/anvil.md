@@ -1,3 +1,5 @@
+# Anvil Recipes
+
 The Anvil has three methods for manipulating recipes:
 
 ```zenscript

@@ -1,5 +1,12 @@
-# Stone Knapping
-Stone Knapping recipe manager works a bit different than the other knappers. It has three methods for recipe manipulation:
+---
+layout: page
+title: "Stone Knapping Recipes"
+permalink: /1.12.x/crafttweaker/stone-knapping/
+---
+
+# Stone Knapping Recipes
+
+The stone knapping recipe manager works a bit different than the other knapping recipes. It has three methods for recipe manipulation:
 
 ```zenscript
 // Import the StoneKnapping methods into your script
@@ -10,32 +17,33 @@ StoneKnapping.removeRecipe(IItemStack output)
 StoneKnapping.removeRecipe(String registryName)
 ```
 
-each rocks gives different output items depending on which rock you are knapping. By default, this only applied to which rock tool category you get, which translates to how durable the rock tool is. Using this manager, you can add your own output depending on which rock(s) the user knaps.
+Each rock gives different output items depending on which rock you are knapping. By default, this only applied to which rock tool category you get, which translates to how durable the rock tool is. Using this manager, you can add your own output depending on which rock(s) the user knaps.
 
-The rocks are:
-* chalk
-* granite
-* diorite
-* gabbro
-* shale
-* claystone
-* rocksalt
-* limestone
-* conglomerate
-* dolomite
-* chert
-* rhyolite
-* basalt
-* andesite
-* dacite
-* quartzite
-* slate
-* phyllite
-* schist
-* gneise
-* marble
+Rocks in TFC by default are:
 
-Examples of this script: 
+* `chalk`
+* `granite`
+* `diorite`
+* `gabbro`
+* `shale`
+* `claystone`
+* `rocksalt`
+* `limestone`
+* `conglomerate`
+* `dolomite`
+* `chert`
+* `rhyolite`
+* `basalt`
+* `andesite`
+* `dacite`
+* `quartzite`
+* `slate`
+* `phyllite`
+* `schist`
+* `gneise`
+* `marble`
+
+**Examples:**
 
 ```zenscript
 // Gives a stone hoe in all rocks.

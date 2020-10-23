@@ -4,11 +4,13 @@ title: "Ore Generation"
 permalink: /1.12.x/oregen/
 ---
 
-## Ore Generation Configuration
+# Ore Generation
 
-TFC's ore generation is currently done using a JSON configuration based system. This can be customized by either addon makers, by providing their own ore generation files, or by pack makers. It is mostly meant to be used with TFC / addon added ores, however it can be used (in a limited sense) by other mod ores. (This will change in 1.15+, it will become much more similar + customizable to the Realistic Ore Veins mod)
+TFC's ore generation is currently done using a JSON configuration based system. This can be customized by either addon makers, by providing their own ore generation files, or by pack makers. It is mostly meant to be used with TFC / addon added ores, however it can be used (in a limited sense) by other mod ores.
 
-### Files
+For addons interested in adding TFC-compatible ores, see how to add TFC [registry types](/Documentation/1.12.x/registry-types/)
+
+## Files
 
 TFC will look for any files in the `config/tfc/` directory (recursively) for ore generation. If there are none, a default one is generated. If you are noticing problems with ore generation, **check the log for messages**, as in most cases ore veins will output various errors if problems are present in the configuration.
 
@@ -24,11 +26,11 @@ Each file may contain any number of veins. The structure must be as follows:
 }
 ```
 
-### Vein Names
+## Vein Names
 
 Each vein is named based on the absolute file path, joined to the vein name (in each JSON entry). These vein names must be unique. These are used for instance, in the `/findveins` command.
 
-### Vein Parameters
+## Vein Parameters
 
 Each vein object has a series of parameters that must be supplied:
 
@@ -49,10 +51,10 @@ In addition to the above, the vein must specify either an ore, or a block to spa
 
 Additionally, to specify the loose rock (indicator item, found with sticks and rocks above ground), a `loose` field must be given. This must be a string, where the value is the name of the ore, as it is registered with TFC, or, the item/block registry name (e.g. `minecraft:egg`). If you need to specify a metadata, add an integer field called `looseMeta` (yes, `M` is upper case) with the value you want (e.g `"looseMeta": 30`)
 
-### Rock Categories
+## Rock Categories
 
 Valid rock categories are `tfc:sedimentary`, `tfc:metamorphic`, `tfc:igneous_intrusive`, or `tfc:igneous_extrusive`, or any categories added by other mods (although this is highly unlikely and discouraged). They must be prefixed by the mod ID of the mod that added them. For examples, see the [default ore generation file](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.12.x/src/main/resources/assets/tfc/config/ore_spawn_data.json).
 
-### Rocks
+## Rocks
 
 Rocks are all the rock types added by TFC. These names must be prefixed by the mod ID of the mod that added them. They are always `lower_snake_case`. For examples, see the [default ore generation file](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.12.x/src/main/resources/assets/tfc/config/ore_spawn_data.json).

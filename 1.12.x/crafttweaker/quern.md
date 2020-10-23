@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Quern Recipes"
+permalink: /1.12.x/crafttweaker/quern/
+---
+
+# Quern Recipes
+
 ```zenscript
 // Imports Quern methods into your script
 import mods.terrafirmacraft.Quern;

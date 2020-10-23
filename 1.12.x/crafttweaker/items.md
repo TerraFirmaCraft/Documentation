@@ -4,7 +4,9 @@ title: "Item Capabilities"
 permalink: /1.12.x/crafttweaker/items/
 ---
 
-ItemRegistry adds TFC capabilities to items outside TFC's realm.
+# Item Capabilities
+
+This adds TFC capabilities to items outside TFC's realm.
 
 ```zenscript
 // Imports ItemRegistry methods into your script

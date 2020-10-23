@@ -4,17 +4,22 @@ title: "Temperatures"
 permalink: /1.12.x/temperatures/
 ---
 
+# Temperatures
+
 Below are the internal values assigned to each temperature displayed to the user. These are required for any recipe or Craft Tweaker method which takes a temperature parameter.
 
+{% include alert.html type="info" title="Note" content="While there is no code defined maximum temperature (and within TFC, all devices will simply heat up as high as their fuel allows), TFC loses the capability to display the exact temperature, both in tooltips and on temperature gauges past Brilliant White" %}
 
-- `Warming` starts at 1, ends at 80
-- `Hot` starts at 80, ends at 210
-- `Very Hot` starts at 210, ends at 480
-- `Faint Red` starts at 480, ends at 580
-- `Dark Red` starts at 580, ends at 730
-- `Bright Red` starts at 730, ends at 930
-- `Orange` starts at 930, ends at 1100
-- `Yellow` starts at 1100, ends at 1300
-- `Yellow White` starts at 1300, ends at 1400
-- `White` starts at 1400, ends at 1500
-- `Brilliant White` starts at 1500
+Visual Name | Minimum | Maximum
+---|---|---
+Warming | 1 | 80
+Hot | 80 | 210
+Very Hot | 210 | 480
+Faint Red | 210 | 580
+Dark Red | 580 | 730
+Bright Red | 730 | 930
+Orange | 930 | 1100
+Yellow | 1100 | 1300
+Yellow White | 1300 | 1400
+White | 1400 | 1500
+Brilliant White | 1500 | n/a

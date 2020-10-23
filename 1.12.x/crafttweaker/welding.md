@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Welding Recipes"
+permalink: /1.12.x/crafttweaker/welding/
+---
+
+# Welding Recipes
+
 Welding recipe manager has three methods for recipe manipulation:
 
 ```zenscript

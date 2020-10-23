@@ -1,3 +1,5 @@
+# Chisel Recipes
+
 ```zenscript
 // Import the chisel methods into your script
 import mods.terrafirmacraft.Chisel;

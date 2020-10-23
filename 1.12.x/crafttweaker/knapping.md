@@ -1,5 +1,13 @@
-# Knapping
+---
+layout: page
+title: "Knapping Recipes"
+permalink: /1.12.x/crafttweaker/knapping/
+---
+
+# Knapping Recipes
+
 Clay, Fire Clay and Leather Knapping recipe managers all works the same. Each one has three methods for manipulating recipes:
+
 ```zenscript
 // Import the [Knapping] methods into your script
 import mods.terrafirmacraft.[Knapping];
@@ -10,10 +18,13 @@ import mods.terrafirmacraft.[Knapping];
 // Removes a single recipe by registry name
 [Knapping].removeRecipe(String registryName)
 
-Where [Knapping] = ClayKnapping, FireClayKnapping or LeatherKnapping
+Where [Knapping] is one of ClayKnapping, FireClayKnapping or LeatherKnapping
 ```
 
-Pattern must be a closed interval [1, 5]. Each input string is a line of the matrix. Empty spaces indicates where user must click, examples:
+Pattern must be a sequence of strings, with length between (inclusive) one and five. Each input string is a line of the matrix. Empty spaces indicates where user must click.
+
+**Examples from TFC:**
+
 ```
 Small Ceramic Vessel:
 " XXX ",
@@ -22,6 +33,7 @@ Small Ceramic Vessel:
 "XXXXX",
 " XXX "
 ```
+
 ```
 Ingot mold:
 "XXXX",
@@ -31,9 +43,9 @@ Ingot mold:
 ```
 
 ```zenscript
-ClayKnapping.addRecipe("small_ceramic_vessel", <tfc:ceramics/unfired/vessel>, " XXX ", 
-                                                                              "XXXXX", 
-                                                                              "XXXXX", 
-                                                                              "XXXXX", 
+ClayKnapping.addRecipe("small_ceramic_vessel", <tfc:ceramics/unfired/vessel>, " XXX ",
+                                                                              "XXXXX",
+                                                                              "XXXXX",
+                                                                              "XXXXX",
                                                                               " XXX ");
 ```

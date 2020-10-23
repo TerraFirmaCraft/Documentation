@@ -1,27 +1,42 @@
-### Overview
-By subscribing to `TFCRegistryEvent.RegisterPreBlock<Metal>`, addon mods are able to let TFC register all the required metal items, fluids, blocks, and inter-dependencies required to fully implement a metal. The addon is responsible for providing all the necessary resources in the `tfc` domain.
+---
+layout: page
+title: "Pre-Block Registry Types"
+permalink: /1.12.x/addons/registry-types/
+---
 
-There are several main properties of metals that influence what items and blocks will get registered:
+# Pre-Block Registry Types
+
+TFC does some hackery (read: it fires specific events at the highest priority during `RegistryEvent.Registry<Block>`), in order to collect an amount of type objects (Metals, Rocks, Ores, etc.) in order for TFC to generate every possible permutation and cartesian product of a block or item required.
+
+In this manner, addons can add these types simply by registering one of the pre-block registry types, and then TFC will handle registration of all required blocks and items, and it will just work^(tm).
+
+In order to use this system, an addon must:
+
+- Subscribe to `TFCRegistryEvent.RegisterPreBlock<T>` for the required type (e.g. `Metal`, `Tree`, `Rock`, ...)
+- Register objects *to the `tfc` namespace* describing properties of your type.
+- Provide the necessary assets (including recipes, models, blockstates, etc.) for all new blocks and items TFC will generate.
+
+In TFC, these types can be found under the `net.dries007.tfc.api.types`. Default TFC registrations can be found under `net.dries007.tfc.types.Default[Foo]s`.
+
+## Metals
+
+The following is an example of using this system to add a metal to TFC. There are several main properties of metals that influence what items and blocks will get registered:
 
 1. Usability
- - If the metal is able to be used to create common components such as dust, sheets, double ingots, anvils, lamps, etc.
- - Example: High Carbon Black Steel is not usable, Black Steel is.
-
+  - If the metal is able to be used to create common components such as dust, sheets, double ingots, anvils, lamps, etc.
+  - Example: High Carbon Black Steel is not usable, Black Steel is.
 2. Castable
- - If the metal is at most Tier II, it is able to be casted into a mold. This doesn't register any additional items, but it does require additional assets for the mold
- - Example: Bronze is castable, Wrought Iron is not.
-
+  - If the metal is at most Tier II, it is able to be casted into a mold. This doesn't register any additional items, but it does require additional assets for the mold
+  - Example: Bronze is castable, Wrought Iron is not.
 3. Tool Metal
- - If the metal is able to be made into tools and armor, including all components for those two.
- - Example: Bronze is a tool metal, Bismuth is not.
+  - If the metal is able to be made into tools and armor, including all components for those two.
+  - Example: Bronze is a tool metal, Bismuth is not.
 
 TFC will register the models for any items added automatically via this system. As such, if you expect to fit with TFC, you should provide the following resource files. In this case, `[metal]` should be replaced with the registry path name of the metal in question. (Note: the contents, textures, and organization can be changed if needed. This is just one way to provide all necessary resources. I have included recipes in with the resources, as in order for the metal to function identical to other TFC metals, they are necessary, however they aren't strictly necessary in order for the models to all resolve properly.)
 
 All JSON files can be modified from ones found [here](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.12.x/src/main/resources/assets). Ther're for 1.12, and if you're looking for other minecraft versions, switch to other branches.
 
-*(expand to see contents)*
-
-<details><summary>Required for ALL metals</summary><p>
+### Required for ALL metals
 
 ```
 tfc\blockstates\fluid\[metal].json
@@ -29,9 +44,7 @@ tfc\models\item\metal\ingot\[metal].json
 tfc\textures\blocks\metal\[metal].png
 ```
 
-</p></details>
-
-<details><summary>Required for CASTABLE metals</summary><p>
+### Required for CASTABLE metals
 
 ```
 tfc\models\item\ceramics\fired\mold\ingot\[metal].json
@@ -39,9 +52,7 @@ tfc\textures\items\ceramics\fired\mold\ingot\[metal].png
 tfc\textures\items\metal\ingot\[metal].png
 ```
 
-</details>
-
-<details><summary>Required for USABLE metals</summary><p>
+### Required for USABLE metals
 
 ```
 tfc\blockstates\sheet\[metal].json
@@ -64,9 +75,7 @@ tfc\textures\items\metal\scrap\[metal].png
 tfc\textures\items\metal\sheet\[metal].png
 ```
 
-</details>
-
-<details><summary>Required for TOOL metals</summary><p>
+### Required for TOOL metals
 
 ```
 tfc\blockstates\anvil\[metal].json
@@ -161,9 +170,7 @@ tfc\textures\models\armor\[metal]_layer_1.png
 tfc\textures\models\armor\[metal]_layer_2.png
 ```
 
-</details>
-
-<details><summary>Required for TOOL AND CASTABLE metals</summary><p>
+### Required for TOOL AND CASTABLE metals
 
 ```
 tfc\models\item\ceramics\fired\mold\axe_head\[metal].json
@@ -193,5 +200,3 @@ tfc\textures\items\ceramics\fired\mold\scythe_blade\[metal].png
 tfc\textures\items\ceramics\fired\mold\shovel_head\[metal].png
 tfc\textures\items\ceramics\fired\mold\sword_blade\[metal].png
 ```
-
-</details>

@@ -4,6 +4,8 @@ title: "Alloys"
 permalink: /1.12.x/crafttweaker/alloys/
 ---
 
+# Alloy Recipes
+
 For manipulating Alloy recipes a recipe builder is provided:
 
 ```zenscript

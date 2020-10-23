@@ -6,21 +6,71 @@ permalink: /1.12.x/crafttweaker/
 
 # Craft Tweaker Integration
 
-For changing recipes, item size/heat/forging capabilities, TerraFirmaCraft adds hooks for CraftTweaker scripts. To do that, you first need to import a recipe manager using `mods.terrafirmacraft.[RecipeType]`. The list of recipe managers currently in TFC is:
+We provide many Craft Tweaker hooks for all recipes and item capabilities. For information on a specific recipe type, consult the page for that type:
 
-* `Alloy` - For adding and removing alloy recipes.
-* `Anvil` - For adding anvil working recipes, requiring working temperature and rules.
-* `Welding` - For adding recipes to weld two items into one
-* `Barrel` - For adding many types of transformations, both fluid and items to barrels.
-* `Chisel` - For adding chisel smoothing transformations from block -> block.
-* `Loom` - For adding recipes to the loom. Slightly more involved as it requires additional textures or assets for the rendering.
-* `Heating` - Anything that can transform at a given heat. Includes pit kiln, forge, fire pit, grill, etc.
-* `Quern` - Adds grinding recipes to the quern
-* `ClayKnapping` - Adds knapping recipes using clay
-* `FireClayKnapping` - Adds knapping recipes using fire clay
-* `LeatherKnapping` - Adds knapping recipes using leather
-* `StoneKnapping` - Adds knapping recipes using stones. Can respect the rock category (igneous, metamorphic, etc.)
+#### [Alloy Recipes](/Documentation/1.12.x/crafttweaker/alloys/)
 
-Along with the item registry for Heating, Forging and Size capabilities: 
+- Used to add alloy recipes.
+- Any metal can only have **one** alloy recipe for it.
+- Import: `mods.terrafirmacraft.Alloy`
 
-* `ItemRegistry`
+#### [Anvil Recipes](/Documentation/1.12.x/crafttweaker/anvil/)
+
+- Used to add anvil working recipes.
+- Ingredients **do not need** to be *heatable* - if not, they are treated as "cold forging" recipes.
+- Ingredients **do** need to be *forgeable*. Consult [Item Capabilities](/Documentation/1.12.x/crafttweaker/items/) for more information.
+- Import: `mods.terrafirmacraft.Anvil`
+
+#### [Welding Recipes](/Documentation/1.12.x/crafttweaker/welding/)
+
+- Used to add anvil welding recipes.
+- Import: `mods.terrafirmacraft.Welding`
+
+#### [Barrel Recipes](/Documentation/1.12.x/crafttweaker/barrel/)
+
+- Used to add barrel conversion recipes.
+- These can take either items, fluids, or both as input, and return either items, fluids or both.
+- Setting a recipe to have a duration of `0` makes it an instant recipe. **Note:** instant recipes are limited by the fluid ingredient. Normal recipes will consume the greatest common multiple of both ingredients.
+- Import: `mods.terrafirmacraft.Barrel`
+
+#### [Chisel Recipes](/Documentation/1.12.x/crafttweaker/chisel/)
+
+- To add chisel *smoothing* recipes, only.
+- In order to add stair or slab recipes, you must add vanilla crafting recipes in the standard stair and slab patterns.
+- Import: `mods.terrafirmacraft.Chisel`
+
+#### [Loom Recipes](/Documentation/1.12.x/crafttweaker/loom/)
+
+- Used to add loom recipes.
+- May require a custom texture to be displayed on the loom
+- Import: `mods.terrafirmacraft.Loom`
+
+#### [Item Heating](/Documentation/1.12.x/crafttweaker/heating/)
+
+- Used to add heat transformation recipes (e.g. food cooking, metal melting)
+- Import: `mods.terrafirmacraft.Heating`
+
+#### [Quern Recipes](/Documentation/1.12.x/crafttweaker/quern/)
+
+- Used to add recipes to the Quern
+- Import: `mods.terrafirmacraft.Quern`
+
+#### [Knapping Recipes](/Documentation/1.12.x/crafttweaker/knapping/)
+
+- Used for simple knapping types (Clay, Fire clay, Leather)
+- Addons are able to add their own knapping types, but must handle the GUI and interaction themselves.
+- There is a different import based on which knapping type you want:
+  - Clay Import: `mods.terrafirmacraft.ClayKnapping`
+  - Fire Clay Import: `mods.terrafirmacraft.FireClayKnapping`
+  - Leather Import: `mods.terrafirmacraft.LeatherKnapping`
+
+#### [Stone Knapping Recipes](/Documentation/1.12.x/crafttweaker/stone-knapping/)
+
+- Used for stone knapping recipes
+- These are a bit different as they may produce different results on different rock types, and are used by any subset of all rock types.
+- Import: `mods.terrafirmacraft.StoneKnapping`
+
+#### [Item Capabilities](/Documentation/1.12.x/crafttweaker/items/)
+
+- Used to add capabilities (Heat, Forgeable, Food, Size, etc.) to external items so they are usable in TFC systems.
+- Import: `mods.terrafirmacraft.ItemRegistry`
