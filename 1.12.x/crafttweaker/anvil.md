@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Anvil Recipes"
+permalink: /1.12.x/crafttweaker/anvil/
+---
+
 # Anvil Recipes
 
 The Anvil has three methods for manipulating recipes:

@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Barrel Recipes"
+permalink: /1.12.x/crafttweaker/barrel/
+---
+
 # Barrel Recipes
 
 Barrel recipe manager has three methods for manipulating recipes:

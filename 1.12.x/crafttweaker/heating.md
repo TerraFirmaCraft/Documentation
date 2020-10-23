@@ -1,3 +1,9 @@
+---
+layout: page
+title: "Heating Recipes"
+permalink: /1.12.x/crafttweaker/heating/
+---
+
 # Heating Recipes
 
 This is the central place to add any heat transformation recipes. This includes
