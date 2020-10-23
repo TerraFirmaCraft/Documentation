@@ -8,7 +8,7 @@ permalink: /1.12.x/addons/registry-types/
 
 TFC does some hackery (read: it fires specific events at the highest priority during `RegistryEvent.Registry<Block>`), in order to collect an amount of type objects (Metals, Rocks, Ores, etc.) in order for TFC to generate every possible permutation and cartesian product of a block or item required.
 
-In this manner, addons can add these types simply by registering one of the pre-block registry types, and then TFC will handle registration of all required blocks and items, and it will just work^(tm).
+In this manner, addons can add these types simply by registering one of the pre-block registry types, and then TFC will handle registration of all required blocks and items, and it will just work™.
 
 In order to use this system, an addon must:
 
@@ -34,7 +34,7 @@ The following is an example of using this system to add a metal to TFC. There ar
 
 TFC will register the models for any items added automatically via this system. As such, if you expect to fit with TFC, you should provide the following resource files. In this case, `[metal]` should be replaced with the registry path name of the metal in question. (Note: the contents, textures, and organization can be changed if needed. This is just one way to provide all necessary resources. I have included recipes in with the resources, as in order for the metal to function identical to other TFC metals, they are necessary, however they aren't strictly necessary in order for the models to all resolve properly.)
 
-All JSON files can be modified from ones found [here](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.12.x/src/main/resources/assets). Ther're for 1.12, and if you're looking for other minecraft versions, switch to other branches.
+All JSON files can be modified from ones found [here](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.12.x/src/main/resources/assets).
 
 ### Required for ALL metals
 

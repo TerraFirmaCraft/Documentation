@@ -12,4 +12,4 @@ This section is rather empty, as in most cases, the best way to find API hooks f
 
 We cannot cover every possible use case, so if there are things that you believe are missing, please let us know and we'll see what we can do.
 
-That said, TFC has one major *unconventional* system which is used by addons to add Metals, Ores, Trees, Rocks, etc. This is the system of [Pre-Block Registry Types](/Documentation/1.12.x/addons/registry-types/)
+That said, TFC has one major *unconventional* system which is used by addons to add Metals, Ores, Trees, Rocks, etc. This is the system of [Pre-Block Registry Types](registry-types/)

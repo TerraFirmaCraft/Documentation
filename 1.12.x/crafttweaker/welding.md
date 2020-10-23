@@ -19,4 +19,4 @@ Welding.removeRecipe(IItemStack output);
 Welding.removeRecipe(String registryName);
 ```
 
-As with anvil recipes, the same rules for input applies here. The input must be forgeable(see [ItemRegistry](ItemRegistry) for registering forging capability to an item) and can't be stacked.
+As with anvil recipes, the same rules for input applies here. The input must be forgeable(see [Item Capabilities](../items) for registering forging capability to an item) and can't be stacked.

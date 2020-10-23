@@ -8,7 +8,7 @@ permalink: /1.12.x/oregen/
 
 TFC's ore generation is currently done using a JSON configuration based system. This can be customized by either addon makers, by providing their own ore generation files, or by pack makers. It is mostly meant to be used with TFC / addon added ores, however it can be used (in a limited sense) by other mod ores.
 
-For addons interested in adding TFC-compatible ores, see how to add TFC [registry types](/Documentation/1.12.x/registry-types/)
+For addons interested in adding TFC-compatible ores, see how to add TFC [registry types](addons/registry-types/)
 
 ## Files
 
