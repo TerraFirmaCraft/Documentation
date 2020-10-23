@@ -1,0 +1,7 @@
+remote_theme: TerraFirmaCraft/docsy-jekyll
+
+repo: "https://github.com/TerraFirmaCraft/Documentation"
+github_user: "TerraFirmaCraft"
+github_repo: "Documentation"
+
+feedback: false
