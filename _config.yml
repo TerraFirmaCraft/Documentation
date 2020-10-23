@@ -16,12 +16,12 @@
 title: TFC Docs
 description: >- # this means to ignore newlines until "baseurl:"
   This is the home of the API documentation for the TerraFirmaCraft mod for Minecraft, developed by AlcatrazEscapee, Disastermoo, Dries007, et. al.
-baseurl: "Documentation" # the subpath of your site, e.g. /blog
-url: "https://terrafirmacraft.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/Documentation" # the subpath of your site, e.g. /blog
+url: "https://terrafirmacraft.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
-remote_theme: vsoch/docsy-jekyll
+remote_theme: TerraFirmaCraft/docsy-jekyll
 plugins:
   - jekyll-feed
 
