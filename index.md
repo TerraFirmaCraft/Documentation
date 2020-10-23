@@ -4,6 +4,8 @@ title: "TerraFirmaCraft API Documentation"
 permalink: /
 ---
 
+# TerraFirmaCraft API Documentation
+
 Welcome to the API Documentation for the TerraFirmaCraft The Next Generation (TFC-TNG) mod for Minecraft 1.12+
 
 Note: **this is not a wiki!** If you are a player of TFC-TNG, you will not find in-game documentation here. This is for developers of addons and packs using TFC-TNG. For gameplay documentation, consult the [wiki](https://tng.terrafirmacraft.com/Main_Page) instead.
