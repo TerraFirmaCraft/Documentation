@@ -18,4 +18,4 @@ More Links:
 - [TerraFirmaCraft Github](https://github.com/TerraFirmaCraft/TerraFirmaCraft)
 - [Our Discord](https://discord.com/invite/PRuAKvY)
 
-This site was built with [Docsy Jekyll](https://vsoch.github.io/docsy-jekyll) and is hosted with [Github Pages](https://pages.github.com/)
+This site was built with [Docsy Jekyll](https://vsoch.github.io/docsy-jekyll) and is hosted with [Github Pages](https://pages.github.com/).
