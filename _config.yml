@@ -5,3 +5,17 @@ github_user: "TerraFirmaCraft"
 github_repo: "Documentation"
 
 feedback: false
+
+accentColor: blue
+themeColor: blue
+fixedNav: 'true'
+
+collections:
+  - docs
+
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: page

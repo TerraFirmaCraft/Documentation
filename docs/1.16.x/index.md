@@ -1,3 +1,3 @@
-# TerraFirmaCraft 1.16.x API Documentation
+# 1.16.x
 
 todo: all the things

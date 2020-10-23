@@ -1,4 +1,4 @@
-# TerraFirmaCraft 1.12.x Documentation
+# 1.12.x
 
 Here you will find information on:
 
