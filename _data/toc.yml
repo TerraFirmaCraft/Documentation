@@ -1,0 +1,20 @@
+- title: Documentation
+  url: /
+  links:
+    - title: "1.12.x"
+      url: "1.12.x/"
+      children:
+        - title: "Craft Tweaker"
+          url: "1.12.x/crafttweaker/"
+        - title: "Ore Generation"
+          url: "1.12.x/oregen/"
+        - title: "Addons"
+          url: "1.12.x/addons/"
+        - title: "Metals Reference"
+          url: "1.12.x/metals/"
+        - title: "Temperatures Reference"
+          url: "1.12.x/temperatures/"
+    - title: "1.16.x"
+      url: "1.16.x/"
+    - title: "About"
+      url: "about/"
