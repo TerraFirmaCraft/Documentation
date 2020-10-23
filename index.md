@@ -1,6 +1,12 @@
-# TerraFirmaCraft API Documentation
+---
+layout: page
+title: "TerraFirmaCraft API Documentation"
+permalink: /
+---
 
-First, choose the correct reference page for the version of Minecraft (and thus TerraFirmaCraft) you are using.
+well look at that, it's a root
 
-- [Minecraft 1.12.x](1.12.x/index.md)
-- [Minecraft 1.16.x](1.16.x/index.md)
+pick a version scrub
+
+- [TFC v1.x for Minecraft 1.12.x](/1.12.x/)
+- [TFC v2.x for Minecraft 1.16.x](/1.16.x/)
