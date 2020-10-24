@@ -32,12 +32,12 @@ ItemRegistry.registerArmor(IIngredient input, float crushingModifier, float pier
 ItemRegistry.registerFuel(IItemStack itemStack, int burnTicks, float temperature, bool forgeFuel, bool bloomeryFuel)
 ```
 
-Please refer to [Metals](/Documentation/1.12.x/metals) for a complete reference on TFC Metals.
+Please refer to [Metals](../../metals) for a complete reference on TFC Metals.
 
 Things to note:
 
 - Sizes [`TINY`, `VERY_SMALL`, `SMALL`, `NORMAL`, `LARGE`, `VERY_LARGE` , `HUGE`]
 - Weights [`VERY_LIGHT`, `LIGHT`, `MEDIUM`, `HEAVY`, `VERY_HEAVY`]
 - Heat capacity determines how fast an item cools down/heat up. Wrought Iron is 0.35.
-- Melt temperature is at which temperature the item is melt. Wrought Iron is 1535 `Brilliant White` while Bronze is 950 `Orange`. For a complete reference, check [Heating Temperatures](Heating-Temperatures)
+- Melt temperature is at which temperature the item is melt. Wrought Iron is 1535 / `Brilliant White` while Bronze is 950 / `Orange`. For more, check the [temperature reference](../../temperatures/)
 - Registered metal ingot items aren't automatically registered as a valid input for tools (eg: Steel ingot from other mods registered by `registerMetalItem` method won't be automatically workable to TFC steel pickaxe head)
