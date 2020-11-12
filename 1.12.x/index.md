@@ -22,4 +22,5 @@ TerraFirmaCraft has a number of important APIs for pack makers and addon makers 
   - [Quern](crafttweaker/quern/)
 - [Ore Generation Customization](oregen/)
 - [Addons](addons/)
-  - [Adding Metals](addons/adding-metals/)
+  - [Registry Types](addons/registry-types/)
+  - [Fruit Trees](addons/fruit-trees/)
