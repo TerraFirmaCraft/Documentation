@@ -10,9 +10,7 @@ permalink: /1.16.x/worldgen/surface-builders/
 
 When generating chunks, TFC uses only vanilla blocks - up until after surface generation - at which point all blocks in a chunk get replaced with TFC equivalent, that are selected based on the location and other information (for example, `minecraft:stone` gets converted to any of TFC's stone types based on the rock layer at that location). What this means is that the surface builders used by TFC occasionally produce weird or unrealistic blocks, as these are used as indicators later during generation and are replaced with something else.
 
-**Some** of TFC's surface builders are `IContextSurfaceBuilder` instances. These surface builders must be used with a chunk generator that supports them.
-
-{% include alert.html type="info" title="Note" content="Unless otherwise specified, all of TFC's surface builders use the same vanilla configuration (A top material, under material, and underwater material." %}
+{% include alert.html type="info" title="Note" content="Some of TFC's surface builders are IContextSurfaceBuilder instances. These surface builders must be used with a chunk generator that supports them." %}
 
 TFC adds the following surface builder types:
 
@@ -26,31 +24,37 @@ TFC adds the following surface builder types:
 
 ### Normal
 
-This is the same as the vanilla default surface builder, with the one exception that the underwater material is ignored, and the TFC Underwater surface builder is used instead.
+This is a TFC modified version of the vanilla default surface builder. Instead of using `underwater_material` it will use the Underwater surface builder instead.
 
 - Type: `tfc:normal`
-- Config: See vanilla (`underwater_material` is ignored)
+- Config:
+  - `top_material`: A [Lenient BlockState](../common-types/#lenient-blockstate) representing the top material.
+  - `under_material`: A [Lenient BlockState](../common-types/#lenient-blockstate) representing the subsurface material.
 
 ### Thin
 
 This is a variant of the normal surface builder, that places no under material. It is used in TFC's canyon biomes.
 
 - Type: `tfc:thin`
-- Config: See vanilla (`underwater_material` is ignored)
+- Config:
+  - `top_material`: A [Lenient BlockState](../common-types/#lenient-blockstate) representing the top material.
+  - `under_material`: A [Lenient BlockState](../common-types/#lenient-blockstate) representing the subsurface material.
 
 ### Badlands
 
 This surface builder will do different things above and below a specific y value (between 110 and 114, that varies by location). Beneath this cutoff, this surface builder will place one layer of TFC Red and Brown sand in an alternating pattern - similar to vanilla badlands. Above this layer, it will function as the TFC normal surface builder.
 
 - Type: `tfc:thin`
-- Config: See vanilla (`underwater_material` is ignored)
+- Config:
+  - `top_material`: A [Lenient BlockState](../common-types/#lenient-blockstate) representing the top material.
+  - `under_material`: A [Lenient BlockState](../common-types/#lenient-blockstate) representing the subsurface material.
 
 ### Mountains
 
 This surface builder acts as a thin surface builder, but will also place patches of gravel, stone, and cobblestone.
 
 - Type: `tfc:mountains`
-- Config: See vanilla (`underwater_material` is ignored)
+- Config: None
 
 ### Shore
 

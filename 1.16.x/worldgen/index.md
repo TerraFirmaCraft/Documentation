@@ -16,10 +16,11 @@ Finally, **all** of TFC's world generation is already done using JSON, and every
 
 ### Sections
 
+- [Common World Gen JSON Types](common-types/)
 - [Chunk Generator](chunk-generator/)
 - [Biome Source](biome-source/)
 - [Biomes](biomes/)
 - [Configured Features](features/)
-  - [Decorators](decorators/)
+- [Decorators](decorators/)
 - [Configured Carvers](carvers/)
 - [Configured Surface Builders](surface-builders/)
