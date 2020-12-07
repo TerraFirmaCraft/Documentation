@@ -15,7 +15,7 @@ Visual Name | Minimum | Maximum
 Warming | 1 | 80
 Hot | 80 | 210
 Very Hot | 210 | 480
-Faint Red | 210 | 580
+Faint Red | 480 | 580
 Dark Red | 580 | 730
 Bright Red | 730 | 930
 Orange | 930 | 1100
