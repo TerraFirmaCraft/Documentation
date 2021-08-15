@@ -20,24 +20,24 @@ Installation instructions are for WSL (Windows Subsystem for Linux), as Jekyll c
   sudo apt-get install zlib1g-dev liblzma-dev patch
   ```
 
-1. Install Ruby.
+1. Install Ruby. 
   ```bash
   sudo apt install ruby-full
   ```
 
-1. Install the `jekyll` and `bundler` gems.
+2. Install the `jekyll` and `bundler` gems.
   ```bash
   sudo gem install jekyll bundler
   ```
 
-1. Install required dependencies. Note: I have had issues with compiling the nokogiri gem, which was resolved by installing the 
+3. Install required dependencies. Note: I have had issues with compiling the nokogiri gem, which was resolved by installing the 
   ```bash
   sudo bundle install
   ```
 
-1. Run jekyll to serve the wiki locally
+4. Run jekyll to serve the wiki locally
   ```bash
   bundle exec jekyll serve
   ```
 
-1. Navigate to the server address to test. (`http://127.0.0.1:4000/Documentation/`)
+5. Navigate to the server address to test. (`http://127.0.0.1:4000/Documentation/`)
