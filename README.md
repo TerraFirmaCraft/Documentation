@@ -7,3 +7,37 @@ Note: **this is not a wiki!** If you are a player of TFC-TNG, you will not find 
 ### License
 
 The Docsy-Jekyll Template is licensed under the Apache 2.0 License, and this is also released under the same license.
+
+### Setup
+
+Installation instructions are for WSL (Windows Subsystem for Linux), as Jekyll can be finicky on Windows. These notes are adapted from the [Jekyll installation instructions](https://jekyllrb.com/docs/), and various sources of installation help.
+
+1. Install dependencies for ruby, and compiling the later gems.
+  ```bash
+  sudo apt install make gcc g++
+
+  // This line was a fix noted from http://nokogiri.org/tutorials/installing_nokogiri.html
+  sudo apt-get install zlib1g-dev liblzma-dev patch
+  ```
+
+1. Install Ruby.
+  ```bash
+  sudo apt install ruby-full
+  ```
+
+1. Install the `jekyll` and `bundler` gems.
+  ```bash
+  sudo gem install jekyll bundler
+  ```
+
+1. Install required dependencies. Note: I have had issues with compiling the nokogiri gem, which was resolved by installing the 
+  ```bash
+  sudo bundle install
+  ```
+
+1. Run jekyll to serve the wiki locally
+  ```bash
+  bundle exec jekyll serve
+  ```
+
+1. Navigate to the server address to test. (`http://127.0.0.1:4000/Documentation/`)
