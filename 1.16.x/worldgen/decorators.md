@@ -13,7 +13,7 @@ TFC adds the following decorators, for use in the `minecraft:decorated` configur
 - [Flat Enough](#flat-enough)
 - [Climate](#climate)
 - [Near Water](#near-water)
-- [Bounded Carving Mask](#bounded-carving-mask)
+- [Carving Mask](#carving-mask)
 
 ### Flat Enough
 
