@@ -20,17 +20,70 @@ Configuration:
         - `spawn_distance` is an integer. It is the farthest distance away from the spawn center location the player is allowed to spawn.
         - `spawn_center_x` is an integer. It is the center x position that the player tries to spawn at.
         - `spawn_center_z` is an integer. It is the center z position that the player tries to spawn at.
-        - `rock_layer_settings` is an object. It is a [rock layer settings](#rock-layer-settings).
-        - `climate_settings` is an object. It is a [climate settings](#climate-settings).
+        - `rock_layer_settings` is a [rock layer settings](#rock-layer-settings), which describes the rock layers of the world.
+        - `temperature_settings` is a [climate settings](#climate-settings), which describes the temperature settings of the world.
+        - `rainfall_settings` is a [climate settings](#climate-settings), which describes the rainfall settings of the
 
-#### Rock Layer Settings
 
-This is an object representing the rocks, and layers, which spawn in the world. Each rock defines a series of blocks, which are used during world generation. These need not be TFC blocks, or even TFC-like blocks. They also need not be different.
+#### Example
+
+This is an example `overworld.json` override, with the default values used by TFC.
+
+File: `data/minecraft/dimension/overworld.json`
+```json
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "type": "tfc:overworld",
+    "seed": 1,
+    "noise_settings": "minecraft:overworld",
+    "flat_bedrock": false,
+    "biome_source": {
+      "type": "tfc:overworld",
+      "seed": 1,
+      "spawn_distance": 8000,
+      "spawn_center_x": 0,
+      "spawn_center_z": 0,
+      "rock_layer_settings": {
+        "rock_layer_scale": 128,
+        "rocks": [
+          "tfc:chalk",
+          "tfc:chert",
+          "tfc:claystone",
+          "tfc:conglomerate",
+          "tfc:dolomite",
+          "tfc:limestone",
+          "tfc:shale",
+          "tfc:gneiss",
+          "tfc:marble",
+          "tfc:phyllite",
+          "tfc:quartzite",
+          "tfc:schist",
+          "tfc:slate",
+          "tfc:diorite",
+          "tfc:gabbro",
+          "tfc:granite",
+          "tfc:andesite",
+          "tfc:basalt",
+          "tfc:dacite",
+          "tfc:rhyolite"
+        ]
+      },
+      "temperature_settings": "tfc:default_temperature",
+      "rainfall_settings": "tfc:default_rainfall"
+    }
+  }
+}
+```
+
+### Rock Layer Settings
+
+This describes the rocks, and rock layers, as used during world generation. It must be an object, with the following fields.
 
 Configuration:
 
-- `rock_layer_scale` is an integer. It represents a multiplier of how far apart rock layers are. It must be a power of two.
-- `rocks` is an array of objects:
+- `rock_layer_scale` is an positive integer. It is a multiplier on how far apart rock regions are, in blocks. It must be a power of two. The default is 128.
+- `rocks` is an array of rock presets, or rock definitions. Rock presets are rocks that are provided via TFC, or addons, and consist of the id name of the rock (i.e. `tfc:basalt`). Rock definitions are an object, which consist of a custom defined rock, by stating what blocks should be used for various rock states. A rock definition must have the following fields:
     - `id` is the namespaced ID of the rock.
     - `raw` is the block ID of the rock's raw block.
     - `hardened` is the block ID of the rock's hardened block.
@@ -44,69 +97,67 @@ Configuration:
     - `middle_layer` is a boolean. If true, this rock will generate in the middle rock layer.
     - `bottom_layer` is a boolean. If true, this rock will generate in the bottom rock layer.
 
-#### Climate Settings
+#### Presets
 
-This is an object which represents how different biomes are placed, according to climate parameters. TFC places additional climate variant biomes for modder and pack maker convienience, allowing biome dictionary and other tools to be used which expect biomes to define a particular climate. This just controls how TFC assigns climate parameters (rainfall, and temperature) to biomes.
+TFC adds the following rock presets, which can be used in the above `rocks` array:
 
-In TFC, an average annual temperature value may range from -20 C to 25 C. An average annual rainfall value may range from 0 mm to 500 mm.
+- `tfc:chalk`, `tfc:chert`, `tfc:claystone`, `tfc:conglomerate`, `tfc:dolomite`, `tfc:limestone`, `tfc:shale`, `tfc:gneiss`, `tfc:marble`, `tfc:phyllite`, `tfc:quartzite`, `tfc:schist`, `tfc:slate`, `tfc:diorite`, `tfc:gabbro`, `tfc:granite`, `tfc:andesite`, `tfc:basalt`, `tfc:dacite`, `tfc:rhyolite`
+
+#### Example
+
+This is an example rock settings, which can be used instead of a preset string:
+
+```json
+{
+  "id": "basalt",
+  "raw": "tfc:rock/raw/basalt",
+  "hardened": "tfc:rock/hardened/basalt",
+  "gravel": "tfc:rock/gravel/basalt",
+  "cobble": "tfc:rock/cobble/basalt",
+  "sand": "tfc:sand/red",
+  "sandstone": "tfc:raw_sandstone/red",
+  "top_layer": true,
+  "middle_layer": true,
+  "bottom_layer": false
+}
+```
+
+### Climate Settings
+
+This ia an object which controls various climate related parameters about the world, either as rainfall, or temperature. The climate settings defines two main parameters:
+
+- The cutoffs between different biome climate ranges. TFC has climate based biome variants for the purposes of vanilla and other mod compatability. These define the temperature or rainfall where TFC's biomes switch between different climates (e.g. `tfc:plains_frozen_dry` vs. `tfc:plains_warm_wet`).
+- The base climate generation of the world. This includes the climate scale (how far apart 'peaks' are, i.e. for lines of latitude), and if the climate model should by cyclical (with repeating peaks of max and min areas), or endless (with a moderate equator and 'infinite' peaks).
+
+It can be either a climate preset or a custom climate settings definition. A climate preset consists of the string climate settings preset identifier, as provided by TFC or addons. A climate settings definition consists of an object with the following parameters.
 
 Configuration:
 
-- `frozen_cold_cutoff` is a float. It represents the cutoff between frozen and cold temperature biomes.
-- `cold_normal_cutoff` is a float. It represents the cutoff between cold and normal temperature biomes.
-- `normal_lukewarm_cutoff` is a float. It represents the cutoff between normal and lukewarm temperature biomes.
-- `lukewarm_warm_cutoff` is a float. It represents the cutoff between lukewarm and warm temperature biomes.
-- `arid_dry_cutoff` is a float. It represents the cutoff between arid and dry rainfall biomes.
-- `dry_normal_cutoff` is a float. It represents the cutoff between dry and normal rainfall biomes.
-- `normal_damp_cutoff` is a float. It represents the cutoff between normal and damp rainfall biomes.
-- `damp_wet_cutoff` is a float. It represents the cutoff between damp and wet rainfall biomes.
+- `first_max`, `second_max`, `third_max`, and `fourth_max` are the cutoffs between different biome climates.
+  - For temperature, that includes frozen, cold, normal, lukewarm, and warm.
+  - For rainfall, that includes arid, dry, normal, damp, and wet.
+  - These fields are all numbers, in terms of average temperature, or annual rainfall.
+- `scale` is an integer, which represents how far apart peaks are.
+- `endless_poles` is a boolean, which when true, will cause the peak regions to be endless rather than cyclical.
+
+#### Presets
+
+TFC adds the following climate presets, which can be used anywhere a climate settings is required:
+
+- `tfc:default_temperature`, `tfc:default_rainfall`
 
 
-### Example
+#### Example
 
-This is an example `overworld.json` override, with almost all properties set to the exact same as TFC. (The one exception is the `rocks` field, of which only one rock has been included here.)
+This is a climate settings, using the same values as `tfc:default_temperature`:
 
-File: `data/minecraft/dimension/overworld.json`
 ```json
 {
-  "type": "minecraft:overworld",
-  "generator": {
-    "type": "tfc:overworld",
-    "noise_settings": "minecraft:overworld",
-    "flat_bedrock": false,
-    "biome_source": {
-      "type": "tfc:overworld",
-      "spawn_distance": 8000,
-      "spawn_center_x": 0,
-      "spawn_center_z": 0,
-      "rock_layer_settings": {
-        "rock_layer_scale": 128,
-        "rocks": [
-          {
-            "id": "basalt",
-            "raw": "tfc:rock/raw/basalt",
-            "hardened": "tfc:rock/hardened/basalt",
-            "gravel": "tfc:rock/gravel/basalt",
-            "cobble": "tfc:rock/cobble/basalt",
-            "sand": "tfc:sand/red",
-            "sandstone": "tfc:raw_sandstone/red",
-            "top_layer": true,
-            "middle_layer": true,
-            "bottom_layer": false
-          }
-        ]
-      },
-      "climate_settings": {
-        "frozen_cold_cutoff": -17.25,
-        "cold_normal_cutoff": -3.75,
-        "normal_lukewarm_cutoff": 9.75,
-        "lukewarm_warm_cutoff": 23.25,
-        "arid_dry_cutoff": 125,
-        "dry_normal_cutoff": 200,
-        "normal_damp_cutoff": 300,
-        "damp_wet_cutoff": 375
-      }
-    }
-  }
+  "first_max": -17.25,
+  "second_max": -3.75,
+  "third_max": 9.75,
+  "fourth_max": 23.25,
+  "scale": 20000,
+  "endless_poles": false
 }
 ```

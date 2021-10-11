@@ -30,7 +30,7 @@ Installation instructions are for WSL (Windows Subsystem for Linux), as Jekyll c
   sudo gem install jekyll bundler
   ```
 
-3. Install required dependencies. Note: I have had issues with compiling the nokogiri gem, which was resolved by installing the 
+3. Install required dependencies.
   ```bash
   sudo bundle install
   ```
