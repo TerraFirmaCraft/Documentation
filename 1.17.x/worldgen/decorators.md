@@ -6,7 +6,7 @@ permalink: /1.17.x/worldgen/decorators/
 
 # Decorators
 
-*[Vanilla Reference for Decorators](https://minecraft.gamepedia.com/Custom_world_generation#Decorators)*
+*[Vanilla Reference for Decorators](https://minecraft.fandom.com/wiki/Custom_world_generation#Decorators)*
 
 TFC adds the following decorators, for use in the `minecraft:decorated` configured feature:
 
