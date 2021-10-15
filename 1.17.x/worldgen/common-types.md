@@ -1,10 +1,10 @@
 ---
 layout: page
 title: "Common Types"
-permalink: /1.16.x/worldgen/common-types/
+permalink: /1.17.x/worldgen/common-types/
 ---
 
-# Common World Generation JSON Types
+# Common Types
 
 There are a number of JSON types that are used in many different configurations for many different operations. These are all referenced here rather than repeating their definitions across every config they may belong to.
 
@@ -32,4 +32,28 @@ Or, it can be a JSON string with the registry name of the block to use. In this 
 
 ```java
 "minecraft:grass_block"
+```
+
+### Forest Type
+
+A forest type is a string, from the following values:
+
+- `none`, `sparse`, `edge`, `normal`, `old_growth`
+
+When compared, they compare realitive to the above order. (So, `normal` is considered "greater than" `edge`, for example.)
+
+
+### Vertical Anchor
+
+This represents a relative y height. It is an object with exactly one of the three following fields:
+
+- `absolute`: An integer representing an absolute y height.
+- `above_bottom`: An integer representing a number of blocks above the lowest y level in the world.
+- `below_top`: An integer representing a number of blocks below the highest y level in the world.
+
+Example (y = 63):
+```java
+{
+    "absolute": 63
+}
 ```

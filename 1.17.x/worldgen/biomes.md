@@ -1,32 +1,39 @@
 ---
 layout: page
 title: "Biomes"
-permalink: /1.16.x/worldgen/biomes/
+permalink: /1.17.x/worldgen/biomes/
 ---
 
 # Biomes
 
-TFC adds a total of 600 biomes. These are organized into a biome type, and then climate variants for both rainfall and temperature.
+TFC adds a total of 775 biomes. These are organized into a biome type, and then climate variants for both rainfall and temperature.
 
 - Biome types determine the overall shape of the land, and the features that are generated. They **do not** determine the temperature, rainfall, or other climate related features.
-- Continental Biomes:
-  - Plains, Hills, Lowlands, Low Canyons, Rolling Hills, Badlands, Plateau, Old Mountains, Mountains, Flooded Mountains, Canyons.
+- Low Altitude Continental Biomes:
+  - Plains, Hills, Lowlands, Low Canyons
+- Mid Altitude Continental Biomes:
+  - Rolling Hills, Badlands, Plateau, Canyons.
+- High Altitude Continental Biomes:
+  - Mountains, Old Mountains, Oceanic Mountains, Volcanic Mountains, Volcanic Oceanic Mountains.
 - Oceanic Biomes:
-  - Ocean, Deep Ocean, Deep Ocean Ridge.
+  - Ocean, Ocean Reef, Deep Ocean, Deep Ocean Trench
 - Technical / Decoration Biomes:
-  - Shore, Lake, Plateau Lake, Old Mountains Lake, Mountains Lake, Flooded Mountains Lake, River, Old Mountains River, Mountains River, Flooded Mountains River.
+  - Shore
+  - Lake, Plateau Lake, Mountains Lake, Old Mountains Lake, Oceanic Mountains Lake, Volcanic Mountains Lake, Volcanic Oceanic Mountains Lake.
+  - River, Mountains River, Old Mountains River, Volcanic Mountains River, Oceanic Mountains River, Volcanic Oceanic Mountains River.
 - Temperature variants are one of Frozen, Cold, Normal, Lukewarm, Warm.
 - Rainfall variants are one of Arid, Dry, Normal, Damp, Wet.
 
 The resultant biome will have a registry name in the form `[type]_[temperature]_[rainfall]`, for example `tfc:badlands_cold_wet`. All possible TFC biomes, and their world generation JSON can be found [here](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.16.x/src/main/resources/data/tfc/worldgen/biome).
 
+{% include alert.html type="info" title="Note" content="Due to fundamental issues with Mojang's biome jsons, the only way to add, remove, or edit any features of biomes is to override the entire biome. There are work in progress plans to fix this, both from Forge's end, and eventually, on our end." %}
+
 ### TFC Ignored Properties
 
 TFC ignores several properties of biomes in favor of other methods. TFC redirects vanilla methods to call TFC-enhanced methods for functions such as temperature, rainfall, or sky color. These will only apply to biomes which have extensions registered (aka, TFC recognizes them). In these cases, other mods may still use these properties but within TFC and vanilla they will be ignored.
 
-- `precipitation` is ignored completely, it is queried based on the actual temperature and rainfall of the area.
 - `depth` and `scale` are ignored completely - they are not used at all by the TFC chunk generator, TFC uses completely custom noise generators for it's terrain.
-- `temperature`, `temperature_modifier`, and `downfall` are ignored completely, they are replaced with TFC climate calculations.
+- `temperature`, `temperature_modifier`, and `downfall` and `precipitation` are ignored in the default TFC overworld, or dimensions with custom TFC climate support.
 - In `effects`, `fog_color`, `sky_color`, `water_color`, and `water_color` are ignored. They are instead queried based off a color map texture file (In `tfc:textures/colormap/*.png`), based off of the actual rainfall and temperature of an area.
 
 ### Using Non-TFC Biomes in TFC

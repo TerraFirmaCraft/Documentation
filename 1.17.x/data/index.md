@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Custom Data"
-permalink: /1.16.x/data/
+permalink: /1.17.x/data/
 ---
 
 # Custom Data

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Configured Features"
-permalink: /1.16.x/worldgen/features/
+permalink: /1.17.x/worldgen/features/
 ---
 
 # Configured Features
