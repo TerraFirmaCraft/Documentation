@@ -23,7 +23,14 @@ These are the recipe types TFC adds:
 ### Alloy
 
 Alloy recipes define certain ratios of metals that can be formed into another metal.
-The `metal` should be registered Metal types, and the `min` and `max` values should be in the range [0, 1]
+
+- Type: `tfc:alloy`
+- Fields:
+  - `result`: A Metal.
+  - `contents`: An array of objects, each containing the following properties:
+    - `metal`: A Metal constituent of the recipe
+    - `min`: The minimum proportion needed in the mixture, in the range [0, 1].
+	- `max`: The maximum proportion needed, larger than `min` and in the range [0, 1]
 
 ```json
 {
@@ -41,4 +48,4 @@ The `metal` should be registered Metal types, and the `min` and `max` values sho
       "max": 0.65
     }
   ]
-}`
+}```

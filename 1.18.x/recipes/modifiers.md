@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Ingredients"
-permalink: /1.18.x/recipes/ingredients/
+title: "Modifiers"
+permalink: /1.18.x/recipes/modifiers/
 ---
 
 # Item Stack Modifiers
