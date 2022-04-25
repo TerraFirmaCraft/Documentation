@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Common Types"
-permalink: /1.17.x/worldgen/common-types/
+permalink: /1.18.x/worldgen/common-types/
 ---
 
 # Common Types

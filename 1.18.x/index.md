@@ -1,12 +1,12 @@
 ---
 layout: page
-title: 1.17.x
-permalink: /1.17.x/
+title: 1.18.x
+permalink: /1.18.x/
 ---
 
-# 1.17.x
+# 1.18.x
 
-This is for the **alpha** version of TFC v2.x, currently targeting Minecraft 1.17.x. Note, due to this being alpha, everything here is subject to change.
+This is for the **alpha** version of TFC v2.x, currently targeting Minecraft 1.18.x. Note, due to this being alpha, everything here is subject to change.
 
 ### [World Generation](worldgen/)
 
