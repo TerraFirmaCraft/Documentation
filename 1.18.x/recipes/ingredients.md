@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Ingredients"
-permalink: /1.18.x/worldgen/ingredients/
+permalink: /1.18.x/recipes/ingredients/
 ---
 
 # Ingredients

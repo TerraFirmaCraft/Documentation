@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Recipe Types"
-permalink: /1.18.x/worldgen/recipe-types/
+permalink: /1.18.x/recipes/recipe-types/
 ---
 
 # Recipe Types
