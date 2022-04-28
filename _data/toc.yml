@@ -23,3 +23,5 @@
           url: "1.18.x/recipes/"
         - title: "Data"
           url: "1.18.x/data/"
+        - title: "Tags"
+          url: "1.18.x/tags/"
