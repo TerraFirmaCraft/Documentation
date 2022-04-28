@@ -1,10 +1,10 @@
 ---
 layout: page
-title: "Ingredient Types"
+title: "Ingredients"
 permalink: /1.18.x/data/ingredients/
 ---
 
-# Ingredient Types
+# Ingredients
 
 In addition to the two ingredients added by Minecraft, TFC adds a number of custom ingredients which can be used anywhere an `Ingredient` is required, even by other mod's recipes. TFC adds the following ingredient types:
 

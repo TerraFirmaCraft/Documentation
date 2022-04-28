@@ -19,3 +19,9 @@ TFC defines a number of recipe types, although these recipe types are sad and in
 ### [Data](data/)
 
 In addition to custom recipe types, there are also completely custom data types for stuff such as defining new rocks or metals. Like their recipe type friends, these are also sad and want to be documented.
+
+Sections:
+
+- [Common Data Types](data/common-types/)
+- [Ingredients](data/ingredients/)
+- [Item Stack Modifiers](data/item-stack-modifiers)

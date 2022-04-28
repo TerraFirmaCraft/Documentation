@@ -8,6 +8,8 @@ permalink: /1.18.x/data/common-types/
 
 Below are a number of common types used by recipes and custom data.
 
+- [Block Ingredients](#block-ingredients)
+- [Block State](#block-state)
 - [Ingredients](#ingredients)
 - [Item Stacks](#item-stacks)
 - [Item Stack Ingredients](#item-stack-ingredients)
@@ -16,6 +18,30 @@ Below are a number of common types used by recipes and custom data.
 - [Fluid Stack](#fluid-stack)
 - [Fluid Stack Ingredients](#fluid-stack-ingredients)
 - [Food Traits](#food-traits)
+
+<hr>
+
+## Block Ingredients
+
+This represents a predicate on blocks in the world. It can be any of the following options:
+
+- A String, with the registry name of a single block.
+- A JSON object, with a single `block` key, with the registry name of a single block.
+- A JSON object, with a single `tag` key, with the name of a block tag to match.
+- A JSON object, with a `type` key which specifies a custom block ingredient type to use.
+- A JSON array, whose entries are [Block Ingredients](#block-ingredients), which are logically OR'd together.
+
+**Note:** TFC only adds the `tfc:block` and `tfc:tag` types, which are already usable via the above syntaxes for `block` and `tag`, and as a result, are not detailed here. Addons may define other block ingredient types.
+
+<hr>
+
+## Block State
+
+A block state represents an output of a recipe in world. It must be a string which encodes a block. It must contain the registry name of the block, optionally followed by properties with key value pairs separated by `=`, within square brackets. For example:
+
+- `minecraft:dirt` : Just specifying a block name.
+- `minecraft:grass[snowy=true]` : Using the `snowy=true` property.
+- `minecraft:oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]` : Using multiple properties.
 
 <hr>
 
@@ -95,10 +121,10 @@ An item stack provider represents an output of a recipe, an item stack with any 
 
 A fluid ingredient represents a predicate of fluids. It can be any of the following options:
 
-1. A String, with the registry name of a single fluid.
-2. A JSON object, with a single `fluid` key, with the registry name of a single fluid.
-3. A JSON object, with a single `tag` key, with the name of a fluid tag to match.
-4. A JSon array, whose entries are [Fluid Ingredients](#fluid-ingredients), which are logically OR'd together.
+- A String, with the registry name of a single fluid.
+- A JSON object, with a single `fluid` key, with the registry name of a single fluid.
+- A JSON object, with a single `tag` key, with the name of a fluid tag to match.
+- A JSon array, whose entries are [Fluid Ingredients](#fluid-ingredients), which are logically OR'd together.
 
 <hr>
 

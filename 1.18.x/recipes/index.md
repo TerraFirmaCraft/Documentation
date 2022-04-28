@@ -4,9 +4,15 @@ title: "Recipes"
 permalink: /1.18.x/recipes/
 ---
 
-Recipes can be configured through [datapacks](https://minecraft.fandom.com/wiki/Recipe). TFC adds a number of recipe types for its custom crafting operations, and they can be used to add, remove, or modify existing recipes. A complete reference of all of TFC's defined recipes, organized into folders depending on their type can be found in the [TFC Github](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.18.x/src/main/resources/data/tfc/recipes).
+<!--
+Note to self: consider separating this page out into multiple pages as it might get really long.
+One page per recipe type would be decent, all under recipes/
+This is generally considering that recipes are more complex than i.e. the types in common-types or data (although the latter also may want to be broken out into their own pages)
+ -->
 
 # Recipe Types
+
+Recipes can be configured through [datapacks](https://minecraft.fandom.com/wiki/Recipe). TFC adds a number of recipe types for its custom crafting operations, and they can be used to add, remove, or modify existing recipes. A complete reference of all of TFC's defined recipes, organized into folders depending on their type can be found in the [TFC Github](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.18.x/src/main/resources/data/tfc/recipes).
 
 TFC adds the following recipe types:
 
