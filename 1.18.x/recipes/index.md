@@ -98,7 +98,13 @@ Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest
 
 ## Collapse
 
-A collapse recipe is used for block conversions when a certain block collapses due to unstable mining. It is responsible, i.e. from converting raw stone into cobblestone when collapsing.
+A collapse recipe is used for block conversions when a *collapse* occurs, which happens in the following steps:
+
+1. A player mines a block which can *trigger* a collapse (defined by having the `tfc:can_trigger_collapse`) tag.
+2. Within a random radius centered on the *trigger* block, blocks that are [unsupported](../data/#supports) are checked. If one of those blocks can *start* a collapse (defined by having the `tfc:can_start_collapse` tag), a collapse will occur centered on the *start* position.
+3. Once a collapse has *started*, within a random radius centered on the *start* position, blocks that can collapse (defined by having both a valid collapse recipe and having the `tfc:can_collapse`), may randomly collapse - apply the recipe and convert to falling blocks.
+
+Collapse recipes are responsible, i.e. from converting raw stone into cobblestone when a collapse occurs.
 
 **Note** The presence of a collapse recipe alone does not make a block able to collapse. It must also be added to the [Can Collapse](../tags/#block-tags) block tag.
 
@@ -107,7 +113,7 @@ A collapse recipe has the following properties:
 - `type`: `tfc:collapse`
 - `ingredient`: A [Block Ingredient](../data/common-types/#block-ingredients). The blocks that this recipe applies to.
 - `copy_input`: An optional Boolean (Default: `false`). If `true`, the recipe should copy the input block, including properties, as the result, and the `state` property is ignored.
-- `state`: A [Block State](../data/common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
+- `result`: A [Block State](../data/common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
 
 #### Example
 
@@ -116,7 +122,8 @@ A collapse recipe has the following properties:
 {
     "type": "tfc:collapse",
     "ingredient": "tfc:rock/spike/andesite",
-    "copy_input": true
+    "copy_input": true,
+    // Note that no 'result' field is required, as 'copy_input' is true.
 }
 ```
 
@@ -156,7 +163,7 @@ Knapping recipes include clay knapping, fire clay knapping, and leather knapping
 
 ## Landslide
 
-A landslide recipe is used for block conversions when a certain block falls or landslides into another block. It is responsible, i.e. from converting grass to dirt when landsliding.
+A landslide recipe is used for block conversions when a certain block *landslides*. A *landslide* is what occurs when a block update causes adjacent blocks to check if they are affected by gravity, and either fall directly downwards, or to adjacent blocks and downwards. It is responsible, i.e. from converting grass to dirt when landsliding.
 
 **Note** The presence of a landslide recipe alone does not make a block able to landslide. It must also be added to the [Can Landslide](../tags/#block-tags) block tag.
 
@@ -165,7 +172,7 @@ A landslide recipe has the following properties:
 - `type`: `tfc:landslide`
 - `ingredient`: A [Block Ingredient](../data/common-types/#block-ingredients). The blocks that this recipe applies to.
 - `copy_input`: An optional Boolean (Default: `false`). If `true`, the recipe should copy the input block, including properties, as the result, and the `state` property is ignored.
-- `state`: A [Block State](../data/common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
+- `result`: A [Block State](../data/common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
 
 #### Example
 

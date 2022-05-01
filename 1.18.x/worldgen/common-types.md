@@ -127,7 +127,7 @@ A forest type is a string, from the following values:
 
 - `none`, `sparse`, `edge`, `normal`, `old_growth`
 
-When compared, they compare realitive to the above order. (So, `normal` is considered "greater than" `edge`, for example.)
+When compared, they compare relative to the above order. (So, `normal` is considered "greater than" `edge`, for example.)
 
 
 ### Biome Category

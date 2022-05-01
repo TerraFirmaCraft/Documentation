@@ -126,7 +126,7 @@ This is an example rock settings, which can be used instead of a preset string:
 
 This ia an object which controls various climate related parameters about the world, either as rainfall, or temperature. The climate settings defines two main parameters:
 
-- The cutoffs between different biome climate ranges. TFC has climate based biome variants for the purposes of vanilla and other mod compatability. These define the temperature or rainfall where TFC's biomes switch between different climates (e.g. `tfc:plains_frozen_dry` vs. `tfc:plains_warm_wet`).
+- The cutoffs between different biome climate ranges. TFC has climate based biome variants for the purposes of vanilla and other mod compatibility. These define the temperature or rainfall where TFC's biomes switch between different climates (e.g. `tfc:plains_frozen_dry` vs. `tfc:plains_warm_wet`).
 - The base climate generation of the world. This includes the climate scale (how far apart 'peaks' are, i.e. for lines of latitude), and if the climate model should by cyclical (with repeating peaks of max and min areas), or endless (with a moderate equator and 'infinite' peaks).
 
 It can be either a climate preset or a custom climate settings definition. A climate preset consists of the string climate settings preset identifier, as provided by TFC or addons. A climate settings definition consists of an object with the following parameters.

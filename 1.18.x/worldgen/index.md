@@ -12,7 +12,7 @@ TFC exposes the "TFC World Generation" `level-type` (for servers), and preset (f
 
 All other world generation, including biomes, configured features, decorators, carvers, and surface builders can be customized to various extents by replacing the specific files.
 
-Finally, **all** of TFC's world generation is already done using JSON, and every existing file can be found in the [world generation folder](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.17.x/src/main/resources/data/tfc/worldgen) in the TFC repository.
+Finally, **all** of TFC's world generation is already done using JSON, and every existing file can be found in the [world generation folder](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.18.x/src/main/resources/data/tfc/worldgen) in the TFC repository.
 
 ### Sections
 
@@ -21,5 +21,4 @@ Finally, **all** of TFC's world generation is already done using JSON, and every
 - [Configured Features](features/)
 - [Decorators](decorators/)
 - [Configured Carvers](carvers/)
-- [Configured Surface Builders](surface-builders/)
 - [Common Types](common-types/)

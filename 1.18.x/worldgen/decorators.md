@@ -31,7 +31,7 @@ The typical range for yearly average temperatures is -25 to +30 C. Rainfall valu
   - `max_rainfall` is an optional float representing the maximum allowed rainfall.
   - `min_forest` is an optional [Forest Type](../common-types#forest-type) representing the minimum required forest density.
   - `max_forest` is an optional [Forest Type](../common-types#forest-type) representing the maximum required forest density.
-  - `fuzzy` is an optional boolean (Default: `false`). If true, the temperature and rainfall requirements will be probalistic relative to the center point, with maximum density at the exact center, and zero density at the edges.
+  - `fuzzy` is an optional boolean (Default: `false`). If true, the temperature and rainfall requirements will be probabilistic relative to the center point, with maximum density at the exact center, and zero density at the edges.
 
 
 ### Flat Enough
