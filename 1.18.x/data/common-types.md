@@ -63,13 +63,23 @@ This represents a vanilla Minecraft item stack. It is a JSON object with the fol
 - `count`: Integer. The count of the item stack.
 - `nbt`: An optional object representing NBT data to be added to the item stack.
 
+#### Example
+
+```jsonc
+// An item stack of 3 x minecraft:apple
+{
+    "item": "minecraft:apple",
+    "count": 3
+}
+```
+
 <hr>
 
 ## Item Stack Ingredients
 
 An item stack ingredient is a combination of an ingredient, and a count. It is a JSON object with the following fields:
 
-- `count`: The count of the item.
+- `count`: An optional integer (Default: 1) The count of the item.
 - `ingredient`: An [Ingredient](#ingredients).
 
 #### Example
@@ -77,7 +87,7 @@ An item stack ingredient is a combination of an ingredient, and a count. It is a
 ```jsonc
 // An item stack ingredient which requires 5 x minecraft:apple
 {
-    "count": 4
+    "count": 5,
     "ingredient": {
         "item": "minecraft:apple"
     }

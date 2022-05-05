@@ -86,6 +86,44 @@ Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest
 
 ## Barrel Sealed
 
+A sealed barrel recipe is one which requires the barrel to be sealed for a duration of time. The recipe will begin counting time when the barrel is first sealed, and will only complete if the barrel has been consecutively sealed for the required duration (unsealing and re-sealing will interrupt the recipe's progress).
+
+These recipes are declared in their least common ratio form, and the highest multiple of this recipe that is able to be completed, will be. However unlike [Instant Barrel](#barrel-instant) recipes, this recipe **will** void excess fluids, and items, if the ratio does not match the required ratio of the recipe.
+
+**Note**: A barrel recipe must have *at least* one of `input_item` or `input_fluid`.
+
+- `type`: `tfc:barrel_instant`
+- `input_item`: An optional [Item Stack Ingredient](../data/common-types/#item-stack-ingredients), representing the input item. Defaults to empty.
+- `input_fluid`: A optional [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients), representing the input fluid. Defaults to empty.
+- `output_item`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers), representing the output item. Defaults to empty.
+- `output_fluid`: A [Fluid Stack](../data/common-types/#fluid-stack), representing the output fluid. Defaults to empty.
+- `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
+- `duration`: An Integer, representing a number of ticks that this barrel must be sealed for. A duration of `-1` will render this barrel recipe to be considered **infinite**, meaning it will never complete. Infinite barrel recipes of this form should define either `on_seal` or `on_unseal`.
+- `on_seal`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers) which will be applied whenever this barrel is sealed. This can be used to apply special effects to the item in the barrel while sealed.
+- `on_unseal`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers) which will be applied whenever this barrel is unsealed. This can be used to remove special effects on the item in the barrel when no longer sealed.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/barrel/large_prepared_hide.json
+{
+    "type": "tfc:barrel_sealed",
+    "input_item": {
+        "ingredient": {
+            "item": "tfc:large_scraped_hide"
+        }
+    },
+    "input_fluid": {
+        "ingredient": "minecraft:water",
+        "amount": 500
+    },
+    "output_item": {
+        "item": "tfc:large_prepared_hide"
+    },
+    "duration": 8000
+}
+```
+
 <hr>
 
 ## Bloomery

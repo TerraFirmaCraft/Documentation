@@ -20,6 +20,16 @@ Tag Id | Function
 `tfc:toughness_1` | Blocks which are defined to have toughness 1 (Default for blocks without any tag is 0). Falling blocks are able to break non solid blocks with a equal or lesser toughness than the falling block. 
 `tfc:toughness_2` | Blocks which are defined to have toughness 2 (Default for blocks without any tag is 0). Falling blocks are able to break non solid blocks with a equal or lesser toughness than the falling block.
 `tfc:toughness_3` | Blocks which are defined to have toughness 3 (Default for blocks without any tag is 0). Falling blocks are able to break non solid blocks with a equal or lesser toughness than the falling block.
+`tfc:tree_grows_on` | Blocks which a tree is able to spawn on, during world generation.
+`tfc:bush_plantable_on` | Blocks which many plants, including bushes, fruit trees, and seasonal plants are able to spawn on, during world generation.
+`tfc:single_block_replaceable` | Single blocks which can be replaced during world generation by other features, such as single block plants or grasses.
+`tfc:sea_bush_plantable_on` | Blocks which many underwater plants are able to spawn on, during world generation.
+`tfc:creeping_plantable_on` | Blocks which creeping plants are able to spawn on, during world generation.
+`tfc:thatch_bed_thatch` | Blocks which count as valid 'thatch' blocks when trying to make a thatch bed.
+`tfc:can_be_snow_piled` | Blocks which can be hidden by snow formation. Can include both single blocks and two-tall plant blocks.
+`tfc:can_be_ice_piled` | Blocks which can be hidden by ice formation. Can include both blocks in the ice and immediately above (i.e. lily pads)
+`tfc:breaks_when_isolated` | When surrounded on all sides by air blocks, this will pop off as an item upon being updated.
+`tfc:lit_by_dropped_torch` | Blocks which, when a torch item entity is dropped on them, might start a fire atop them,
 
 <hr>
 

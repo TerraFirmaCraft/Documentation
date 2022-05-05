@@ -19,7 +19,9 @@
       children:
         - title: "World Generation"
           url: "1.18.x/worldgen/"
-        - title: "Recipes"
+        - title: "Crafting Recipes"
+          url: "1.18.x/recipes/crafting/"
+        - title: "Other Recipes"
           url: "1.18.x/recipes/"
         - title: "Data"
           url: "1.18.x/data/"
