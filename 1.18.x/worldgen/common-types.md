@@ -38,7 +38,7 @@ Example:
 
 ### Weighted List
 
-A weighted list is similar to a [Key Value List](#key-value-list) in that it is a list of pairs, except in this list, each object has two fields, where one is a `weight` entry. The `weight` determines the realitive weight of that element of the list, and can be any positive number. The other entry might be any other field depending on the actual list in question.
+A weighted list is similar to a [Key Value List](#key-value-list) in that it is a list of pairs, except in this list, each object has two fields, where one is a `weight` entry. The `weight` determines the relative weight of that element of the list, and can be any positive number. The other entry might be any other field depending on the actual list in question.
 
 The `weight` can also be omitted, in which case the entry will assume a default value of `1`.
 
@@ -79,7 +79,7 @@ For example, the block state `minecraft:grass_block[snowy=false]` would become:
 
 Or, it can be a string with the registry name of the block to use. In this case, all block state properties will have their default values assigned, e.g. the above would be:
 
-```java
+```json
 "minecraft:grass_block"
 ```
 
@@ -149,7 +149,7 @@ This represents a relative y height. It is an object with exactly one of the thr
 - `below_top`: An integer representing a number of blocks below the highest y level in the world.
 
 Example (y = 63):
-```java
+```json
 {
     "absolute": 63
 }

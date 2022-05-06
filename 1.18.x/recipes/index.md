@@ -16,18 +16,22 @@ Recipes can be configured through [datapacks](https://minecraft.fandom.com/wiki/
 
 TFC adds the following recipe types:
 
+<!-- Alphabetical Order Please!! -->
+
 - [Alloy](#alloy)
 - [Barrel Instant](#barrel-instant)
 - [Barrel Sealed](#barrel-sealed)
 - [Bloomery](#bloomery)
 - [Casting](#casting)
 - [Collapse](#collapse)
+- [Heating](#heating)
 - [Knapping (Clay, Fire Clay, Leather)](#knapping)
 - [Landslide](#landslide)
 - [Loom](#loom)
 - [Pot](./pot/)
 - [Quern](#quern)
 - [Rock Knapping](#rock-knapping)
+- [Scraping](#scraping)
 
 <hr>
 
@@ -44,7 +48,7 @@ Alloy recipes are used in the creation of alloys in small vessels and crucibles.
   - `min`: The minimum proportion needed in the mixture, in the range [0, 1].
   - `max`: The maximum proportion needed, larger than `min` and in the range [0, 1].
 
-### Example
+#### Example
 
 ```json
 {
@@ -128,9 +132,77 @@ These recipes are declared in their least common ratio form, and the highest mul
 
 ## Bloomery
 
+The bloomery follows the following procedure:
+
+1. It consumes two types of input items: primary inputs, and catalysts. These must be consumed in an 1:1 ratio, and the bloomery has a maximum number of items that it can hold.
+2. All primary inputs are converted into metal fluid, by finding a matching [Heating Recipe](#heating) for the item.
+3. The total output fluid is divided by the input fluid amount - any excess is lost - and then one output item is produced for each full fluid input. (So a 100mB requiring recipe, when given 350 mB of fluid, would produce 3 items)
+4. These items are then embedded in the "bloom" block, which can be mined multiple times to obtain the items.
+
+A bloomery recipe has the following properties:
+
+- `type`: `tfc:bloomery`
+- `fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients). The fluid that primary inputs must be able to melt into, to be considered primary inputs.
+- `catalyst`: An [Ingredient](../data/common-types/#ingredients). The ingredient which catalysts must match.
+- `result`: A [Item Stack](../data/common-types/#item-stacks). The result item stack.
+- `duration`: An integer, representing the duration in ticks until the bloomery is complete.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/bloomery/raw_iron_bloom.json
+{
+    "type": "tfc:bloomery",
+    "result": {
+        "item": "tfc:raw_iron_bloom"
+    },
+    "fluid": {
+        "ingredient": "tfc:metal/cast_iron",
+        "amount": 100
+    },
+    "catalyst": {
+        "item": "minecraft:charcoal"
+    },
+    "duration": 15000
+}
+```
+
 <hr>
 
 ## Casting
+
+Casting recipes define recipes between filled, solidified molds, and their item counterpart. They are used in two situations:
+
+1. When right clicking on a mold item, the mold will look for a matching casting recipe in order to determine what to produce.
+2. The [Casting Crafting Recipe](./crafting/#casting) will internally look for a matching casting recipe to determine the output.
+
+Casting recipes have the following properties:
+
+- `type`: `tfc:casting`
+- `mold`: An [Ingredient](../data/common-types/#ingredients). This ingredient is used just to match the mold item itself, not the contents.
+- `fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients). This ingredient is used to match the contents of the solidified mold.
+- `result`: An [Item Stack](../data/common-types/#item-stacks). This is the output of the recipe.
+- `break_chance`: A number between [0, 1]. This is the probability that the mold will break upon completion of this recipe, where a higher number indicates a higher probability.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/casting/bismuth_bronze_axe_head.json
+{
+    "type": "tfc:casting",
+    "mold": {
+        "item": "tfc:ceramic/axe_head_mold"
+    },
+    "fluid": {
+        "ingredient": "tfc:metal/bismuth_bronze",
+        "amount": 100
+    },
+    "result": {
+        "item": "tfc:metal/axe_head/bismuth_bronze"
+    },
+    "break_chance": 1 // A break chance of 1 indicates this recipe breaks the mold every time
+}
+```
 
 <hr>
 
@@ -162,6 +234,38 @@ A collapse recipe has the following properties:
     "ingredient": "tfc:rock/spike/andesite",
     "copy_input": true,
     // Note that no 'result' field is required, as 'copy_input' is true.
+}
+```
+
+<hr>
+
+## Heating
+
+A heating recipe is used by any device which heats items, such as a firepit, charcoal forge, small vessel, bloomery, or blast furnace. They define what an item transforms into once heated: either converting into another item (such as cooking food), or melting into a liquid (such as melting ores). It has the following properties:
+
+- `type`: `tfc:heating`
+- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This defines what items the heating recipe applies to.
+- `result_item`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers) (Default: empty). This defines what item the heating recipe may convert to. Note that the "copy heat" functionality of an item stack provider is implicit and always applied when using heating recipes.
+- `result_fluid`: An optional [Fluid Stack](../data/common-types/#fluid-stack) (Default: empty). This defines what fluids the heating recipe may create.
+- `temperature`: A number, which is the [Temperature](../data/common-types/#temperature) above which this item will convert to it's outputs.
+
+**Note**: A heating recipe may define one, both, or neither of `result_item` and `result_fluid`, depending on what is desired.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/heating/ore/normal_bismuthinite.json
+// This recipe allows normal bismuthinite ore to melt into 25 mB of molten bismuth at 270 C
+{
+    "type": "tfc:heating",
+    "ingredient": {
+        "item": "tfc:ore/normal_bismuthinite"
+    },
+    "result_fluid": {
+        "fluid": "tfc:metal/bismuth",
+        "amount": 25
+    },
+    "temperature": 270
 }
 ```
 
@@ -289,3 +393,7 @@ Rock knapping recipes can be used when knapping loose rocks. They define pattern
     }
 }
 ```
+
+<hr>
+
+## Scraping

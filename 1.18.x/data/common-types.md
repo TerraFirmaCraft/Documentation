@@ -8,6 +8,8 @@ permalink: /1.18.x/data/common-types/
 
 Below are a number of common types used by recipes and custom data.
 
+<!-- Alphabetical Order Please!! -->
+
 - [Block Ingredients](#block-ingredients)
 - [Block State](#block-state)
 - [Ingredients](#ingredients)
@@ -18,6 +20,7 @@ Below are a number of common types used by recipes and custom data.
 - [Fluid Stack](#fluid-stack)
 - [Fluid Stack Ingredients](#fluid-stack-ingredients)
 - [Food Traits](#food-traits)
+- [Temperature](#temperature)
 
 <hr>
 
@@ -181,3 +184,21 @@ A fluid stack ingredient is a combination of a fluid ingredient with an amount. 
 A food trait is a String, which must be one of the following options. Note addons may add other food traits not in this list:
 
 - `tfc:salted`, `tfc:pickled`, `tfc:brined`, `tfc:preserved`, `tfc:vinegar`, `tfc:charcoal_grilled`, `tfc:wood_grilled`, `tfc:burnt_to_a_crisp`
+
+## Temperature
+
+A temperature is a number, which corresponds to a value in degrees Celsius (&deg;C). In-game, the tooltip displays the color based on the internal temperature value:
+
+Temperature Range (&deg;C) | Color
+---|---
+1 - 80 | <span style="color:#555555">**Warming**</span>
+80 - 210 | <span style="color:#555555">**Hot**</span>
+210 - 480 | <span style="color:#555555">**Very Hot**</span>
+480 - 580 | <span style="color:#AA0000">**Faint Red**</span>
+580 - 730 | <span style="color:#AA0000">**Dark Red**</span>
+730 - 930 | <span style="color:#FF5555">**Bright Red**</span>
+930 - 1100 | <span style="color:#FFAA00">**Orange**</span>
+1100 - 1300 | <span style="color:#FFFF55">**Yellow**</span>
+1300 - 1400 | <span style="color:#FFFF55">**Yellow-White**</span>
+1400 - 1500 | <span style="color:#FFFFFF;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;">**White**</span>
+> 1500 | <span style="color:#FFFFFF;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;">**Brilliant White**</span>
