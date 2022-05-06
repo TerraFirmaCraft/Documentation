@@ -25,7 +25,7 @@ TFC adds the following recipe types:
 - [Knapping (Clay, Fire Clay, Leather)](#knapping)
 - [Landslide](#landslide)
 - [Loom](#loom)
-- [Pot](#pot)
+- [Pot](./pot/)
 - [Quern](#quern)
 - [Rock Knapping](#rock-knapping)
 
@@ -229,11 +229,29 @@ A landslide recipe has the following properties:
 
 <hr>
 
-## Pot
-
-<hr>
-
 ## Quern
+
+Quern recipes are used for grinding items in the Quern. The handstone slot is special and will accept any item with the tag `tfc:handstone` (See [Item Tags](../tags/#item-tags)). It has the following properties:
+
+- `type`: `tfc:quern`
+- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This is the input for the recipe.
+- `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/quern/bone.json
+{
+    "type": "tfc:quern",
+    "ingredient": {
+        "item": "minecraft:bone"
+    },
+    "result": {
+        "item": "minecraft:bone_meal",
+        "count": 3
+    }
+}
+```
 
 <hr>
 
