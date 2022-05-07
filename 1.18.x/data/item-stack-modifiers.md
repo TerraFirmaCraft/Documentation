@@ -21,7 +21,7 @@ TFC adds the following item stack modifier types:
 
 ## Copy Input
 
-This specifies that the provider should copy the input to the recipe, and ignore the `stack` parameter. It has the following fields:
+This specifies that the provider should copy the input to the recipe, and ignore the `stack` parameter. The stack defined as the "input" stack will be different depending on the recipe the provider is used in. It has the following fields:
 
 - `type`: `tfc:copy_input`
 

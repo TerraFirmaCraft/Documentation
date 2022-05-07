@@ -19,6 +19,8 @@ TFC adds the following recipe types:
 <!-- Alphabetical Order Please!! -->
 
 - [Alloy](#alloy)
+- [Anvil Welding](#anvil-welding)
+- [Anvil Working](#anvil-working)
 - [Barrel Instant](#barrel-instant)
 - [Barrel Sealed](#barrel-sealed)
 - [Bloomery](#bloomery)
@@ -66,6 +68,82 @@ Alloy recipes are used in the creation of alloys in small vessels and crucibles.
       "max": 0.65
     }
   ]
+}
+```
+
+<hr>
+
+## Anvil Welding
+
+Welding recipes are used to join two items into one. A welding is performed by placing both items in the anvil, plus a single flux, and then shift right clicking the anvil with a hammer. Welding recipes in TFC all require the temperature of the item to be hot enough, however welding recipes do not in general require the item to be heated - only if the item's item temperature defines a `welding_temperature` that is nonzero. Welding recipes have the following properties:
+
+- `type`: `tfc:welding`
+- `first_input` and `second_input` are [Ingredients](../data/common-types/#ingredients). They represent both inputs to the recipe. They are not ordered, and so if the two ingredients are different, the recipe will be compared in both orientations to the input items.
+- `tier`: An optional integer (Default: -1). The tier of the anvil used must be equal to or greater than the tier of the recipe.
+- `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of **both** inputs (whichever is higher) is automatically copied to the output.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/welding/bismuth_bronze_double_ingot.json
+{
+    "type": "tfc:welding",
+    "first_input": {
+        "item": "tfc:metal/ingot/bismuth_bronze"
+    },
+    "second_input": {
+        "item": "tfc:metal/ingot/bismuth_bronze"
+    },
+    "tier": 1, // Tier 1 = Available on copper anvils and above.
+    "result": {
+        "item": "tfc:metal/double_ingot/bismuth_bronze"
+    }
+}
+```
+
+<hr>
+
+## Anvil Working
+
+Working recipes are used to transform one item into another via the anvil working minigame. Working is performed by placing the item in the anvil, and then using rules to move the pointer until it lines up with the target, and a list of requirements are satisfied by the most recent three rules that were performed.
+
+Rules all follow a specific naming scheme: `[step]_[order]`.
+
+- `[step]` is a type of step that must be performed. It must be one of `hit`, `draw`, `punch`, `bend`, `upset`, `shrink`.
+- `[order]` is the order in which the step must be performed, for the rule to be satisfied. It must be one of `any`, `last`, `not_last`, `second_last`, `third_last`.
+
+According to that naming scheme, some valid rules are `hit_last`, `draw_not_last`, `upset_second_last`, or `shrink_any`.
+
+Anvil recipes also can define forging bonuses for certain outputs. The forging bonus is calculated based on the total number of steps used to work the item, and compared to the optimal number of steps possible for that item. The bonus is then compared to a series of thresholds: 1.5x, 2.0x, 5.0x, 10.0x, and a bonus is applied. Forging bonuses consist of the NBT tag `{"tfc:forging_bonus":<value>}`, where `value` is an integer between [1, 4], where a higher number indicates a higher bonus. Tools that have the forging bonus tag have two additional hidden effects, akin to the Unbreaking and Efficiency enchantments in vanilla Minecraft, with their effectiveness based on the higher bonus.
+
+Anvil recipes have the following properties:
+
+- `type`: `tfc:anvil`
+- `input`: An [Ingredient](../data/common-types/#ingredients), of the input item. Note that Anvil recipes can have multiple recipes with the same ingredient, and will be selected when the plan is selected for that item.
+- `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of the input is automatically copied to the output.
+- `tier`: An optional integer (Default: -1). The tier of the anvil used must be equal to or greater than the tier of the recipe.
+- `rules`: An array of rules. Must have one, two, or three rules. Each rule must be a string following the naming scheme above.
+- `apply_forging_bonus`: An optional boolean (Default: `false`). If true, this anvil recipe will automatically apply a forging bonus to the item stack.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/anvil/bronze_pickaxe_head.json
+{
+    "type": "tfc:anvil",
+    "input": {
+        "item": "tfc:metal/ingot/bronze"
+    },
+    "result": {
+        "item": "tfc:metal/pickaxe_head/bronze"
+    },
+    "tier": 2,
+    "rules": [
+        "punch_last",
+        "bend_not_last",
+        "draw_not_last"
+    ],
+    "apply_forging_bonus": true
 }
 ```
 

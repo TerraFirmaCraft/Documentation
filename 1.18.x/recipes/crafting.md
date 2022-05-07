@@ -20,6 +20,35 @@ In addition to custom recipe types, TFC also adds several recipe types that can 
 
 ## Advanced Shaped Crafting
 
+An advanced shaped crafting recipe is a crafting recipe with some additions to support the output using an [Item Stack Provider](../../data/common-types/#item-stack-providers). It has the following properties:
+
+- `type`: `tfc:advanced_shaped_crafting`
+- `group`, `pattern`, `key`, and `conditions` are the same as a usual shaped recipe.
+- `result` is an [Item Stack Provider](../../data/common-types/#item-stack-providers), which is the output of the recipe. The "input" stack to the item stack provider is determined by the below `input_row` and `input_column`.
+- `input_row` is an integer.
+- `input_column` is an integer.
+
+In a crafting recipe, the `input_row` and `input_column` are zero indexed positions in the *pattern* where the input stack is to be taken from. For example, in the following pattern:
+
+```jsonc
+{
+    "pattern": [
+        "ABC", // Row 0
+        "DEF"  // Row 1
+    //  0 1 2 Columns
+    ],
+    // ...
+```
+
+In order to use the `F` item as the "input" item stack, the following would be required:
+
+```jsonc
+{
+    "input_row": 1,
+    "input_column": 2
+    // ...
+```
+
 <hr>
 
 ## Casting
