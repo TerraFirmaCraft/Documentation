@@ -38,6 +38,25 @@ TFC defines the following custom data types:
 
 ## Fertilizers
 
+A fertilizer defines an item which can be used on farmland or crops to increase the nutrients in the soil (farmland). Nutrients are used and consumed by crops to increase their yield. A fertilizer has the following properties:
+
+- `ingredient`: An [Ingredient](./common-types/#ingredients), which defines which items this fertilizer applies to.
+- `nitrogen`: A number (Default `0.0`). Defines how much <span style="color:#55FFFF">**Nitrogen**</span> nutrient this fertilizer adds.
+- `phosphorus`: A number (Default `0.0`). Defines how much <span style="color:#FFAA00">**Phosphorous**</span> nutrient this fertilizer adds.
+- `potassium`: A number (Default `0.0`). Defines how much <span style="color:#FF55FF">**Potassium**</span> nutrient this fertilizer adds.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/tfc/fertilizers/bone_meal.json
+{
+    "ingredient": {
+        "item": "minecraft:bone_meal"
+    },
+    "potassium": 0.1
+}
+```
+
 <hr>
 
 ## Food Items
@@ -140,6 +159,26 @@ Note that TFC will attempt to apply defaults for all items that do not have item
 <hr>
 
 ## Lamp Fuels
+
+A lamp fuel is a fluid which an be used in a lamp. It will burn over time, consuming mB per tick in order to keep the lamp lit. It has the following properties:
+
+- `fluid`: A [Fluid Ingredient](./common-types/#fluid-ingredients) which determines which fluids this lamp fuel applies to.
+- `valid_lamps`: A [Block Ingredient](./common-types#block-ingredients) which determines what (lamp) blocks are valid for this fuel to be added to.
+- `burn_rate` An integer, representing how fast this lamp consumes fuel, in ticks per mB.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/tfc/lamp_fuels/olive_oil.json
+{
+    "fluid": "tfc:olive_oil",
+    "valid_lamps": {
+        "type": "tfc:tag",
+        "tag": "tfc:lamps"
+    },
+    "burn_rate": 8000
+}
+```
 
 <hr>
 

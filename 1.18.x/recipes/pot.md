@@ -53,3 +53,42 @@ Fluid pot recipes produce an output fluid directly in the pot. It has the follow
 <hr>
 
 ## Soup Pot
+
+Soup pot recipes are used in making soups. When the soup is complete, it will remain in the pot as a special output type, and will have to be right clicked between one and three times with a bowl to extract soup. The type of soup and stats of the soup will be dependent on the input items' food properties. It has the following properties:
+
+- `type`: `tfc:soup_pot`
+- `ingredients`: An array of [Ingredients](../../data/common-types/#ingredients) that the recipe consumes. Should not be more than five, otherwise the recipe will be impossible.
+- `fluid_ingredient`: A [Fluid Stack Ingredient](../../data/common-types/#fluid-stack-ingredients) that the recipe requires.
+- `duration`: An integer. The number of ticks that the pot must boil for.
+- `temperature`: An number. The minimum temperature in degrees Celsius that the pot must be above to start "boiling".
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/pot/soup_3.json
+{
+    "type": "tfc:pot_soup",
+    "ingredients": [{
+        "type": "tfc:not_rotten",
+        "ingredient": {
+            "tag": "tfc:foods/usable_in_soup"
+        }
+    }, {
+        "type": "tfc:not_rotten",
+        "ingredient": {
+            "tag": "tfc:foods/usable_in_soup"
+        }
+    }, {
+        "type": "tfc:not_rotten",
+        "ingredient": {
+            "tag": "tfc:foods/usable_in_soup"
+        }
+    }],
+    "fluid_ingredient": {
+        "ingredient": "minecraft:water",
+        "amount": 1000
+    },
+    "duration": 1000,
+    "temperature": 300
+}
+```

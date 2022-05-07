@@ -127,3 +127,8 @@ This is a recipe type which wraps a normal crafting recipe, but it's used for pr
 <hr>
 
 ## Sandwich
+
+A sandwich recipe is a crafting recipe which sets the output of the recipe, if it is a sandwich item or other compatible output, to custom food stats based on the input items. The sandwich recipe expects two items of a bread type (items matching the `tfc:sandwich_bread` tag), and any number of food items.
+
+- `type`: `tfc:sandwich_crafting`
+- `recipe`: The recipe which should produce a sandwich. It must be a shaped recipe and **should** contain at least two bread items, and other food items. The output should be a sandwich compatible output.
