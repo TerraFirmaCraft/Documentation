@@ -11,16 +11,17 @@ In addition to custom recipe types, TFC also adds several recipe types that can 
 <!-- Alphabetical Order Please!! -->
 
 - [Advanced Shaped Crafting](#advanced-shaped-crafting)
+- [Advanced Shapeless Crafting](#advanced-shapeless-crafting) 
 - [Casting](#casting)
 - [Damage Inputs](#damage-inputs)
 - [Extra Products](#extra-products)
-- [Sandwich](#sandwich)
+- [Food Combining](#food-combining)
 
 <hr>
 
 ## Advanced Shaped Crafting
 
-An advanced shaped crafting recipe is a crafting recipe with some additions to support the output using an [Item Stack Provider](../../data/common-types/#item-stack-providers). It has the following properties:
+An advanced shaped crafting recipe is a shaped crafting recipe with some additions to support the output using an [Item Stack Provider](../../data/common-types/#item-stack-providers). It has the following properties:
 
 - `type`: `tfc:advanced_shaped_crafting`
 - `group`, `pattern`, `key`, and `conditions` are the same as a usual shaped recipe.
@@ -48,6 +49,17 @@ In order to use the `F` item as the "input" item stack, the following would be r
     "input_column": 2
     // ...
 ```
+
+<hr>
+
+## Advanced Shapeless Crafting
+
+An advanced shaped crafting recipe is a shapeless crafting recipe with some additions to support the output using an [Item Stack Provider](../../data/common-types/#item-stack-providers). It has the following properties:
+
+- `type`: `tfc:advanced_shapeless_crafting`
+- `group`, `ingredients`, and `conditions` are the same as a usual shapeless recipe.
+- `result` is an [Item Stack Provider](../../data/common-types/#item-stack-providers), which is the output of the recipe.
+- `primary_ingredient` is an [Ingredient](../data/common-types/#ingredients), which identifies which slot of the recipe is used as the "input" stack for the result.
 
 <hr>
 
@@ -124,11 +136,10 @@ This is a recipe type which wraps a normal crafting recipe, but it's used for pr
 }
 ```
 
+## Food Combining
+
+This is a crafting recipe which merges foods of the same traits, but with different creation dates. It has no configurable options by itself.
+
+- `type`: `tfc:food_combining`
+
 <hr>
-
-## Sandwich
-
-A sandwich recipe is a crafting recipe which sets the output of the recipe, if it is a sandwich item or other compatible output, to custom food stats based on the input items. The sandwich recipe expects two items of a bread type (items matching the `tfc:sandwich_bread` tag), and any number of food items.
-
-- `type`: `tfc:sandwich_crafting`
-- `recipe`: The recipe which should produce a sandwich. It must be a shaped recipe and **should** contain at least two bread items, and other food items. The output should be a sandwich compatible output.

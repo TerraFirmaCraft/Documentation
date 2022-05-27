@@ -409,6 +409,15 @@ A landslide recipe has the following properties:
 
 ## Loom
 
+Loom recipes are used for producing items with a Loom. It has the following properties:
+
+- `type`: `tfc:loom`
+- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This is the input for the recipe.
+- `input_count`: An integer, which determines how many input items need to be added to produce one product item.
+- `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers). The result produced by this recipe.
+- `steps_required`: An integer, which determines how many steps of the loom's working animation need to be completed to produce one product item.
+- `in_progress_texture`: The texture used in the loom rendering when this recipe is in progress.
+
 <hr>
 
 ## Quern
@@ -475,3 +484,9 @@ Rock knapping recipes can be used when knapping loose rocks. They define pattern
 <hr>
 
 ## Scraping
+
+Scraping recipes are used when any scrapable item - defined as having the `tfc:scrapable` [Item Tag](../tags/#item-tags) is placed on top of a valid scrapable surface - defined by having the `tfc:scraping_surface` [Block Tag](../tags/#block-tags) - and then each of 16 pixel regions are right clicked with a knife in order to transform the recipe from the input to the output. It has the following properties:
+
+- `type`: `tfc:scraping`
+- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This is the input for the recipe.
+- `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.

@@ -10,6 +10,10 @@ In addition to recipes, TFC defines and loads a number of completely custom data
 
 TFC defines the following custom data types:
 
+<!-- Alphabetical Order Please -->
+
+<!-- todo: both climate ranges and fauna are different in that they are registered, maybe consider separating them out? -->
+
 - [Climate Ranges](#climate-ranges)
 - [Drinkables](#drinkables)
 - [Fauna](#fauna)
@@ -30,6 +34,10 @@ TFC defines the following custom data types:
 
 ## Drinkables
 
+A drinkable defines that a fluid is directly drinkable. Drinkable fluids can be drank either from an empty hand while right clicking on a source block, or from a container such as the ceramic vessel which allows drinking. The drinkable also defines various effects that the fluid can have on the player when drank. It is located under the subfolder `drinkables`. A drinkable has the following properties:
+
+- 
+
 <hr>
 
 ## Fauna
@@ -38,7 +46,7 @@ TFC defines the following custom data types:
 
 ## Fertilizers
 
-A fertilizer defines an item which can be used on farmland or crops to increase the nutrients in the soil (farmland). Nutrients are used and consumed by crops to increase their yield. A fertilizer has the following properties:
+A fertilizer defines an item which can be used on farmland or crops to increase the nutrients in the soil (farmland). Nutrients are used and consumed by crops to increase their yield. It is located under the subfolder `fertilizers`. A fertilizer has the following properties:
 
 - `ingredient`: An [Ingredient](./common-types/#ingredients), which defines which items this fertilizer applies to.
 - `nitrogen`: A number (Default `0.0`). Defines how much <span style="color:#55FFFF">**Nitrogen**</span> nutrient this fertilizer adds.
