@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Crafting Recipes"
-permalink: /1.18.x/recipes/crafting/
+permalink: /1.18.x/data/crafting/
 ---
 
 # Crafting Recipes
@@ -21,11 +21,11 @@ In addition to custom recipe types, TFC also adds several recipe types that can 
 
 ## Advanced Shaped Crafting
 
-An advanced shaped crafting recipe is a shaped crafting recipe with some additions to support the output using an [Item Stack Provider](../../data/common-types/#item-stack-providers). It has the following properties:
+An advanced shaped crafting recipe is a shaped crafting recipe with some additions to support the output using an [Item Stack Provider](../common-types/#item-stack-providers). It has the following properties:
 
 - `type`: `tfc:advanced_shaped_crafting`
 - `group`, `pattern`, `key`, and `conditions` are the same as a usual shaped recipe.
-- `result` is an [Item Stack Provider](../../data/common-types/#item-stack-providers), which is the output of the recipe. The "input" stack to the item stack provider is determined by the below `input_row` and `input_column`.
+- `result` is an [Item Stack Provider](../common-types/#item-stack-providers), which is the output of the recipe. The "input" stack to the item stack provider is determined by the below `input_row` and `input_column`.
 - `input_row` is an integer.
 - `input_column` is an integer.
 
@@ -54,12 +54,12 @@ In order to use the `F` item as the "input" item stack, the following would be r
 
 ## Advanced Shapeless Crafting
 
-An advanced shaped crafting recipe is a shapeless crafting recipe with some additions to support the output using an [Item Stack Provider](../../data/common-types/#item-stack-providers). It has the following properties:
+An advanced shaped crafting recipe is a shapeless crafting recipe with some additions to support the output using an [Item Stack Provider](../common-types/#item-stack-providers). It has the following properties:
 
 - `type`: `tfc:advanced_shapeless_crafting`
 - `group`, `ingredients`, and `conditions` are the same as a usual shapeless recipe.
-- `result` is an [Item Stack Provider](../../data/common-types/#item-stack-providers), which is the output of the recipe.
-- `primary_ingredient` is an [Ingredient](../data/common-types/#ingredients), which identifies which slot of the recipe is used as the "input" stack for the result.
+- `result` is an [Item Stack Provider](../common-types/#item-stack-providers), which is the output of the recipe.
+- `primary_ingredient` is an [Ingredient](../common-types/#ingredients), which identifies which slot of the recipe is used as the "input" stack for the result.
 
 <hr>
 
@@ -106,7 +106,7 @@ These recipes are used for recipes which want to damage tool inputs, such as kni
 This is a recipe type which wraps a normal crafting recipe, but it's used for producing extra products in addition to the normal recipe products. Any extra products are given directly to the player when they craft the recipe. There are two different variants for shaped and shapeless recipes.
 
 - `type`: `tfc:extra_products_shapeless_crafting` or `tfc:extra_products_shaped_crafting`
-- `extra_products`: An Array of [Item Stack](../../data/common-types/#item-stack)s. Each item stack is a single extra product.
+- `extra_products`: An Array of [Item Stack](../common-types/#item-stack)s. Each item stack is a single extra product.
 - `recipe`: The crafting recipe which this applies to. Must be the same shaped/shapeless type as the type of the damage inputs recipe.
 
 #### Example

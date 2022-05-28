@@ -1,14 +1,8 @@
 ---
 layout: page
 title: "Recipes"
-permalink: /1.18.x/recipes/
+permalink: /1.18.x/data/recipes/
 ---
-
-<!--
-Note to self: consider separating this page out into multiple pages as it might get really long.
-One page per recipe type would be decent, all under recipes/
-This is generally considering that recipes are more complex than i.e. the types in common-types or data (although the latter also may want to be broken out into their own pages)
- -->
 
 # Recipe Types
 
@@ -30,7 +24,7 @@ TFC adds the following recipe types:
 - [Knapping (Clay, Fire Clay, Leather)](#knapping)
 - [Landslide](#landslide)
 - [Loom](#loom)
-- [Pot](./pot/)
+- [Pot](./recipes-pot/)
 - [Quern](#quern)
 - [Rock Knapping](#rock-knapping)
 - [Scraping](#scraping)
