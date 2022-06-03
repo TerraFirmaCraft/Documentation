@@ -61,8 +61,8 @@ This is an ingredient which only accepts food items if they have a specific trai
 This is an ingredient which only accepts items if they are heatable, and optionally currently within a certain temperature range. It has the following fields:
 
 - `type`: `tfc:heatable`
-- `min`: Optional integer. The minimum temperature this item must have, in degrees Celsius. Defaults to accepting any temperature.
-- `max`: Optional integer. The maximum temperature this item must have, in degrees Celsius. Defaults to accepting any temperature.
+- `min_temp`: Optional integer. The minimum temperature this item must have, in degrees Celsius. Defaults to accepting any temperature.
+- `max_temp`: Optional integer. The maximum temperature this item must have, in degrees Celsius. Defaults to accepting any temperature.
 - `ingredient`: An optional [Ingredient](../common-types/#ingredients), to which this is applied. If omitted, this will accept **all** items with the provided heat.
 
 #### Example
@@ -71,8 +71,8 @@ This is an ingredient which only accepts items if they are heatable, and optiona
 // An ingredient which only accepts minecraft:iron_ingots if they are heated between 300 and 400 C
 {
     "type": "tfc:heatable",
-    "min": 300,
-    "max": 400,
+    "min_temp": 300,
+    "max_temp": 400,
     "ingredient": { "item": "minecraft:iron_ingot" }
 }
 ```
