@@ -56,6 +56,7 @@ Tag Id | Function
 `tfc:creates_downward_bubbles` | Blocks that create downward bubble columns.
 `tfc:rabbit_raidable` | Blocks that rabbits will attempt to destroy
 `tfc:fox_raidable` | Blocks that foxes will attempt to eat berries off of. This only applies to blocks that function like TFC berry bushes.
+
 <hr>
 
 ## Fluid Tags
@@ -70,6 +71,7 @@ Tag Id | Function
 `tfc:usable_in_blue_steel_bucket` | Fluids that can be in a blue steel bucket.
 `tfc:usable_in_barrel` | Fluids that can be in a barrel.
 `tfc:usable_in_sluice` | Fluids that can flow through a sluice.
+
 <hr>
 
 ## Item Tags
@@ -122,6 +124,7 @@ Tag Id | Function
 `tfc:pileable_ingots` | Items that can be added to ingot piles.
 `tfc:pileable_sheets` | Items that can be added to sheet piles.
 `tfc:fox_spawns_with` | Items that a fox has a small chance of spawning with in its mouth.
+
 <hr>
 
 ## Entity Tags
@@ -135,4 +138,3 @@ Tag Id | Function
 `tfc:needs_large_fishing_bait` | Entities that need large fishing bait to catch.
 `tfc:hunts_land_prey` | Entities that are feared by land prey. Note that this tag does NOT add hunting functionality to an arbitrary entity.
 `tfc:hunted_by_land_predators` | Entities that land predators will attempt to hunt.
-<hr>
