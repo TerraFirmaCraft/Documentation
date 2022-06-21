@@ -22,3 +22,4 @@ Finally, **all** of TFC's world generation is already done using JSON, and every
 - [Decorators](decorators/)
 - [Configured Carvers](carvers/)
 - [Common Types](common-types/)
+- [WorldGen Tags](tags/)

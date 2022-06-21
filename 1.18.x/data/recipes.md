@@ -72,7 +72,7 @@ Alloy recipes are used in the creation of alloys in small vessels and crucibles.
 Welding recipes are used to join two items into one. A welding is performed by placing both items in the anvil, plus a single flux, and then shift right clicking the anvil with a hammer. Welding recipes in TFC all require the temperature of the item to be hot enough, however welding recipes do not in general require the item to be heated - only if the item's item temperature defines a `welding_temperature` that is nonzero. Welding recipes have the following properties:
 
 - `type`: `tfc:welding`
-- `first_input` and `second_input` are [Ingredients](../data/common-types/#ingredients). They represent both inputs to the recipe. They are not ordered, and so if the two ingredients are different, the recipe will be compared in both orientations to the input items.
+- `first_input` and `second_input` are [Ingredients](../data/ingredients). They represent both inputs to the recipe. They are not ordered, and so if the two ingredients are different, the recipe will be compared in both orientations to the input items.
 - `tier`: An optional integer (Default: -1). The tier of the anvil used must be equal to or greater than the tier of the recipe.
 - `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of **both** inputs (whichever is higher) is automatically copied to the output.
 
@@ -113,7 +113,7 @@ Anvil recipes also can define forging bonuses for certain outputs. The forging b
 Anvil recipes have the following properties:
 
 - `type`: `tfc:anvil`
-- `input`: An [Ingredient](../data/common-types/#ingredients), of the input item. Note that Anvil recipes can have multiple recipes with the same ingredient, and will be selected when the plan is selected for that item.
+- `input`: An [Ingredient](../data/ingredients/), of the input item. Note that Anvil recipes can have multiple recipes with the same ingredient, and will be selected when the plan is selected for that item.
 - `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of the input is automatically copied to the output.
 - `tier`: An optional integer (Default: -1). The tier of the anvil used must be equal to or greater than the tier of the recipe.
 - `rules`: An array of rules. Must have one, two, or three rules. Each rule must be a string following the naming scheme above.
@@ -215,7 +215,7 @@ A bloomery recipe has the following properties:
 
 - `type`: `tfc:bloomery`
 - `fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients). The fluid that primary inputs must be able to melt into, to be considered primary inputs.
-- `catalyst`: An [Ingredient](../data/common-types/#ingredients). The ingredient which catalysts must match.
+- `catalyst`: An [Ingredient](../data/ingredients/). The ingredient which catalysts must match.
 - `result`: A [Item Stack](../data/common-types/#item-stacks). The result item stack.
 - `duration`: An integer, representing the duration in ticks until the bloomery is complete.
 
@@ -251,7 +251,7 @@ Casting recipes define recipes between filled, solidified molds, and their item 
 Casting recipes have the following properties:
 
 - `type`: `tfc:casting`
-- `mold`: An [Ingredient](../data/common-types/#ingredients). This ingredient is used just to match the mold item itself, not the contents.
+- `mold`: An [Ingredient](../data/ingredients/). This ingredient is used just to match the mold item itself, not the contents.
 - `fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients). This ingredient is used to match the contents of the solidified mold.
 - `result`: An [Item Stack](../data/common-types/#item-stacks). This is the output of the recipe.
 - `break_chance`: A number between [0, 1]. This is the probability that the mold will break upon completion of this recipe, where a higher number indicates a higher probability.
@@ -316,7 +316,7 @@ A collapse recipe has the following properties:
 A heating recipe is used by any device which heats items, such as a firepit, charcoal forge, small vessel, bloomery, or blast furnace. They define what an item transforms into once heated: either converting into another item (such as cooking food), or melting into a liquid (such as melting ores). It has the following properties:
 
 - `type`: `tfc:heating`
-- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This defines what items the heating recipe applies to.
+- `ingredient`: An [Ingredient](../data/ingredients/). This defines what items the heating recipe applies to.
 - `result_item`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers) (Default: empty). This defines what item the heating recipe may convert to. Note that the "copy heat" functionality of an item stack provider is implicit and always applied when using heating recipes.
 - `result_fluid`: An optional [Fluid Stack](../data/common-types/#fluid-stack) (Default: empty). This defines what fluids the heating recipe may create.
 - `temperature`: A number, which is the [Temperature](../data/common-types/#temperature) above which this item will convert to it's outputs.
@@ -406,7 +406,7 @@ A landslide recipe has the following properties:
 Loom recipes are used for producing items with a Loom. It has the following properties:
 
 - `type`: `tfc:loom`
-- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This is the input for the recipe.
+- `ingredient`: An [Ingredient](../data/ingredients/). This is the input for the recipe.
 - `input_count`: An integer, which determines how many input items need to be added to produce one product item.
 - `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers). The result produced by this recipe.
 - `steps_required`: An integer, which determines how many steps of the loom's working animation need to be completed to produce one product item.
@@ -419,7 +419,7 @@ Loom recipes are used for producing items with a Loom. It has the following prop
 Quern recipes are used for grinding items in the Quern. The handstone slot is special and will accept any item with the tag `tfc:handstone` (See [Item Tags](../tags/#item-tags)). It has the following properties:
 
 - `type`: `tfc:quern`
-- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This is the input for the recipe.
+- `ingredient`: An [Ingredient](../data/ingredients/). This is the input for the recipe.
 - `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.
 
 #### Example
@@ -445,7 +445,7 @@ Quern recipes are used for grinding items in the Quern. The handstone slot is sp
 Rock knapping recipes can be used when knapping loose rocks. They define patterns that can be used in the knapping grid. Note that knapping patterns are not automatically rotated or mirrored, and each desired rotation or mirror of a given pattern must be added explicitly. It has the following properties:
 
 - `type`: `tfc:rock_knapping`
-- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This defines what loose rock items this recipe applies to.
+- `ingredient`: An [Ingredient](../data/ingredients/). This defines what loose rock items this recipe applies to.
 - `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.
 - `pattern`: The knapping pattern. Must be an array of strings representing the knapping grid. It can be up to 5 x 5. Spaces are counted as empty space, any other character is treated as a filled spot.
 - `outside_slot_required`: Boolean. (Default: `true`) For knapping patterns that are smaller than 5 x 5, this defines if the slots outside that grid are required to be filled, or empty.
@@ -482,5 +482,5 @@ Rock knapping recipes can be used when knapping loose rocks. They define pattern
 Scraping recipes are used when any scrapable item - defined as having the `tfc:scrapable` [Item Tag](../tags/#item-tags) is placed on top of a valid scrapable surface - defined by having the `tfc:scraping_surface` [Block Tag](../tags/#block-tags) - and then each of 16 pixel regions are right clicked with a knife in order to transform the recipe from the input to the output. It has the following properties:
 
 - `type`: `tfc:scraping`
-- `ingredient`: An [Ingredient](../data/common-types/#ingredients). This is the input for the recipe.
+- `ingredient`: An [Ingredient](../data/ingredients/). This is the input for the recipe.
 - `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.

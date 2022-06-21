@@ -59,7 +59,7 @@ An advanced shaped crafting recipe is a shapeless crafting recipe with some addi
 - `type`: `tfc:advanced_shapeless_crafting`
 - `group`, `ingredients`, and `conditions` are the same as a usual shapeless recipe.
 - `result` is an [Item Stack Provider](../common-types/#item-stack-providers), which is the output of the recipe.
-- `primary_ingredient` is an [Ingredient](../common-types/#ingredients), which identifies which slot of the recipe is used as the "input" stack for the result.
+- `primary_ingredient` is an [Ingredient](../ingredients/), which identifies which slot of the recipe is used as the "input" stack for the result.
 
 <hr>
 

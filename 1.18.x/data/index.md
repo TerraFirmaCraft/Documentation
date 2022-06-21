@@ -66,7 +66,7 @@ These are custom data types that are loaded by TFC.
 
 - [Block Ingredients](./common-types/#block-ingredients)
 - [Block State](./common-types/#block-state)
-- [Ingredients](./common-types/#ingredients)
+- [Ingredients](./ingredients/)
 - [Item Stacks](./common-types/#item-stacks)
 - [Item Stack Ingredients](./common-types/#item-stack-ingredients)
 - [Item Stack Modifiers](./item-stack-modifiers/)

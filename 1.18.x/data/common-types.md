@@ -12,7 +12,6 @@ Below are a number of common types used by recipes and custom data.
 
 - [Block Ingredients](#block-ingredients)
 - [Block State](#block-state)
-- [Ingredients](#ingredients)
 - [Item Stacks](#item-stacks)
 - [Item Stack Ingredients](#item-stack-ingredients)
 - [Item Stack Providers](#item-stack-providers)
@@ -48,16 +47,6 @@ A block state represents an output of a recipe in world. It must be a string whi
 
 <hr>
 
-## Ingredients
-
-This represents a vanilla Minecraft ingredient. It must be a JSON object with one of the following keys:
-
-1. An `item` key with the registry name of an item.
-2. A `tag` key with the registry name of an item tag.
-3. A `type` key with the name of a custom [Ingredient Type](../ingredients/).
-
-<hr>
-
 ## Item Stacks
 
 This represents a vanilla Minecraft item stack. It is a JSON object with the following fields:
@@ -83,7 +72,7 @@ This represents a vanilla Minecraft item stack. It is a JSON object with the fol
 An item stack ingredient is a combination of an ingredient, and a count. It is a JSON object with the following fields:
 
 - `count`: An optional integer (Default: 1) The count of the item.
-- `ingredient`: An [Ingredient](#ingredients).
+- `ingredient`: An [Ingredient](../ingredients/).
 
 #### Example
 

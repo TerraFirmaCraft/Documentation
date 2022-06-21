@@ -6,6 +6,12 @@ permalink: /1.18.x/data/ingredients/
 
 # Ingredients
 
+An ingredient represents an input to a recipe or other piece of data. All vanilla and modded recipes should support ingredients and can use any of the following ingredients. It must be a JSON object with one of the following keys:
+
+1. An `item` key with the registry name of an item.
+2. A `tag` key with the registry name of an item tag.
+3. A `type` key with the name of a custom ingredient type.
+
 In addition to the two ingredients added by Minecraft, TFC adds a number of custom ingredients which can be used anywhere an `Ingredient` is required, even by other mod's recipes. TFC adds the following ingredient types:
 
 - [Not Rotten](#not-rotten)
@@ -21,7 +27,7 @@ In addition to the two ingredients added by Minecraft, TFC adds a number of cust
 This is an ingredient which only accepts food items if they are not rotten. It has the following fields:
 
 - `type`: `tfc:not_rotten`
-- `ingredient`: An optional [Ingredient](../common-types/#ingredients), to which this is applied. If omitted, this will accept **all** non-rotten items.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** non-rotten items.
 
 #### Example:
 
@@ -41,7 +47,7 @@ This is an ingredient which only accepts food items if they have a specific trai
 
 - `type`: `tfc:has_trait`
 - `trait`: String. The registry name of a [Food Trait](../common-types/#food-traits) which must be present.
-- `ingredient`: An optional [Ingredient](../common-types/#ingredients), to which this is applied. If omitted, this will accept **all** items with the provided trait.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** items with the provided trait.
 
 #### Example
 
@@ -63,7 +69,7 @@ This is an ingredient which only accepts items if they are heatable, and optiona
 - `type`: `tfc:heatable`
 - `min_temp`: Optional integer. The minimum temperature this item must have, in degrees Celsius. Defaults to accepting any temperature.
 - `max_temp`: Optional integer. The maximum temperature this item must have, in degrees Celsius. Defaults to accepting any temperature.
-- `ingredient`: An optional [Ingredient](../common-types/#ingredients), to which this is applied. If omitted, this will accept **all** items with the provided heat.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** items with the provided heat.
 
 #### Example
 
@@ -84,7 +90,7 @@ This is an ingredient which only accepts items if they are heatable, and optiona
 An ingredient which inverts an existing ingredient. It has the following fields:
 
 - `type`: `tfc:not`
-- `ingredient`: An optional [Ingredient](../common-types/#ingredients), to which this is applied. If omitted, this will accept **any** item.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **any** item.
 
 #### Example
 
@@ -105,8 +111,8 @@ An ingredient which inverts an existing ingredient. It has the following fields:
 An ingredient which expects an item to contain a fluid (such as a bucket). It has the following fields:
 
 - `type`: `tfc:fluid_item`
-- `ingredient`: An optional [Ingredient](../common-types/#ingredients), to which this is applied. If omitted, this will accept **any** item.
-- `fluid_ingredient: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), which must match the fluid contained in the item.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **any** item.
+- `fluid_ingredient`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), which must match the fluid contained in the item.
 
 ```jsonc
 // An ingredient which accepts a ceramic jug containing fresh water
