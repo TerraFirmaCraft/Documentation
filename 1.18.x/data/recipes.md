@@ -16,6 +16,7 @@ TFC adds the following recipe types:
 - [Anvil Welding](#anvil-welding)
 - [Anvil Working](#anvil-working)
 - [Barrel Instant](#barrel-instant)
+- [Barrel Instant Fluid](#barrel-instant-fluid)
 - [Barrel Sealed](#barrel-sealed)
 - [Bloomery](#bloomery)
 - [Casting](#casting)
@@ -157,6 +158,63 @@ Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest
 - `output_item`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers), representing the output item. Defaults to empty.
 - `output_fluid`: A [Fluid Stack](../data/common-types/#fluid-stack), representing the output fluid. Defaults to empty.
 - `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
+
+#### Example
+
+```jsonc
+// Reference: /data/tfc/recipes/barrel/limewater.json
+{
+    "type": "tfc:barrel_instant",
+    "input_item": {
+        "ingredient": {
+            "item": "tfc:powder/flux"
+        }
+    },
+    "input_fluid": {
+        "ingredient": "minecraft:water",
+        "amount": 500
+    },
+    "output_fluid": {
+        "fluid": "tfc:limewater",
+        "amount": 500
+    }
+}
+```
+
+<hr>
+
+## Barrel Instant Fluid
+
+This is a variant of an instant barrel recipe which involves two fluid inputs. The primary fluid must be in the barrel's liquid tank, and the added fluid must be present in a fluid container item (such as a bucket), and can be added in the item input slot, **or** by placing the item in the fluid input slot. Like a instant barrel recipe, there must be enough fluid in the input item, to fully consume the fluid in the barrel.
+
+Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest common ratio form, and any multiple of this recipe is able to complete at once.
+
+- `type`: `tfc:barrel_instant_fluid`
+- `primary_fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients), representing the input fluid in the barrel.
+- `added_fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients), representing the fluid that must be added via a fluid container.
+- `output_fluid`: A [Fluid Stack](../data/common-types/#fluid-stack), representing the output fluid.
+- `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
+
+#### Example
+
+```jsonc
+// Reference: /data/tfc/recipes/barrel/brine.json
+{
+    "type": "tfc:barrel_instant_fluid",
+    "primary_fluid": {
+        "ingredient": "tfc:salt_water",
+        "amount": 9
+    },
+    "added_fluid": {
+        "ingredient": "tfc:vinegar",
+        "amount": 1
+    },
+    "output_fluid": {
+        "fluid": "tfc:brine",
+        "amount": 10
+    }
+}
+```
 
 <hr>
 
