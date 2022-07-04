@@ -211,8 +211,14 @@ A metal specifies a new metal to be used by TFC. A metal is required in order to
 - `fluid`: The registry name of a fluid which corresponds to this metal.
 - `melt_temperature`: A number. The melting temperature of the fluid of this metal.
 - `heat_capacity`:  A number which specifies how fast this metal fluid heats up relative to others.
+- `ingots`: An [Ingredient](../ingredients/) which defines ingot items that are of this metal. This is used in order to allow other mod ingots to be placed in ingot piles.
+- `sheets`: An [Ingredient](../ingredients/) which defines sheet items that are of this metal. This is used in order to allow other mod sheets to be placed in sheet piles.
 
 **Note** There must be a **unique** fluid for every metal. Creating multiple metals that reference the same fluid is liable to cause undefined behavior and may introduce bugs!
+
+##### Adding Textures
+
+Each metal references a hardcoded texture location, by the name `tfc:block/metal/full/<the metal name>`. For example, `bismuth_bronze` references the texture at `tfc/textures/block/metal/full/bismuth_bronze.png`. This texture is then used to render both ingot piles and sheet piles. When providing an external texture (i.e. via a resource pack), if the ingot and/or sheet pile is showing up as a missing texture, it is likely because it isn't added to the atlas used to draw the texture. In order to do this automatically, in the `tfc-client-config.toml` file, add the texture as entry to this list (In `tfc:block/metal/full/<the metal name>` format).
 
 #### Example
 
@@ -222,7 +228,13 @@ A metal specifies a new metal to be used by TFC. A metal is required in order to
     "tier": 2,
     "fluid": "tfc:metal/bismuth_bronze",
     "melt_temperature": 985,
-    "heat_capacity": 0.35
+    "heat_capacity": 0.35,
+    "ingots": {
+        "tag": "forge:ingots/bismuth_bronze"
+    },
+    "sheets": {
+        "tag": "forge:sheets/bismuth_bronze"
+    }
 }
 ```
 

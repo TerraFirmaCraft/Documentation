@@ -122,8 +122,8 @@ Tag Id | Function
 `tfc:holds_small_fishing_bait` | Fishing rods that can hold only small fishing bait.
 `tfc:holds_large_fishing_bait` | Fishing rods that can hold small or large fishing bait.
 `tfc:can_be_salted` | Items that can be crafted with salt.
-`tfc:pileable_ingots` | Items that can be added to ingot piles.
-`tfc:pileable_sheets` | Items that can be added to sheet piles.
+`tfc:pileable_ingots` | Items that can be added to ingot piles. In order to add another item to an ingot pile, it must (1) be in this tag, (2) have a metal defined with the `ingot` field matching said item, and (3) likely needs a properly loaded [metal texture](../custom/#adding-textures).
+`tfc:pileable_sheets` | Items that can be added to sheet piles. In order to add another item to an sheet pile, it must (1) be in this tag, (2) have a metal defined with the `sheet` field matching said item, and (3) likely needs a properly loaded [metal texture](../custom/#adding-textures).
 `tfc:fox_spawns_with` | Items that a fox has a small chance of spawning with in its mouth.
 
 <hr>
