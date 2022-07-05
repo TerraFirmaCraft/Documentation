@@ -43,10 +43,3 @@ Installation instructions are for WSL (Windows Subsystem for Linux), as Jekyll c
 5. Navigate to the server address to test. (`http://127.0.0.1:4000/Documentation/`)
 
 ### Scripts
-
-```bash
-# Moves a file to a new location
-# Updates all links to the old location
-# Also capable of renaming files
-python ./scripts/mv.py ./path/to/old/file.md ./path/to/new/file.md
-```

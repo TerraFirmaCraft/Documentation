@@ -25,7 +25,7 @@ TFC adds the following recipe types:
 - [Knapping (Clay, Fire Clay, Leather)](#knapping)
 - [Landslide](#landslide)
 - [Loom](#loom)
-- [Pot](./recipes-pot/)
+- [Pot](../recipes-pot/)
 - [Quern](#quern)
 - [Rock Knapping](#rock-knapping)
 - [Scraping](#scraping)
@@ -73,9 +73,9 @@ Alloy recipes are used in the creation of alloys in small vessels and crucibles.
 Welding recipes are used to join two items into one. A welding is performed by placing both items in the anvil, plus a single flux, and then shift right clicking the anvil with a hammer. Welding recipes in TFC all require the temperature of the item to be hot enough, however welding recipes do not in general require the item to be heated - only if the item's item temperature defines a `welding_temperature` that is nonzero. Welding recipes have the following properties:
 
 - `type`: `tfc:welding`
-- `first_input` and `second_input` are [Ingredients](../data/ingredients). They represent both inputs to the recipe. They are not ordered, and so if the two ingredients are different, the recipe will be compared in both orientations to the input items.
+- `first_input` and `second_input` are [Ingredients](../ingredients/). They represent both inputs to the recipe. They are not ordered, and so if the two ingredients are different, the recipe will be compared in both orientations to the input items.
 - `tier`: An optional integer (Default: -1). The tier of the anvil used must be equal to or greater than the tier of the recipe.
-- `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of **both** inputs (whichever is higher) is automatically copied to the output.
+- `result`: An [Item Stack Provider](../common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of **both** inputs (whichever is higher) is automatically copied to the output.
 
 #### Example
 
@@ -114,8 +114,8 @@ Anvil recipes also can define forging bonuses for certain outputs. The forging b
 Anvil recipes have the following properties:
 
 - `type`: `tfc:anvil`
-- `input`: An [Ingredient](../data/ingredients/), of the input item. Note that Anvil recipes can have multiple recipes with the same ingredient, and will be selected when the plan is selected for that item.
-- `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of the input is automatically copied to the output.
+- `input`: An [Ingredient](../ingredients/), of the input item. Note that Anvil recipes can have multiple recipes with the same ingredient, and will be selected when the plan is selected for that item.
+- `result`: An [Item Stack Provider](../common-types#item-stack-providers) which represents the output of the recipe. Note that the heat of the input is automatically copied to the output.
 - `tier`: An optional integer (Default: -1). The tier of the anvil used must be equal to or greater than the tier of the recipe.
 - `rules`: An array of rules. Must have one, two, or three rules. Each rule must be a string following the naming scheme above.
 - `apply_forging_bonus`: An optional boolean (Default: `false`). If true, this anvil recipe will automatically apply a forging bonus to the item stack.
@@ -153,10 +153,10 @@ Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest
 **Note**: A barrel recipe must have *at least* one of `input_item` or `input_fluid`.
 
 - `type`: `tfc:barrel_instant`
-- `input_item`: An optional [Item Stack Ingredient](../data/common-types/#item-stack-ingredients), representing the input item. Defaults to empty.
-- `input_fluid`: A optional [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients), representing the input fluid. Defaults to empty.
-- `output_item`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers), representing the output item. Defaults to empty.
-- `output_fluid`: A [Fluid Stack](../data/common-types/#fluid-stack), representing the output fluid. Defaults to empty.
+- `input_item`: An optional [Item Stack Ingredient](../common-types/#item-stack-ingredients), representing the input item. Defaults to empty.
+- `input_fluid`: A optional [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the input fluid. Defaults to empty.
+- `output_item`: An optional [Item Stack Provider](../common-types/#item-stack-providers), representing the output item. Defaults to empty.
+- `output_fluid`: A [Fluid Stack](../common-types/#fluid-stack), representing the output fluid. Defaults to empty.
 - `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
 
 #### Example
@@ -190,9 +190,9 @@ This is a variant of an instant barrel recipe which involves two fluid inputs. T
 Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest common ratio form, and any multiple of this recipe is able to complete at once.
 
 - `type`: `tfc:barrel_instant_fluid`
-- `primary_fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients), representing the input fluid in the barrel.
-- `added_fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients), representing the fluid that must be added via a fluid container.
-- `output_fluid`: A [Fluid Stack](../data/common-types/#fluid-stack), representing the output fluid.
+- `primary_fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the input fluid in the barrel.
+- `added_fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the fluid that must be added via a fluid container.
+- `output_fluid`: A [Fluid Stack](../common-types/#fluid-stack), representing the output fluid.
 - `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
 
 #### Example
@@ -304,7 +304,7 @@ A bloomery recipe has the following properties:
 Casting recipes define recipes between filled, solidified molds, and their item counterpart. They are used in two situations:
 
 1. When right clicking on a mold item, the mold will look for a matching casting recipe in order to determine what to produce.
-2. The [Casting Crafting Recipe](./crafting/#casting) will internally look for a matching casting recipe to determine the output.
+2. The [Casting Crafting Recipe](../crafting/#casting) will internally look for a matching casting recipe to determine the output.
 
 Casting recipes have the following properties:
 

@@ -39,7 +39,7 @@ These are custom recipe types that are loaded by TFC, for TFC devices.
 - [Knapping (Clay, Fire Clay, Leather)](./recipes/#knapping)
 - [Landslide](./recipes/#landslide)
 - [Loom](./recipes/#loom)
-- [Pot](./pot/)
+- [Pot](./recipes-pot/)
 - [Quern](./recipes/#quern)
 - [Rock Knapping](./recipes/#rock-knapping)
 - [Scraping](./recipes/#scraping)

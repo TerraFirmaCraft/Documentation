@@ -32,7 +32,7 @@ When drinking from a source block, the player consumes 25 mB of the drinkable. O
 
 A drinkable has the following properties:
 
-- `ingredient`: An [Fluid Ingredient](./common-types/#fluid-ingredients), which defines which fluids this drinkable applies to.
+- `ingredient`: An [Fluid Ingredient](../common-types/#fluid-ingredients), which defines which fluids this drinkable applies to.
 - `consume_chance`: An optional number in the range [0, 1] (Default: 0). It represents the chance that, when drank from a source block, the source block is removed.
 - `thirst`: An optional integer in the range [0, 100] (Default: 0). It represents an amount of thirst that this drinkable consumes, per 25 mB drank.
 - `intoxication`: An optional integer (Default: 0). It represents a number of ticks that the player will be intoxicated for, per 25 mB drank.
@@ -61,7 +61,7 @@ A drinkable has the following properties:
 
 A fertilizer defines an item which can be used on farmland or crops to increase the nutrients in the soil (farmland). Nutrients are used and consumed by crops to increase their yield. It is located under the subfolder `fertilizers`. A fertilizer has the following properties:
 
-- `ingredient`: An [Ingredient](./ingredients/), which defines which items this fertilizer applies to.
+- `ingredient`: An [Ingredient](../ingredients/), which defines which items this fertilizer applies to.
 - `nitrogen`: A number (Default `0.0`). Defines how much <span style="color:#55FFFF">**Nitrogen**</span> nutrient this fertilizer adds.
 - `phosphorus`: A number (Default `0.0`). Defines how much <span style="color:#FFAA00">**Phosphorous**</span> nutrient this fertilizer adds.
 - `potassium`: A number (Default `0.0`). Defines how much <span style="color:#FF55FF">**Potassium**</span> nutrient this fertilizer adds.
@@ -84,7 +84,7 @@ A fertilizer defines an item which can be used on farmland or crops to increase 
 
 A food item definition defines a food, and applies TFC style stats to it including decay, hunger, water, and nutrition. It is a file located under the subfolder `food_items`. It has the following properties:
 
-- `ingredient`: An [Ingredient](./ingredients/) to which this food item definition applies to.
+- `ingredient`: An [Ingredient](../ingredients/) to which this food item definition applies to.
 - `hunger`: An integer (Default `4`). Defines how much hunger this food restores. The player's full hunger bar is equal to `20`.
 - `saturation`: A number (Default `0.0`). Defines how much saturation this food restores. Measured in the same units as hunger.
 - `water`: A number (Default `0.0`). Defines how much water this food restores. The player's full water bar is equal to `100`.
@@ -103,7 +103,7 @@ A food item definition defines a food, and applies TFC style stats to it includi
 
 A fuel defines something that burns, and can be used in a fire pit, forge, or other TFC fuel consuming device. It is a file located under the subfolder `fuels`. It has the following properties:
 
-- `ingredient`: An [Ingredient](./ingredients/) to which this item size definition applies to.
+- `ingredient`: An [Ingredient](../ingredients/) to which this item size definition applies to.
 - `temperature`: A number. The temperature in degrees Celsius that this fuel burns at.
 - `duration`: An integer. The duration in ticks that a single item of this fuel burns for.
 
@@ -151,7 +151,7 @@ An item heat definition specifies if an item can be heated, and also properties 
 
 An item size definition specifies the size and weight of items. Size affects what containers the item can fit in. Weight affects the stack size of the item (and TFC will override the stack size where possible). An Item Size Definition is a file located in under the subfolder `item_sizes`. It has the following properties:
 
-- `ingredient`: An [Ingredient](./ingredients/) to which this item size definition applies to.
+- `ingredient`: An [Ingredient](../ingredients/) to which this item size definition applies to.
 - `size`: An optional string, which must be one of the following sizes: `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, or `huge`. Defaults to `normal`.
 - `weight`: An optional string, which must be one of the following weights: `very_light`, `light`, `medium`, `heavy`, `very_heavy`. Defaults to `medium`.
 
@@ -183,8 +183,8 @@ Note that TFC will attempt to apply defaults for all items that do not have item
 
 A lamp fuel is a fluid which an be used in a lamp. It will burn over time, consuming mB per tick in order to keep the lamp lit. It has the following properties:
 
-- `fluid`: A [Fluid Ingredient](./common-types/#fluid-ingredients) which determines which fluids this lamp fuel applies to.
-- `valid_lamps`: A [Block Ingredient](./common-types#block-ingredients) which determines what (lamp) blocks are valid for this fuel to be added to.
+- `fluid`: A [Fluid Ingredient](../common-types/#fluid-ingredients) which determines which fluids this lamp fuel applies to.
+- `valid_lamps`: A [Block Ingredient](../common-types#block-ingredients) which determines what (lamp) blocks are valid for this fuel to be added to.
 - `burn_rate` An integer, representing how fast this lamp consumes fuel, in ticks per mB.
 
 #### Example
