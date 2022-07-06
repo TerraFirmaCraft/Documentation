@@ -3,7 +3,7 @@ import os
 import re
 import argparse
 
-from typing import NamedTuple, Tuple
+from typing import NamedTuple, Tuple, Mapping
 
 
 EXCLUDED = ['./_data', './_site', '.vscode', 'scripts', './README.md']
@@ -22,6 +22,21 @@ class Link(NamedTuple):
     path: str
     section: str
 
+    def follow(self) -> str:
+        """ Follows the link, returning a path for the new destination """
+        return '%s/' % abs_path(os.path.join(self.src.path, self.path))
+    
+    def format(self) -> str:
+        """ Formats the link in a standardized format """
+        link = '[%s](' % self.name
+        if self.path == './/':
+            link += '#%s)' % self.section
+        elif self.section == '':
+            link += '%s)' % self.path[2:]
+        else:
+            link += '%s#%s)' % (self.path[2:], self.section)
+        return link
+
 
 def main():
     parser = argparse.ArgumentParser('Tools for manipulating links in markdown')
@@ -30,6 +45,9 @@ def main():
     _ = subparser.add_parser('validate', help='Validates all existing links, reporting broken ones')
     _ = subparser.add_parser('sanitize', help='Sanitizes and reformats all existing links')
     parser_mv = subparser.add_parser('mv', help='Moves a file, renaming all existing links to that file')
+
+    parser_mv.add_argument('old', type=str)
+    parser_mv.add_argument('new', type=str)
     
     args = parser.parse_args()
 
@@ -37,7 +55,9 @@ def main():
         do_validate()
     elif args.command == 'sanitize':
         do_sanitize()
-
+    elif args.command == 'mv':
+        print('linky.py mv is not functional yet!')
+        do_mv(args.old, args.new)
 
 
 def do_validate():
@@ -47,7 +67,7 @@ def do_validate():
     for path in tree:
         header = False
         for link in build_links(path):
-            target = follow_link(link)
+            target = link.follow()
             if target not in index:
                 if not header:
                     header = True
@@ -62,83 +82,53 @@ def do_sanitize():
         header = False
         replacements = {}
         for link in build_links(path):
-            cleaned = '[%s](' % link.name
-            if link.path == './/':
-                cleaned += '#%s)' % link.section
-            elif link.section == '':
-                cleaned += '%s)' % link.path[2:]
-            else:
-                cleaned += '%s#%s)' % (link.path[2:], link.section)
-            if link.raw != cleaned:
+            clean = link.format()
+            if link.raw != clean:
                 if not header:
                     header = True
                     print('Found incorrectly formatted links in %s' % path.file)
-                print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, cleaned))
-                replacements[link.raw] = cleaned
+                print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, clean))
+                replacements[link.raw] = clean
         
         if replacements:
-            # Fix links in file
-            with open(path.file, 'r', encoding='utf-8') as f:
-                text = f.read()
-            
-            for key, val in replacements.items():
-                text = text.replace(key, val)
-            
-            with open(path.file, 'w', encoding='utf-8') as f:
-                f.write(text)
-        
+            replace_all_in(path.file, replacements)
 
 
-def do_mv():
-    if not os.path.isfile(args.old):
-        error('Input path does not exist: %s' % args.old)
+def do_mv(old: str, new: str):
+    tree = build_tree()
+    index = {p.path : p for p in tree}
+
+    if old not in tree:
+        return print('No path: %s' % old)
+    if new not in tree:
+        return print('No path: %s' % new)
     
-    if os.path.isfile(args.new):
-        error('Output path already exists: %s' % args.new)
+    old_path = index[old]
+    new_path = index[new]
+
+    # Update all links to the old path
+    for path in tree:
+        if path != old_path:
+            replacements = {}
+            for link in path:
+                if link.follow() == old_path.path:  # Link that links to the old file
+                    pass  # Need to update the old link to point at the new file
+
+
+def replace_all_in(file: str, replacements: Mapping[str, str]):
+    """ Applies all replacements to the content of a given file """
+    with open(file, 'r', encoding='utf-8') as f:
+        text = f.read()
     
-    #os.makedirs(os.path.dirname(args.new), exist_ok=True)
-    #os.rename(args.old, args.new)
-
-    root = os.path.abspath(os.getcwd())
-    old = os.path.relpath(os.path.abspath(args.old), root)
-    new = os.path.relpath(os.path.abspath(args.new), root)
-
-    old = old.replace('.md', '')
-    new = new.replace('.md', '')
-
-    print('Root', root)
-    print('Moving %s -> %s' % (old, new))
-
-    for file in walk('.'):
-        if all(not file.startswith(exc) for exc in EXCLUDED) and file.endswith('.md'):
-            
-            src = link(file, old)
-            dest = link(file, new)
-
-            print('Migrate: %s -> %s in %s' % (src, dest, file))
-            
-            with open(file, 'r', encoding='utf-8') as f:
-                text = f.read()
-            
-            for match in re.findall(r'\[([^\(\)\[\]\n\r]+)\]\((.\/)?(%s\/?)(#?[A-Za-z0-9 _]*)\)' % src):
-                pass
-            
-            
-
-def link(src: str, dest: str) -> str:
-    if dest.endswith('index'):
-        dest = dest[:-len('/index')]
-    if src.endswith('index'):
-        src = src[:-len('./index')]
-    target = os.path.relpath(dest, src)
-    return target
-
-
-def follow_link(link: Link) -> str:
-    return '%s/' % abs_path(os.path.join(link.src.path, link.path))
+    for key, val in replacements.items():
+        text = text.replace(key, val)
+    
+    with open(file, 'w', encoding='utf-8') as f:
+        f.write(text)
 
 
 def build_links(path: Path) -> Tuple[Link, ...]:
+    """ Builds the set of all Links for a given web Path """
     with open(path.file, 'r', encoding='utf-8') as f:
         text = f.read()
     
@@ -152,6 +142,7 @@ def build_links(path: Path) -> Tuple[Link, ...]:
 
 
 def build_tree() -> Tuple[Path, ...]:
+    """ Builds the set of all Path objects in the web view """
     tree = []
     for path in walk('.'):
         if all(not path.startswith(exc) for exc in EXCLUDED) and path.endswith('.md'):
@@ -160,6 +151,7 @@ def build_tree() -> Tuple[Path, ...]:
     return tuple(tree)
 
 def walk(path: str):
+    """ Walks a directory, yielding each path found """
     for sub in os.listdir(path):
         sub_path = os.path.join(path, sub)
         if os.path.isfile(sub_path):
@@ -179,11 +171,8 @@ def sanitize_path(path: str) -> str:
     return path
 
 def abs_path(path: str) -> str:
+    """ Returns the absolute path relative to the root of the web directory """
     return os.path.relpath(os.path.abspath(path), ROOT)
-
-def error(msg: str):
-    print(msg)
-    exit(-1)
 
 
 if __name__ == '__main__':
