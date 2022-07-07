@@ -12,8 +12,12 @@ Pot recipes are recipe types which use the ceramic pot, when placed on a firepit
 
 TFC adds two types of pot recipe:
 
+<!--linky_begin_sort_alphabetical-->
+
 - [Fluid Pot](#fluid-pot)
 - [Soup Pot](#soup-pot)
+
+<!--linky_end_sort_alphabetical-->
 
 <hr>
 

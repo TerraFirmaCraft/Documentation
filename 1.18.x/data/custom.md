@@ -10,7 +10,7 @@ In addition to recipes, TFC defines and loads a number of completely custom data
 
 TFC defines the following custom data types:
 
-<!-- Alphabetical Order Please -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Drinkables](#drinkables)
 - [Fertilizers](#fertilizers)
@@ -21,6 +21,8 @@ TFC defines the following custom data types:
 - [Lamp Fuels](#lamp-fuels)
 - [Metals](#metals)
 - [Supports](#supports)
+
+<!--linky_end_sort_alphabetical-->
 
 <hr>
 

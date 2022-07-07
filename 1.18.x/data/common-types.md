@@ -8,18 +8,20 @@ permalink: /1.18.x/data/common-types/
 
 Below are a number of common types used by recipes and custom data.
 
-<!-- Alphabetical Order Please!! -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Block Ingredients](#block-ingredients)
 - [Block State](#block-state)
-- [Item Stacks](#item-stacks)
+- [Fluid Ingredients](#fluid-ingredients)
+- [Fluid Stack Ingredients](#fluid-stack-ingredients)
+- [Fluid Stack](#fluid-stack)
+- [Food Traits](#food-traits)
 - [Item Stack Ingredients](#item-stack-ingredients)
 - [Item Stack Providers](#item-stack-providers)
-- [Fluid Ingredients](#fluid-ingredients)
-- [Fluid Stack](#fluid-stack)
-- [Fluid Stack Ingredients](#fluid-stack-ingredients)
-- [Food Traits](#food-traits)
+- [Item Stacks](#item-stacks)
 - [Temperature](#temperature)
+
+<!--linky_end_sort_alphabetical-->
 
 <hr>
 
@@ -44,78 +46,6 @@ A block state represents an output of a recipe in world. It must be a string whi
 - `minecraft:dirt` : Just specifying a block name.
 - `minecraft:grass[snowy=true]` : Using the `snowy=true` property.
 - `minecraft:oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]` : Using multiple properties.
-
-<hr>
-
-## Item Stacks
-
-This represents a vanilla Minecraft item stack. It is a JSON object with the following fields:
-
-- `item`: String. The registry name of the item in the stack.
-- `count`: Integer. The count of the item stack.
-- `nbt`: An optional object representing NBT data to be added to the item stack.
-
-#### Example
-
-```jsonc
-// An item stack of 3 x minecraft:apple
-{
-    "item": "minecraft:apple",
-    "count": 3
-}
-```
-
-<hr>
-
-## Item Stack Ingredients
-
-An item stack ingredient is a combination of an ingredient, and a count. It is a JSON object with the following fields:
-
-- `count`: An optional integer (Default: 1) The count of the item.
-- `ingredient`: An [Ingredient](../ingredients/).
-
-#### Example
-
-```jsonc
-// An item stack ingredient which requires 5 x minecraft:apple
-{
-    "count": 5,
-    "ingredient": {
-        "item": "minecraft:apple"
-    }
-}
-```
-
-<hr>
-
-## Item Stack Providers
-
-An item stack provider represents an output of a recipe, an item stack with any number of transformations applied to it at recipe completion. These transformations are applied sequentially, starting with the provided stack. It is a JSON object with the following fields:
-
-- `stack`: An [Item Stack](#item-stacks) This represents the starting stack before transformations are applied.
-- `modifiers`: An array of [Item Stack Modifiers](../item-stack-modifiers/). Each modifier is applied sequentially to the output stack, and at the end, the final result is used as the output of the item stack provider.
-
-**Note:** Any [Item Stack](#item-stacks) will be accepted as a valid item stack provider with no modifiers, if neither the `stack` or `modifiers` keys are present.
-
-#### Example
-
-```jsonc
-// An item stack provider which produces a minecraft:steak,
-// but copies the food traits and expiration date from the input, and sets the temperature to 400 C
-{
-    "stack": {
-        "item": "minecraft:steak",
-        "count": 1
-    },
-    "modifiers": [
-        { "type": "tfc:copy_food" },
-        {
-            "type": "tfc:add_heat",
-            "temperature": 400
-        }
-    ]
-}
-```
 
 <hr>
 
@@ -173,6 +103,78 @@ A fluid stack ingredient is a combination of a fluid ingredient with an amount. 
 A food trait is a String, which must be one of the following options. Note addons may add other food traits not in this list:
 
 - `tfc:salted`, `tfc:pickled`, `tfc:brined`, `tfc:preserved`, `tfc:vinegar`, `tfc:charcoal_grilled`, `tfc:wood_grilled`, `tfc:burnt_to_a_crisp`
+
+## Item Stack Ingredients
+
+An item stack ingredient is a combination of an ingredient, and a count. It is a JSON object with the following fields:
+
+- `count`: An optional integer (Default: 1) The count of the item.
+- `ingredient`: An [Ingredient](../ingredients/).
+
+#### Example
+
+```jsonc
+// An item stack ingredient which requires 5 x minecraft:apple
+{
+    "count": 5,
+    "ingredient": {
+        "item": "minecraft:apple"
+    }
+}
+```
+
+<hr>
+
+## Item Stack Providers
+
+An item stack provider represents an output of a recipe, an item stack with any number of transformations applied to it at recipe completion. These transformations are applied sequentially, starting with the provided stack. It is a JSON object with the following fields:
+
+- `stack`: An [Item Stack](#item-stacks) This represents the starting stack before transformations are applied.
+- `modifiers`: An array of [Item Stack Modifiers](../item-stack-modifiers/). Each modifier is applied sequentially to the output stack, and at the end, the final result is used as the output of the item stack provider.
+
+**Note:** Any [Item Stack](#item-stacks) will be accepted as a valid item stack provider with no modifiers, if neither the `stack` or `modifiers` keys are present.
+
+#### Example
+
+```jsonc
+// An item stack provider which produces a minecraft:steak,
+// but copies the food traits and expiration date from the input, and sets the temperature to 400 C
+{
+    "stack": {
+        "item": "minecraft:steak",
+        "count": 1
+    },
+    "modifiers": [
+        { "type": "tfc:copy_food" },
+        {
+            "type": "tfc:add_heat",
+            "temperature": 400
+        }
+    ]
+}
+```
+
+## Item Stacks
+
+This represents a vanilla Minecraft item stack. It is a JSON object with the following fields:
+
+- `item`: String. The registry name of the item in the stack.
+- `count`: Integer. The count of the item stack.
+- `nbt`: An optional object representing NBT data to be added to the item stack.
+
+#### Example
+
+```jsonc
+// An item stack of 3 x minecraft:apple
+{
+    "item": "minecraft:apple",
+    "count": 3
+}
+```
+
+<hr>
+
+<hr>
 
 ## Temperature
 

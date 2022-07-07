@@ -12,7 +12,7 @@ Note that some modifiers only function when used in crafting recipes that suppor
 
 TFC adds the following item stack modifier types:
 
-<!-- Alphabetical Order Please -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Add Bait to Rod](#add-bait-to-rod)
 - [Add Heat](#add-heat)
@@ -24,6 +24,8 @@ TFC adds the following item stack modifier types:
 - [Remove Trait](#remove-trait)
 - [Reset Food](#reset-food)
 - [Sandwich](#sandwich)
+
+<!--linky_end_sort_alphabetical-->
 
 <hr>
 

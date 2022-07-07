@@ -52,7 +52,7 @@ This decorator will conditionally place a feature if there is water within a `ra
 - Config:
   - `radius`: An integer representing the distance to search for water.
 
-### TFC Carving Mask
+### Carving Mask
 
 This is an extension of the vanilla carving mask decorator, but with additional constraints on y level. It is used for large spikes to restrict them to a maximum y level.
 

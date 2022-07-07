@@ -3,15 +3,34 @@ import os
 import re
 import argparse
 
-from typing import NamedTuple, Tuple, Mapping
+from typing import NamedTuple, Tuple, List
 
 
 EXCLUDED = ['./_data', './_site', '.vscode', 'scripts', './README.md']
 ROOT = os.getcwd()
 
+BEGIN_SORT_ALPHABETICAL = '<!--linky_begin_sort_alphabetical-->'
+END_SORT_ALPHABETICAL = '<!--linky_end_sort_alphabetical-->'
+
 
 class Path(NamedTuple):
     file: str
+    path: str
+    lines: Tuple[str]
+    headers: List['Header']
+    links: List['Link']
+
+    def has_header(self, path: str) -> bool:
+        return any(h.path == path for h in self.headers)
+    
+    def save(self):
+        with open(self.file, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(self.lines))
+
+class Header(NamedTuple):
+    src: Path
+    line: int
+    raw: str
     path: str
 
 class Link(NamedTuple):
@@ -31,11 +50,14 @@ class Link(NamedTuple):
         link = '[%s](' % self.name
         if self.path == './/':
             link += '#%s)' % self.section
-        elif self.section == '':
-            link += '%s)' % self.path[2:]
-        else:
+        elif self.has_section():
             link += '%s#%s)' % (self.path[2:], self.section)
+        else:
+            link += '%s)' % self.path[2:]
         return link
+    
+    def has_section(self) -> bool:
+        return self.section != ''
 
 
 def main():
@@ -44,10 +66,10 @@ def main():
 
     _ = subparser.add_parser('validate', help='Validates all existing links, reporting broken ones')
     _ = subparser.add_parser('sanitize', help='Sanitizes and reformats all existing links')
-    parser_mv = subparser.add_parser('mv', help='Moves a file, renaming all existing links to that file')
+    #parser_mv = subparser.add_parser('mv', help='Moves a file, renaming all existing links to that file')
 
-    parser_mv.add_argument('old', type=str)
-    parser_mv.add_argument('new', type=str)
+    #parser_mv.add_argument('old', type=str)
+    #parser_mv.add_argument('new', type=str)
     
     args = parser.parse_args()
 
@@ -55,24 +77,29 @@ def main():
         do_validate()
     elif args.command == 'sanitize':
         do_sanitize()
-    elif args.command == 'mv':
-        print('linky.py mv is not functional yet!')
-        do_mv(args.old, args.new)
 
 
 def do_validate():
     tree = build_tree()
-    index = {p.path for p in tree}
+    index = {p.path: p for p in tree}
+
+    def print_validation_error() -> bool:
+        if not header:
+            print('Found broken links in %s' % path.file)
+        print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, target))
+        return True
 
     for path in tree:
         header = False
-        for link in build_links(path):
+        for link in path.links:
             target = link.follow()
             if target not in index:
-                if not header:
-                    header = True
-                    print('Found broken links in %s' % path.file)
-                print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, target))
+                header = print_validation_error()
+            elif link.has_section():
+                target_path = index[target]
+                if not target_path.has_header(link.section):
+                    target = '#' + link.section
+                    header = print_validation_error()
 
 
 def do_sanitize():
@@ -81,17 +108,48 @@ def do_sanitize():
     for path in tree:
         header = False
         replacements = {}
-        for link in build_links(path):
+        for link in path.links:
             clean = link.format()
             if link.raw != clean:
                 if not header:
                     header = True
                     print('Found incorrectly formatted links in %s' % path.file)
-                print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, clean))
+                print('  L%-3d: \'%s\' -> \'%s\'' % (link.line, link.raw, clean))
                 replacements[link.raw] = clean
         
         if replacements:
-            replace_all_in(path.file, replacements)
+            for i, line in enumerate(path.lines):
+                for key, val in replacements.items():
+                    path.lines[i] = line.replace(key, val)
+        
+        # Alphabetical Sorting
+        sort_ranges = []
+        sort_range = None
+        for i, line in enumerate(path.lines):
+            if sort_range is not None:
+                if line == END_SORT_ALPHABETICAL:
+                    sort_ranges.append(sort_range)
+                    sort_range = None
+                elif line != '':  # Don't include empty lines in sort
+                    sort_range.append((i, line))
+            elif line == BEGIN_SORT_ALPHABETICAL:
+                sort_range = []
+        if sort_range is not None:
+            print('ERROR: Finished iterating for sort ranges but did not find a end tag?')
+            continue
+        
+        if sort_ranges:
+            print('Sorting ranges in %s' % path.file)
+        for sort_range in sort_ranges:
+            sorted_lines = sorted([line for _, line in sort_range])
+            sorted_indexes = sorted([i for i, _ in sort_range])
+            print('  L%d-%d (%d lines)' % (sorted_indexes[0], sorted_indexes[-1], len(sorted_indexes)))
+            for i, line in zip(sorted_indexes, sorted_lines):
+                path.lines[i] = line
+        
+        if replacements or sort_ranges:  # Modified
+            path.save()
+
 
 
 def do_mv(old: str, new: str):
@@ -115,39 +173,32 @@ def do_mv(old: str, new: str):
                     pass  # Need to update the old link to point at the new file
 
 
-def replace_all_in(file: str, replacements: Mapping[str, str]):
-    """ Applies all replacements to the content of a given file """
-    with open(file, 'r', encoding='utf-8') as f:
-        text = f.read()
-    
-    for key, val in replacements.items():
-        text = text.replace(key, val)
-    
-    with open(file, 'w', encoding='utf-8') as f:
-        f.write(text)
-
-
-def build_links(path: Path) -> Tuple[Link, ...]:
-    """ Builds the set of all Links for a given web Path """
-    with open(path.file, 'r', encoding='utf-8') as f:
-        text = f.read()
-    
-    links = []
-    for i, line in enumerate(text.split('\n')):
-        for match in re.finditer(r'\[([^\(\)\[\]\n\r]+)\]\(\.?\/?([A-Za-z0-9_-]*)\/?\#?([A-Za-z0-9_-]*)\)', line):
-            name, root, section = match.groups()
-            start, end = match.span()
-            links.append(Link(path, 1 + i, line[start:end], name, './%s/' % root, section))
-    return tuple(links)
-
-
 def build_tree() -> Tuple[Path, ...]:
     """ Builds the set of all Path objects in the web view """
     tree = []
     for path in walk('.'):
         if all(not path.startswith(exc) for exc in EXCLUDED) and path.endswith('.md'):
             path = abs_path(path)
-            tree.append(Path(path, sanitize_path(path)))
+
+            with open(path, 'r', encoding='utf-8') as f:
+                text = f.read()
+            
+            lines = text.split('\n')
+            path_obj = Path(path, sanitize_path(path), lines, [], [])
+
+            for i, line in enumerate(lines):
+                for match in re.finditer(r'\[([^\(\)\[\]\n\r]+)\]\(\.?\/?([A-Za-z0-9_-]*)\/?\#?([A-Za-z0-9_-]*)\)', line):
+                    name, root, section = match.groups()
+                    start, end = match.span()
+                    path_obj.links.append(Link(path_obj, 1 + i, line[start:end], name, './%s/' % root, section))
+                
+                match = re.match(r'#+ (.+)', line)
+                if match:
+                    raw, *_ = match.groups()
+                    link = re.sub(r'[^A-Za-z0-9]', '-', raw.lower())
+                    path_obj.headers.append(Header(path_obj, line, raw, link))
+
+            tree.append(path_obj)
     return tuple(tree)
 
 def walk(path: str):

@@ -1,5 +1,6 @@
 
-LINKY := python ./scripts/linky.py
+LINKY  := python ./scripts/linky.py
+MD_SRC := $(shell find . -name '*.md')
 
 .DEFAULT_GOAL: help
 
@@ -8,7 +9,8 @@ help :
 	@echo "Makefile for TerraFirmaCraft/Documentation"
 	@echo "  help      : Show this information"
 	@echo "  deploy    : Build and host the documentation"
-	@echo "  test      : Validate and test links"
+	@echo "  test      : Run validations and sanitize"
+	@echo "  dos2unix  : Run dos2unix on all .md files"
 	@echo "  setup-wsl : Setup script for WSL"
 
 
@@ -20,6 +22,10 @@ deploy: test
 test:
 	$(LINKY) validate
 	$(LINKY) sanitize
+
+.PHONY: dos2unix
+dos2unix:
+	@dos2unix $(MD_SRC)
 
 .PHONY: setup-wsl
 setup-wsl:

@@ -8,7 +8,7 @@ permalink: /1.18.x/data/crafting/
 
 In addition to custom recipe types, TFC also adds several recipe types that can be used for custom crafting recipes. TFC adds the following crafting recipe types:
 
-<!-- Alphabetical Order Please!! -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Advanced Shaped Crafting](#advanced-shaped-crafting)
 - [Advanced Shapeless Crafting](#advanced-shapeless-crafting) 
@@ -16,6 +16,8 @@ In addition to custom recipe types, TFC also adds several recipe types that can 
 - [Damage Inputs](#damage-inputs)
 - [Extra Products](#extra-products)
 - [Food Combining](#food-combining)
+
+<!--linky_end_sort_alphabetical-->
 
 <hr>
 

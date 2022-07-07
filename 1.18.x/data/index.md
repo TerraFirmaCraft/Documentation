@@ -12,7 +12,7 @@ This page is for any non-world generation data used by TFC. All of TFC's data ca
 
 These are custom crafting recipe types that are used by TFC.
 
-<!-- Alphabetical Order Please!! -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Advanced Shaped Crafting](crafting/#advanced-shaped-crafting)
 - [Advanced Shapeless Crafting](crafting/#advanced-shapeless-crafting) 
@@ -21,11 +21,13 @@ These are custom crafting recipe types that are used by TFC.
 - [Extra Products](crafting/#extra-products)
 - [Food Combining](crafting/#food-combining)
 
+<!--linky_end_sort_alphabetical-->
+
 ### [TFC Recipes](recipes/)
 
 These are custom recipe types that are loaded by TFC, for TFC devices.
 
-<!-- Alphabetical Order Please!! -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Alloy](recipes/#alloy)
 - [Anvil Welding](recipes/#anvil-welding)
@@ -44,11 +46,13 @@ These are custom recipe types that are loaded by TFC, for TFC devices.
 - [Rock Knapping](recipes/#rock-knapping)
 - [Scraping](recipes/#scraping)
 
+<!--linky_end_sort_alphabetical-->
+
 ### [TFC Data](custom/)
 
 These are custom data types that are loaded by TFC.
 
-<!-- Alphabetical Order Please!! -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Drinkables](custom/#drinkables)
 - [Fertilizers](custom/#fertilizers)
@@ -60,20 +64,24 @@ These are custom data types that are loaded by TFC.
 - [Metals](custom/#metals)
 - [Supports](custom/#supports)
 
+<!--linky_end_sort_alphabetical-->
+
 ### Misc
 
-<!-- Alphabetical Order Please!! -->
+<!--linky_begin_sort_alphabetical-->
 
 - [Block Ingredients](common-types/#block-ingredients)
 - [Block State](common-types/#block-state)
+- [Fluid Ingredients](common-types/#fluid-ingredients)
+- [Fluid Stack Ingredients](common-types/#fluid-stack-ingredients)
+- [Fluid Stack](common-types/#fluid-stack)
+- [Food Traits](common-types/#food-traits)
 - [Ingredients](ingredients/)
-- [Item Stacks](common-types/#item-stacks)
 - [Item Stack Ingredients](common-types/#item-stack-ingredients)
 - [Item Stack Modifiers](item-stack-modifiers/)
 - [Item Stack Providers](common-types/#item-stack-providers)
-- [Fluid Ingredients](common-types/#fluid-ingredients)
-- [Fluid Stack](common-types/#fluid-stack)
-- [Fluid Stack Ingredients](common-types/#fluid-stack-ingredients)
-- [Food Traits](common-types/#food-traits)
+- [Item Stacks](common-types/#item-stacks)
 - [Tags](tags/)
 - [Temperature](common-types/#temperature)
+
+<!--linky_end_sort_alphabetical-->
