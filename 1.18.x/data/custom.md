@@ -103,7 +103,7 @@ A food item definition defines a food, and applies TFC style stats to it includi
 
 A fuel defines something that burns, and can be used in a fire pit, forge, or other TFC fuel consuming device. It is a file located under the subfolder `fuels`. It has the following properties:
 
-- `ingredient`: An [Ingredient](../ingredients/) to which this item size definition applies to.
+- `ingredient`: An [Ingredient](../ingredients/) to which this fuel applies to.
 - `temperature`: A number. The temperature in degrees Celsius that this fuel burns at.
 - `duration`: An integer. The duration in ticks that a single item of this fuel burns for.
 
@@ -127,6 +127,7 @@ A fuel defines something that burns, and can be used in a fire pit, forge, or ot
 
 An item heat definition specifies if an item can be heated, and also properties of the heated item. It is a file located under the subfolder `item_heats`. It has the following properties:
 
+- `ingredient`: An [Ingredient](../ingredients/) to which this item heat definition applies to.
 - `heat_capacity`: A number which specifies how fast this item heats up relative to others.
 - `forging_temperature`: An optional number which specifies the temperature at which this item can be worked, in degrees Celsius. If omitted, this item will not require heat to work.
 - `welding_temperature`: An optional number which specifies the temperature at which this item can be worked, in degrees Celsius. If omitted, this item will not require heat to weld.
