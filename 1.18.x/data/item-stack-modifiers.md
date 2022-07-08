@@ -18,6 +18,7 @@ TFC adds the following item stack modifier types:
 - [Add Heat](#add-heat)
 - [Add Trait](#add-trait)
 - [Copy Food](#copy-food)
+- [Copy Forging Bonus](#copy-forging-bonus)
 - [Copy Heat](#copy-heat)
 - [Copy Input](#copy-input)
 - [Empty Bowl](#empty-bowl)
@@ -62,6 +63,14 @@ This specifies that the provider should add a food trait to the item. It has the
 This specifies that the provider should copy the food properties (expiration date, food traits) from the input stack. It has the following fields:
 
 - `type`: `tfc:copy_food`
+
+<hr>
+
+## Copy Forging Bonus
+
+This specifies that the provider should copy the Forging bonus, which is recorded as a NBT tag on the stack, from the input stack. It has the following fields:
+
+- `type`: `tfc:copy_forging_bonus`
 
 <hr>
 

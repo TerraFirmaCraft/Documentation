@@ -60,6 +60,17 @@ class Link(NamedTuple):
         return self.section != ''
 
 
+class BatchedPrint:
+    def __init__(self, header: str):
+        self.header = header
+    
+    def print(self, *args):
+        if self.header is not None:
+            print(self.header)
+            self.header = None
+        print(*args)
+
+
 def main():
     parser = argparse.ArgumentParser('Tools for manipulating links in markdown')
     subparser = parser.add_subparsers(dest='command')
@@ -83,44 +94,39 @@ def do_validate():
     tree = build_tree()
     index = {p.path: p for p in tree}
 
-    def print_validation_error() -> bool:
-        if not header:
-            print('Found broken links in %s' % path.file)
-        print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, target))
-        return True
-
     for path in tree:
-        header = False
+        batch = BatchedPrint('Found broken links in %s' % path.file)
         for link in path.links:
             target = link.follow()
             if target not in index:
-                header = print_validation_error()
+                batch.print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, target))
             elif link.has_section():
                 target_path = index[target]
                 if not target_path.has_header(link.section):
                     target = '#' + link.section
-                    header = print_validation_error()
+                    batch.print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, target))
 
 
 def do_sanitize():
     tree = build_tree()
 
     for path in tree:
-        header = False
+        modified = False
+        
         replacements = {}
+        batch = BatchedPrint('Found incorrectly formatted links in %s' % path.file)
         for link in path.links:
             clean = link.format()
             if link.raw != clean:
-                if not header:
-                    header = True
-                    print('Found incorrectly formatted links in %s' % path.file)
-                print('  L%-3d: \'%s\' -> \'%s\'' % (link.line, link.raw, clean))
+                batch.print('  L%-3d: \'%s\' -> \'%s\'' % (link.line, link.raw, clean))
                 replacements[link.raw] = clean
         
         if replacements:
             for i, line in enumerate(path.lines):
                 for key, val in replacements.items():
-                    path.lines[i] = line.replace(key, val)
+                    if key in line:
+                        path.lines[i] = line.replace(key, val)
+                        modified = True
         
         # Alphabetical Sorting
         sort_ranges = []
@@ -138,16 +144,20 @@ def do_sanitize():
             print('ERROR: Finished iterating for sort ranges but did not find a end tag?')
             continue
         
-        if sort_ranges:
-            print('Sorting ranges in %s' % path.file)
+        batch = BatchedPrint('Sorting ranges in %s' % path.file)
         for sort_range in sort_ranges:
             sorted_lines = sorted([line for _, line in sort_range])
             sorted_indexes = sorted([i for i, _ in sort_range])
-            print('  L%d-%d (%d lines)' % (sorted_indexes[0], sorted_indexes[-1], len(sorted_indexes)))
+            sorting_done = False
             for i, line in zip(sorted_indexes, sorted_lines):
+                if path.lines[i] != line:
+                    modified = True
+                    sorting_done = True
                 path.lines[i] = line
+            if sorting_done:
+                batch.print('  L%d-%d (%d lines)' % (sorted_indexes[0], sorted_indexes[-1], len(sorted_indexes)))
         
-        if replacements or sort_ranges:  # Modified
+        if modified:  # Modified
             path.save()
 
 
