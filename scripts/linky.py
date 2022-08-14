@@ -6,7 +6,7 @@ import argparse
 from typing import NamedTuple, Tuple, List
 
 
-EXCLUDED = ['./_data', './_site', '.vscode', 'scripts', './README.md', './index.md']
+EXCLUDED = ['./_data', './_site', '.vscode', 'scripts', './README.md']
 ROOT = os.getcwd()
 
 BEGIN_SORT_ALPHABETICAL = '<!--linky_begin_sort_alphabetical-->'
