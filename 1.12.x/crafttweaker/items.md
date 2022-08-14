@@ -32,7 +32,7 @@ ItemRegistry.registerArmor(IIngredient input, float crushingModifier, float pier
 ItemRegistry.registerFuel(IItemStack itemStack, int burnTicks, float temperature, bool forgeFuel, bool bloomeryFuel)
 ```
 
-Please refer to [Metals](../../metals) for a complete reference on TFC Metals.
+Please refer to [Metals](../../metals/) for a complete reference on TFC Metals.
 
 Things to note:
 

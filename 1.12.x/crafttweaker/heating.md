@@ -29,4 +29,4 @@ Important things to note:
 - `transformTemp` is at which temperature the recipe completely transform the input into the output stack.
 - `maxTemp` is at which temperature the input is destroyed.
 
-For temperature specifics, check the appropriate [reference](../temperatures/).
+For temperature specifics, check the appropriate [reference](../../temperatures/).

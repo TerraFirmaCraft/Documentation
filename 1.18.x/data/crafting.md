@@ -67,7 +67,7 @@ An advanced shaped crafting recipe is a shapeless crafting recipe with some addi
 
 ## Casting
 
-This is a crafting recipe which acts as a unified recipe for all [Casting Recipes](../#casting). It is used when placing a filled, solidified mold in the crafting grid. This recipe will then query a casting recipe, and if a valid one is found, it will produce the output of the casting recipe. It has no configurable options by itself.
+This is a crafting recipe which acts as a unified recipe for all [Casting Recipes](#casting). It is used when placing a filled, solidified mold in the crafting grid. This recipe will then query a casting recipe, and if a valid one is found, it will produce the output of the casting recipe. It has no configurable options by itself.
 
 - `type`: `tfc:casting_crafting`
 
@@ -108,7 +108,7 @@ These recipes are used for recipes which want to damage tool inputs, such as kni
 This is a recipe type which wraps a normal crafting recipe, but it's used for producing extra products in addition to the normal recipe products. Any extra products are given directly to the player when they craft the recipe. There are two different variants for shaped and shapeless recipes.
 
 - `type`: `tfc:extra_products_shapeless_crafting` or `tfc:extra_products_shaped_crafting`
-- `extra_products`: An Array of [Item Stack](../common-types/#item-stack)s. Each item stack is a single extra product.
+- `extra_products`: An Array of [Item Stacks](../common-types/#item-stacks). Each item stack is a single extra product.
 - `recipe`: The crafting recipe which this applies to. Must be the same shaped/shapeless type as the type of the damage inputs recipe.
 
 #### Example

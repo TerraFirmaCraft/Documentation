@@ -41,9 +41,9 @@ Alloy recipes are used in the creation of alloys in small vessels and crucibles.
 **Note:** Only one alloy recipe should be defined for a given output metal. While this is not *required*, some things may not work correctly.
 
 - `type`: `tfc:alloy`
-- `result`: A string, representing the registry name of a [Metal](../data/#metals).
+- `result`: A string, representing the registry name of a [Metal](../custom/#metals).
 - `contents`: An array of objects, each containing the following properties:
-  - `metal`: (String) The registry name of the required [Metal](../data/#metals).
+  - `metal`: (String) The registry name of the required [Metal](../custom/#metals).
   - `min`: The minimum proportion needed in the mixture, in the range [0, 1].
   - `max`: The maximum proportion needed, larger than `min` and in the range [0, 1].
 
@@ -117,7 +117,7 @@ Anvil recipes have the following properties:
 
 - `type`: `tfc:anvil`
 - `input`: An [Ingredient](../ingredients/), of the input item. Note that Anvil recipes can have multiple recipes with the same ingredient, and will be selected when the plan is selected for that item.
-- `result`: An [Item Stack Provider](../common-types#item-stack-providers) which represents the output of the recipe. Note that the heat of the input is automatically copied to the output.
+- `result`: An [Item Stack Provider](../common-types/#item-stack-providers) which represents the output of the recipe. Note that the heat of the input is automatically copied to the output.
 - `tier`: An optional integer (Default: -1). The tier of the anvil used must be equal to or greater than the tier of the recipe.
 - `rules`: An array of rules. Must have one, two, or three rules. Each rule must be a string following the naming scheme above.
 - `apply_forging_bonus`: An optional boolean (Default: `false`). If true, this anvil recipe will automatically apply a forging bonus to the item stack.
@@ -229,14 +229,14 @@ These recipes are declared in their least common ratio form, and the highest mul
 **Note**: A barrel recipe must have *at least* one of `input_item` or `input_fluid`.
 
 - `type`: `tfc:barrel_instant`
-- `input_item`: An optional [Item Stack Ingredient](../data/common-types/#item-stack-ingredients), representing the input item. Defaults to empty.
-- `input_fluid`: A optional [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients), representing the input fluid. Defaults to empty.
-- `output_item`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers), representing the output item. Defaults to empty.
-- `output_fluid`: A [Fluid Stack](../data/common-types/#fluid-stack), representing the output fluid. Defaults to empty.
+- `input_item`: An optional [Item Stack Ingredient](../common-types/#item-stack-ingredients), representing the input item. Defaults to empty.
+- `input_fluid`: A optional [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the input fluid. Defaults to empty.
+- `output_item`: An optional [Item Stack Provider](../common-types/#item-stack-providers), representing the output item. Defaults to empty.
+- `output_fluid`: A [Fluid Stack](../common-types/#fluid-stack), representing the output fluid. Defaults to empty.
 - `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
 - `duration`: An Integer, representing a number of ticks that this barrel must be sealed for. A duration of `-1` will render this barrel recipe to be considered **infinite**, meaning it will never complete. Infinite barrel recipes of this form should define either `on_seal` or `on_unseal`.
-- `on_seal`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers) which will be applied whenever this barrel is sealed. This can be used to apply special effects to the item in the barrel while sealed.
-- `on_unseal`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers) which will be applied whenever this barrel is unsealed. This can be used to remove special effects on the item in the barrel when no longer sealed.
+- `on_seal`: An optional [Item Stack Provider](../common-types/#item-stack-providers) which will be applied whenever this barrel is sealed. This can be used to apply special effects to the item in the barrel while sealed.
+- `on_unseal`: An optional [Item Stack Provider](../common-types/#item-stack-providers) which will be applied whenever this barrel is unsealed. This can be used to remove special effects on the item in the barrel when no longer sealed.
 
 #### Example
 
@@ -274,9 +274,9 @@ The bloomery follows the following procedure:
 A bloomery recipe has the following properties:
 
 - `type`: `tfc:bloomery`
-- `fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients). The fluid that primary inputs must be able to melt into, to be considered primary inputs.
-- `catalyst`: An [Ingredient](../data/ingredients/). The ingredient which catalysts must match.
-- `result`: A [Item Stack](../data/common-types/#item-stacks). The result item stack.
+- `fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients). The fluid that primary inputs must be able to melt into, to be considered primary inputs.
+- `catalyst`: An [Ingredient](../ingredients/). The ingredient which catalysts must match.
+- `result`: A [Item Stack](../common-types/#item-stacks). The result item stack.
 - `duration`: An integer, representing the duration in ticks until the bloomery is complete.
 
 #### Example
@@ -311,9 +311,9 @@ Casting recipes define recipes between filled, solidified molds, and their item 
 Casting recipes have the following properties:
 
 - `type`: `tfc:casting`
-- `mold`: An [Ingredient](../data/ingredients/). This ingredient is used just to match the mold item itself, not the contents.
-- `fluid`: A [Fluid Stack Ingredient](../data/common-types/#fluid-stack-ingredients). This ingredient is used to match the contents of the solidified mold.
-- `result`: An [Item Stack](../data/common-types/#item-stacks). This is the output of the recipe.
+- `mold`: An [Ingredient](../ingredients/). This ingredient is used just to match the mold item itself, not the contents.
+- `fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients). This ingredient is used to match the contents of the solidified mold.
+- `result`: An [Item Stack](../common-types/#item-stacks). This is the output of the recipe.
 - `break_chance`: A number between [0, 1]. This is the probability that the mold will break upon completion of this recipe, where a higher number indicates a higher probability.
 
 #### Example
@@ -343,7 +343,7 @@ Casting recipes have the following properties:
 A collapse recipe is used for block conversions when a *collapse* occurs, which happens in the following steps:
 
 1. A player mines a block which can *trigger* a collapse (defined by having the `tfc:can_trigger_collapse`) tag.
-2. Within a random radius centered on the *trigger* block, blocks that are [unsupported](../data/#supports) are checked. If one of those blocks can *start* a collapse (defined by having the `tfc:can_start_collapse` tag), a collapse will occur centered on the *start* position.
+2. Within a random radius centered on the *trigger* block, blocks that are [unsupported](../custom/#supports) are checked. If one of those blocks can *start* a collapse (defined by having the `tfc:can_start_collapse` tag), a collapse will occur centered on the *start* position.
 3. Once a collapse has *started*, within a random radius centered on the *start* position, blocks that can collapse (defined by having both a valid collapse recipe and having the `tfc:can_collapse`), may randomly collapse - apply the recipe and convert to falling blocks.
 
 Collapse recipes are responsible, i.e. from converting raw stone into cobblestone when a collapse occurs.
@@ -353,9 +353,9 @@ Collapse recipes are responsible, i.e. from converting raw stone into cobbleston
 A collapse recipe has the following properties:
 
 - `type`: `tfc:collapse`
-- `ingredient`: A [Block Ingredient](../data/common-types/#block-ingredients). The blocks that this recipe applies to.
+- `ingredient`: A [Block Ingredient](../common-types/#block-ingredients). The blocks that this recipe applies to.
 - `copy_input`: An optional Boolean (Default: `false`). If `true`, the recipe should copy the input block, including properties, as the result, and the `state` property is ignored.
-- `result`: A [Block State](../data/common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
+- `result`: A [Block State](../common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
 
 #### Example
 
@@ -376,10 +376,10 @@ A collapse recipe has the following properties:
 A heating recipe is used by any device which heats items, such as a firepit, charcoal forge, small vessel, bloomery, or blast furnace. They define what an item transforms into once heated: either converting into another item (such as cooking food), or melting into a liquid (such as melting ores). It has the following properties:
 
 - `type`: `tfc:heating`
-- `ingredient`: An [Ingredient](../data/ingredients/). This defines what items the heating recipe applies to.
-- `result_item`: An optional [Item Stack Provider](../data/common-types/#item-stack-providers) (Default: empty). This defines what item the heating recipe may convert to. Note that the "copy heat" functionality of an item stack provider is implicit and always applied when using heating recipes.
-- `result_fluid`: An optional [Fluid Stack](../data/common-types/#fluid-stack) (Default: empty). This defines what fluids the heating recipe may create.
-- `temperature`: A number, which is the [Temperature](../data/common-types/#temperature) above which this item will convert to it's outputs.
+- `ingredient`: An [Ingredient](../ingredients/). This defines what items the heating recipe applies to.
+- `result_item`: An optional [Item Stack Provider](../common-types/#item-stack-providers) (Default: empty). This defines what item the heating recipe may convert to. Note that the "copy heat" functionality of an item stack provider is implicit and always applied when using heating recipes.
+- `result_fluid`: An optional [Fluid Stack](../common-types/#fluid-stack) (Default: empty). This defines what fluids the heating recipe may create.
+- `temperature`: A number, which is the [Temperature](../common-types/#temperature) above which this item will convert to it's outputs.
 
 **Note**: A heating recipe may define one, both, or neither of `result_item` and `result_fluid`, depending on what is desired.
 
@@ -408,7 +408,7 @@ A heating recipe is used by any device which heats items, such as a firepit, cha
 Knapping recipes include clay knapping, fire clay knapping, and leather knapping. They define patterns that can be used in the knapping grid. Note that knapping patterns are not automatically rotated or mirrored, and each desired rotation or mirror of a given pattern must be added explicitly. It has the following properties:
 
 - `type`: `tfc:clay_knapping`, `tfc:fire_clay_knapping`, or `tfc:leather_knapping`
-- `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.
+- `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.
 - `pattern`: The knapping pattern. Must be an array of strings representing the knapping grid. It can be up to 5 x 5. Spaces are counted as empty space, any other character is treated as a filled spot.
 - `outside_slot_required`: Boolean. (Default: `true`) For knapping patterns that are smaller than 5 x 5, this defines if the slots outside that grid are required to be filled, or empty.
 
@@ -444,9 +444,9 @@ A landslide recipe is used for block conversions when a certain block *landslide
 A landslide recipe has the following properties:
 
 - `type`: `tfc:landslide`
-- `ingredient`: A [Block Ingredient](../data/common-types/#block-ingredients). The blocks that this recipe applies to.
+- `ingredient`: A [Block Ingredient](../common-types/#block-ingredients). The blocks that this recipe applies to.
 - `copy_input`: An optional Boolean (Default: `false`). If `true`, the recipe should copy the input block, including properties, as the result, and the `state` property is ignored.
-- `result`: A [Block State](../data/common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
+- `result`: A [Block State](../common-types/#block-state). The output state for this recipe. If `copy_input` is `true`, this is not required.
 
 #### Example
 
@@ -466,9 +466,9 @@ A landslide recipe has the following properties:
 Loom recipes are used for producing items with a Loom. It has the following properties:
 
 - `type`: `tfc:loom`
-- `ingredient`: An [Ingredient](../data/ingredients/). This is the input for the recipe.
+- `ingredient`: An [Ingredient](../ingredients/). This is the input for the recipe.
 - `input_count`: An integer, which determines how many input items need to be added to produce one product item.
-- `result`: An [Item Stack Provider](../data/common-types/#item-stack-providers). The result produced by this recipe.
+- `result`: An [Item Stack Provider](../common-types/#item-stack-providers). The result produced by this recipe.
 - `steps_required`: An integer, which determines how many steps of the loom's working animation need to be completed to produce one product item.
 - `in_progress_texture`: The texture used in the loom rendering when this recipe is in progress.
 
@@ -479,8 +479,8 @@ Loom recipes are used for producing items with a Loom. It has the following prop
 Quern recipes are used for grinding items in the Quern. The handstone slot is special and will accept any item with the tag `tfc:handstone` (See [Item Tags](../tags/#item-tags)). It has the following properties:
 
 - `type`: `tfc:quern`
-- `ingredient`: An [Ingredient](../data/ingredients/). This is the input for the recipe.
-- `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.
+- `ingredient`: An [Ingredient](../ingredients/). This is the input for the recipe.
+- `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.
 
 #### Example
 
@@ -505,8 +505,8 @@ Quern recipes are used for grinding items in the Quern. The handstone slot is sp
 Rock knapping recipes can be used when knapping loose rocks. They define patterns that can be used in the knapping grid. Note that knapping patterns are not automatically rotated or mirrored, and each desired rotation or mirror of a given pattern must be added explicitly. It has the following properties:
 
 - `type`: `tfc:rock_knapping`
-- `ingredient`: An [Ingredient](../data/ingredients/). This defines what loose rock items this recipe applies to.
-- `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.
+- `ingredient`: An [Ingredient](../ingredients/). This defines what loose rock items this recipe applies to.
+- `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.
 - `pattern`: The knapping pattern. Must be an array of strings representing the knapping grid. It can be up to 5 x 5. Spaces are counted as empty space, any other character is treated as a filled spot.
 - `outside_slot_required`: Boolean. (Default: `true`) For knapping patterns that are smaller than 5 x 5, this defines if the slots outside that grid are required to be filled, or empty.
 
@@ -542,5 +542,5 @@ Rock knapping recipes can be used when knapping loose rocks. They define pattern
 Scraping recipes are used when any scrapable item - defined as having the `tfc:scrapable` [Item Tag](../tags/#item-tags) is placed on top of a valid scrapable surface - defined by having the `tfc:scraping_surface` [Block Tag](../tags/#block-tags) - and then each of 16 pixel regions are right clicked with a knife in order to transform the recipe from the input to the output. It has the following properties:
 
 - `type`: `tfc:scraping`
-- `ingredient`: An [Ingredient](../data/ingredients/). This is the input for the recipe.
-- `result`: An [Item Stack](../data/common-types/#item-stacks). The output of the recipe.
+- `ingredient`: An [Ingredient](../ingredients/). This is the input for the recipe.
+- `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.

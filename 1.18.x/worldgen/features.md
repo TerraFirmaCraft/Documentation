@@ -76,7 +76,7 @@ This places a thin spike like block (calcite or iceicles), in a small cluster ar
 
 - Type: `tfc:thin_spike`
 - Config:
-  - `state`: A [Lenient Blockstate](../common-types#lenient-blockstate) of the state to place. Must be a thin spike block.
+  - `state`: A [Lenient Blockstate](../common-types/#lenient-blockstate) of the state to place. Must be a thin spike block.
   - `radius`: A integer in the range [1, 16]. The radius around the target location to place spikes in.
   - `tries`: A positive integer. The number of attempts to place spikes.
   - `min_height`: A positive integer. The minimum height of a spike.
@@ -88,7 +88,7 @@ A feature that places cobwebs, additional uniformly distributed random block rep
 
 - Type: `tfc:cave_vegetation`
 - Config:
-  - `blocks`: A [Block Replacement Map](../common-types#block-replacement-map) of representing random blocks to replace.
+  - `blocks`: A [Block Replacement Map](../common-types/#block-replacement-map) of representing random blocks to replace.
 
 ### Ice Cave
 
@@ -105,7 +105,7 @@ This creates small winding depressions that travel down slopes. The rivulet stat
 
 - Type: `tfc:rivulet`
 - Config:
-  - `state`: A [Lenient Blockstate](../common-types#lenient-blockstate). The state that the rivulet consists of.
+  - `state`: A [Lenient Blockstate](../common-types/#lenient-blockstate). The state that the rivulet consists of.
 
 ### Fissure
 
@@ -113,16 +113,16 @@ This creates a winding one block wide fissure, filled with a given fluid, down f
 
 - Type: `tfc:fissure`
 - Config:
-  - `wall_state`: An optional [Lenient Blockstate](../common-types#lenient-blockstate). The state used for the wall blocks of the fissure. If not present, will use the rock type of the lowest rock layer.
-  - `fluid_state`: A [Lenient Blockstate](../common-types#lenient-blockstate). The fluid state to fill the fissure with, can be air.
+  - `wall_state`: An optional [Lenient Blockstate](../common-types/#lenient-blockstate). The state used for the wall blocks of the fissure. If not present, will use the rock type of the lowest rock layer.
+  - `fluid_state`: A [Lenient Blockstate](../common-types/#lenient-blockstate). The fluid state to fill the fissure with, can be air.
   - `count`: An optional integer (Default: `5`). The number of fissures to place.
   - `radius`: An optional integer (Default: `12`). The radius around the target position to try and place fissures in.
-  - `min_depth`: An optional [Vertical Anchor](../common-types#vertical-anchor).
+  - `min_depth`: An optional [Vertical Anchor](../common-types/#vertical-anchor).
   - `min_pieces`: An optional positive integer (Default: `10`).
   - `max_pieces`: An optional positive integer (Default: `24`).
   - `max_piece_length`: An optional positive integer (Default: `6`).
   - `decoration`. An fissure decoration object with the following properties:
-    - `blocks`: A [Block Replacement Map](../common-types#block-replacement-map). The additional 'decoration' ore veins that should spawn around the fissure.
+    - `blocks`: A [Block Replacement Map](../common-types/#block-replacement-map). The additional 'decoration' ore veins that should spawn around the fissure.
     - `rarity`: A positive integer. The rarity that blocks should be replaced with decoration ore states.
     - `radius`: A positive integer. The radius around the fissure that blocks should be replaced.
     - `count`: A positive integer. The number of blocks that should be replaced with decoration ore states. Actual amount will be `count / rarity`.
@@ -133,8 +133,8 @@ This creates a hot spring, with additional winding fissures underneath, filled w
 
 - Type: `tfc:hot_spring`
 - Config:
-  - `wall_state`: An optional [Lenient Blockstate](../common-types#lenient-blockstate), which the hot spring is built from. If omitted, the lowest rock layer rock will be used instead.
-  - `fluid_state`: A [Lenient Blockstate](../common-types#lenient-blockstate) to fill the fissure with. Can be air.
+  - `wall_state`: An optional [Lenient Blockstate](../common-types/#lenient-blockstate), which the hot spring is built from. If omitted, the lowest rock layer rock will be used instead.
+  - `fluid_state`: A [Lenient Blockstate](../common-types/#lenient-blockstate) to fill the fissure with. Can be air.
   - `radius`: An optional integer in the range [1, 16]. The approximate radius of the hot spring.
   - `decoration`: An optional [Fissure Decoration](#fissure) object.
 
@@ -144,7 +144,7 @@ A lake that fills existing terrain locally with a fluid.
 
 - Type: `tfc:flood_fill_lake`
 - Config:
-  - `state`: A [Lenient Blockstate](../common-types#lenient-blockstate) to fill the lake area with.
+  - `state`: A [Lenient Blockstate](../common-types/#lenient-blockstate) to fill the lake area with.
   - `replace_fluids`: A string array. A list of fluids that can be replaced by this lake.
   - `overfill`: An optional boolean (Default: `false`). If the lake should attempt to fill upwards from the starting position as well as downwards.
 
@@ -171,18 +171,18 @@ Vein configs have several common configuration options that apply to all veins:
 - `rarity`: An optional positive integer (Default: `60`). The vein will occur in 1 / `rarity` chunks on average.
 - `size`: An optional integer (Default: `8`).
 - `density`: An optional number in the range [0, 1] (Default: `0.2`).
-- `min_y`: A [Vertical Anchor](../common-types#vertical-anchor). The minimum y level at which the vein will spawn.
-- `max_y`: A [Vertical Anchor](../common-types#vertical-anchor). The maximum y level at which the vein will spawn.
+- `min_y`: A [Vertical Anchor](../common-types/#vertical-anchor). The minimum y level at which the vein will spawn.
+- `max_y`: A [Vertical Anchor](../common-types/#vertical-anchor). The maximum y level at which the vein will spawn.
 - `salt`: An integer which represents a random seed to the vein locations.
 - `biomes`: An optional array of objects, which can have one of two fields. This represents a filter for allowed biomes. If omitted, all biomes will be allowed.
-  - `category`: A [Biome Category](../common-types#biome-category).
-  - `biome_dictionary`: A [Biome Dictionary](../common-types#biome-dictionary) tag.
+  - `category`: A [Biome Category](../common-types/#biome-category).
+  - `biome_dictionary`: A [Biome Dictionary](../common-types/#biome-dictionary) tag.
 - `indicator`: An optional object representing an indicator to spawn on the surface above the vein. If present, it must have the following fields:
   - `depth`: An optional positive integer (Default: `35`). The maximum depth below the surface that the vein will spawn an indicator at.
   - `spread`: An optional positive integer (Default: `15`). The maximum horizontal distance from a vein that can spawn an indicator.
   - `rarity`: An optional positive integer (Default: `10`). The rarity to spawn indicators, as a fraction of horizontal locations the vein places ore blocks.
-  - `blocks`: A [Weighted List](../common-types#weighted-list) of indicator states to spawn, with the following value:
-    - Value `block`: A [Lenient Blockstate](../common-types#lenient-blockstate) to spawn.
+  - `blocks`: A [Weighted List](../common-types/#weighted-list) of indicator states to spawn, with the following value:
+    - Value `block`: A [Lenient Blockstate](../common-types/#lenient-blockstate) to spawn.
 
 ### Cluster Vein
 

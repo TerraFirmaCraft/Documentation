@@ -24,7 +24,7 @@ builder.addMetal(String input, double min, double max);
 builder.build();
 ```
 
-Please refer to [Metals](../../metals) for a complete reference on TFC Metals.
+Please refer to [Metals](../../metals/) for a complete reference on TFC Metals.
 
 Example script:
 

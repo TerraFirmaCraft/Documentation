@@ -24,7 +24,7 @@ In TerraFirmaCraft, biomes determine the overall shape of the land, and the feat
 
 ### Tags
 
-All of TFC's biomes use [Placed Feature Tags](../tags/#placed-features) in order to determine what features generate in a given stage. This means it is possible for addons or datapacks to add, remove, or modify specific features by editing these tags, without having to overwrite every single biome. Each TFC biome uses the following tags, where `<biome>` is replaced with the name of the biome in question:
+All of TFC's biomes use [Placed Feature Tags](../tags/#placed-feature-tags) in order to determine what features generate in a given stage. This means it is possible for addons or datapacks to add, remove, or modify specific features by editing these tags, without having to overwrite every single biome. Each TFC biome uses the following tags, where `<biome>` is replaced with the name of the biome in question:
 
 - `tfc:in_biome/erosion`,
 - `tfc:in_biome/underground_lakes` or `tfc:in_biome/all_lakes` depending on the biome,

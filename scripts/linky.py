@@ -6,7 +6,7 @@ import argparse
 from typing import NamedTuple, Tuple, List
 
 
-EXCLUDED = ['./_data', './_site', '.vscode', 'scripts', './README.md']
+EXCLUDED = ['./_data', './_site', '.vscode', 'scripts', './README.md', './index.md']
 ROOT = os.getcwd()
 
 BEGIN_SORT_ALPHABETICAL = '<!--linky_begin_sort_alphabetical-->'
@@ -34,6 +34,7 @@ class Header(NamedTuple):
     path: str
 
 class Link(NamedTuple):
+    """ A [name](path#section) link embedded in a markdown file. """
     src: Path
     line: int
     raw: str
@@ -43,17 +44,18 @@ class Link(NamedTuple):
 
     def follow(self) -> str:
         """ Follows the link, returning a path for the new destination """
-        return '%s/' % abs_path(os.path.join(self.src.path, self.path))
+        return '%s' % abs_path(os.path.join(self.src.path, self.path))
     
     def format(self) -> str:
         """ Formats the link in a standardized format """
+        path = os.path.normpath(self.path)
         link = '[%s](' % self.name
-        if self.path == './/':
+        if path == '.':
             link += '#%s)' % self.section
         elif self.has_section():
-            link += '%s#%s)' % (self.path[2:], self.section)
+            link += '%s/#%s)' % (path, self.section)
         else:
-            link += '%s)' % self.path[2:]
+            link += '%s/)' % path
         return link
     
     def has_section(self) -> bool:
@@ -93,11 +95,13 @@ def main():
 def do_validate():
     tree = build_tree()
     index = {p.path: p for p in tree}
+    #print(index)
 
     for path in tree:
         batch = BatchedPrint('Found broken links in %s' % path.file)
         for link in path.links:
             target = link.follow()
+            #print(path.path, link.raw, link.path, target)
             if target not in index:
                 batch.print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, target))
             elif link.has_section():
@@ -197,7 +201,7 @@ def build_tree() -> Tuple[Path, ...]:
             path_obj = Path(path, sanitize_path(path), lines, [], [])
 
             for i, line in enumerate(lines):
-                for match in re.finditer(r'\[([^\(\)\[\]\n\r]+)\]\(\.?\/?([A-Za-z0-9_-]*)\/?\#?([A-Za-z0-9_-]*)\)', line):
+                for match in re.finditer(r'\[([^\(\)\[\]\n\r]+)\]\(([./A-Za-z0-9_-]*)\/?\#?([A-Za-z0-9_-]*)\)', line):
                     name, root, section = match.groups()
                     start, end = match.span()
                     path_obj.links.append(Link(path_obj, 1 + i, line[start:end], name, './%s/' % root, section))
@@ -227,9 +231,7 @@ def sanitize_path(path: str) -> str:
         path = path.replace('.md', '')
     if path.endswith('index'):
         path = path[:-len('/index')]
-    if not path.endswith('/'):
-        path = path + '/'
-    return path
+    return os.path.normpath(path)
 
 def abs_path(path: str) -> str:
     """ Returns the absolute path relative to the root of the web directory """

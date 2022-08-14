@@ -187,7 +187,7 @@ Note that TFC will attempt to apply defaults for all items that do not have item
 A lamp fuel is a fluid which an be used in a lamp. It will burn over time, consuming mB per tick in order to keep the lamp lit. It has the following properties:
 
 - `fluid`: A [Fluid Ingredient](../common-types/#fluid-ingredients) which determines which fluids this lamp fuel applies to.
-- `valid_lamps`: A [Block Ingredient](../common-types#block-ingredients) which determines what (lamp) blocks are valid for this fuel to be added to.
+- `valid_lamps`: A [Block Ingredient](../common-types/#block-ingredients) which determines what (lamp) blocks are valid for this fuel to be added to.
 - `burn_rate` An integer, representing how fast this lamp consumes fuel, in ticks per mB.
 
 #### Example
