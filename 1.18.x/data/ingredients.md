@@ -16,6 +16,7 @@ In addition to the two ingredients added by Minecraft, TFC adds a number of cust
 
 - [Not Rotten](#not-rotten)
 - [Has Trait](#has-trait)
+- [Lacks Trait](#lacks-trait)
 - [Heatable](#heatable)
 - [Not](#not)
 - [Fluid Item](#fluid-item)
@@ -61,6 +62,26 @@ This is an ingredient which only accepts food items if they have a specific trai
 ```
 
 <hr>
+
+
+## Lacks Trait
+
+This ingredient is the same as [Has Trait](#has-trait) but is inverted. It tests if a food lacks a specified trait.
+
+- `type`: `tfc:lacks_trait`
+- `trait`: String. The registry name of a [Food Trait](../common-types/#food-traits) which must be present.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** items with the provided trait.
+
+#### Example
+
+```jsonc
+// An ingredient which only accepts a tfc:food/apple which has not been brined
+{
+    "type": "tfc:lacks_trait",
+    "trait": "tfc:brined",
+    "ingredient": { "item": "tfc:food/apple" }
+}
+```
 
 ## Heatable
 
