@@ -65,7 +65,8 @@ Tag Id | Function
 ---|---
 `tfc:mixable` | Fluids that will mix together if they come in contact in the world.
 `tfc:hydrating` | Fluids that hydrate farmland, berry bushes, and other growing things
-`tfc:usable_in_pot` | Fluids that can be in a firepit`s pot
+`tfc:scribing_ink` } Fluids that can be used in the scribing table.
+`tfc:usable_in_pot` | Fluids that can be in a firepit's pot
 `tfc:usable_in_jug` | Fluids that can be in a jug
 `tfc:usable_in_wooden_bucket` | Fluids that can be in a wooden bucket.
 `tfc:usable_in_red_steel_bucket` | Fluids that can be in a red steel bucket.
@@ -125,6 +126,15 @@ Tag Id | Function
 `tfc:pileable_ingots` | Items that can be added to ingot piles. In order to add another item to an ingot pile, it must (1) be in this tag, (2) have a metal defined with the `ingot` field matching said item, and (3) likely needs a properly loaded [metal texture](../custom/#adding-textures).
 `tfc:pileable_sheets` | Items that can be added to sheet piles. In order to add another item to an sheet pile, it must (1) be in this tag, (2) have a metal defined with the `sheet` field matching said item, and (3) likely needs a properly loaded [metal texture](../custom/#adding-textures).
 `tfc:fox_spawns_with` | Items that a fox has a small chance of spawning with in its mouth.
+`tfc:mob_feet_armor` | Armor that monsters can spawn with on their feet.
+`tfc:mob_leg_armor` | Armor that monsters can spawn with on their legs.
+`tfc:mob_chest_armor` | Armor that monsters can spawn with on their chest.
+`tfc:mob_head_armor` | Armor that monsters can spawn with on their head.
+`tfc:mob_mainhand_weapons` | Items that monsters can spawn with in their main hand.
+`tfc:mob_offhand_weapons` | Items that monsters can spawn with in their off hand.
+`tfc:deals_slashing_damage` | Weapons that deal slashing damage.
+`tfc:deals_piercing_damage` | Weapons that deal piercing damage.
+`tfc:deals_crushing_damage` | Weapons that deal crushing damage.
 
 <hr>
 
@@ -139,3 +149,7 @@ Tag Id | Function
 `tfc:needs_large_fishing_bait` | Entities that need large fishing bait to catch.
 `tfc:hunts_land_prey` | Entities that are feared by land prey. Note that this tag does NOT add hunting functionality to an arbitrary entity.
 `tfc:hunted_by_land_predators` | Entities that land predators will attempt to hunt.
+`tfc:vanilla_monsters` | Monsters that are prevented from spawning on the surface.
+`tfc:deals_slashing_damage` | Entities that deal slashing damage.
+`tfc:deals_piercing_damage` | Entities that deal piercing damage.
+`tfc:deals_crushing_damage` | Entities that deal crushing damage.
