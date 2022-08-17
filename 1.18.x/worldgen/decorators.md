@@ -10,12 +10,29 @@ permalink: /1.18.x/worldgen/decorators/
 
 TFC adds the following decorators, for use in the `minecraft:decorated` configured feature:
 
+<!--linky_begin_sort_alphabetical-->
+
+- [Carving Mask](#carving-mask)
 - [Climate](#climate)
 - [Flat Enough](#flat-enough)
+- [On Top](#on-top)
 - [Near Water](#near-water)
-- [Carving Mask](#carving-mask)
+- [Shallow Water](#shallow-water)
+- [Underground](#underground)
 - [Volcano](#volcano)
 
+<!--linky_end_sort_alphabetical-->
+
+### Carving Mask
+
+This is an extension of the vanilla carving mask decorator, but with additional constraints on y level. It is used for large spikes to restrict them to a maximum y level.
+
+- Type: `tfc:carving_mask`
+- Config:
+  - `min_y`: An optional [Vertical Anchor](../common-types/#vertical-anchor), the minimum allowed y value for this to spawn at.
+  - `max_y`: An optional [Vertical Anchor](../common-types/#vertical-anchor), the maximum allowed y value for this to spawn at.
+  - `probability`: A float in the range `[0, 1]`, the probability this will spawn at any given position.
+  - `step`: The carving stage to use. Must be either `air` or `liquid`.
 
 ### Climate
 
@@ -44,6 +61,14 @@ This decorator will check an area around the initial position for solid blocks. 
   - `radius` is an optional positive integer (Default: `2`), which is the radius around the initial position that the area is checked for solid blocks.
   - `max_depth` is an optional positive integer (Default: `4`), which is how deep from the original position the decorator should try and search.
 
+### On Top
+
+This decorator checks the block below for a predicate, and passes if that predicate passes.
+
+- Type: `tfc:on_top`
+- Config:
+  - `predicate`: A vanilla Block Predicate.
+
 ### Near Water
 
 This decorator will conditionally place a feature if there is water within a `radius` in the x and z directions, and within `[-radius, 0]` in the y direction. Water is checked against the fluid tag `minecraft:water`. It is used to create near-water clay deposits.
@@ -52,17 +77,20 @@ This decorator will conditionally place a feature if there is water within a `ra
 - Config:
   - `radius`: An integer representing the distance to search for water.
 
-### Carving Mask
+### Shallow Water
 
-This is an extension of the vanilla carving mask decorator, but with additional constraints on y level. It is used for large spikes to restrict them to a maximum y level.
+This decorator checks that the water is not too deep at a location.
 
-- Type: `tfc:carving_mask`
+- Type: `tfc:shallow_water`
 - Config:
-  - `min_y`: An optional [Vertical Anchor](../common-types/#vertical-anchor), the minimum allowed y value for this to spawn at.
-  - `max_y`: An optional [Vertical Anchor](../common-types/#vertical-anchor), the maximum allowed y value for this to spawn at.
-  - `probability`: A float in the range `[0, 1]`, the probability this will spawn at any given position.
-  - `step`: The carving stage to use. Must be either `air` or `liquid`.
+  - `max_depth`: An optional integer (Default: `5`), specifying the max depth of the water.
 
+### Underground
+
+This decorator passes if the position is below the world surface level.
+
+- Type: `tfc:underground`
+- Config: None
 
 ### Volcano
 
