@@ -18,8 +18,10 @@ TFC adds the following recipe types:
 - [Barrel Instant Fluid](#barrel-instant-fluid)
 - [Barrel Instant](#barrel-instant)
 - [Barrel Sealed](#barrel-sealed)
+- [Blast Furnace](#blast-furnace)
 - [Bloomery](#bloomery)
 - [Casting](#casting)
+- [Chiseling](#chiseling)
 - [Collapse](#collapse)
 - [Heating](#heating)
 - [Knapping (Clay, Fire Clay, Leather)](#knapping)
@@ -260,6 +262,36 @@ These recipes are declared in their least common ratio form, and the highest mul
 }
 ```
 
+## Blast Furnace
+
+The blast furnace recipe is used to determine the input and output of a blast furnace. A fluid combined with a catalyst is combined to produce a new fluid.
+
+Blast furnace recipes have the following properties:
+- `type`: `tfc:blast_furnace`
+- `fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients) for the input fluid.
+- `catalyst`: An [Ingredient](../ingredients/) specifying the catalyst item.
+- `result`: A [Fluid Stack](../common-types/#fluid-stack) of the output fluid.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/blast_furnace/pig_iron
+{
+	"type": "tfc:blast_furnace",
+	"fluid": {
+		"ingredient": "tfc:metal/cast_iron",
+		"amount": 1
+	},
+	"result": {
+		"fluid": "tfc:metal/pig_iron",
+		"amount": 1
+	},
+	"catalyst": {
+		"tag": "tfc:flux"
+	}
+}
+```
+
 <hr>
 
 ## Bloomery
@@ -333,6 +365,38 @@ Casting recipes have the following properties:
         "item": "tfc:metal/axe_head/bismuth_bronze"
     },
     "break_chance": 1 // A break chance of 1 indicates this recipe breaks the mold every time
+}
+```
+
+<hr>
+
+## Chiseling
+
+Chiseling recipes define a transformation between blocks when clicked with a chisel. They are used in two situations:
+
+1. When hovering over a block with a chisel to display a preview of the chiseled block
+2. When executing a use action with the chisel, to conduct the transformation.
+
+Chisel recipes have the following properties:
+- `type`: `tfc:chisel`
+- `ingredient`: A [Block Ingredient](../common-types/#block-ingredients) corresponding to the block to be transformed.
+- `result`: A [Block State](../common-types/#block-state) that will be placed.
+- `mode`: The chisel mode ['smooth', 'stair', 'slab'] that is required.
+- `item_ingredient`: An optional [Ingredient](../ingredients/) specifying the chisel. Anything in this ingredient must be in the `tfc:chisels` [Item Tag](../tags/#item-tags)
+- `extra_drop`: An optional [Item Stack Provider](../common-types/#item-stack-providers) specifying an item to be dropped on chisel completion.
+
+
+#### Example
+```jsonc
+// Reference: data/tfc/recipes/chisel/slab/acacia_wood_slab
+{
+	"type": "tfc:chisel",
+	"ingredient": "tfc:wood/planks/acacia",
+	"result": "tfc:wood/planks/acacia_slab",
+	"mode": "slab",
+	"extra_drop": {
+		"item": "tfc:wood/planks/acacia_slab"
+	}
 }
 ```
 
