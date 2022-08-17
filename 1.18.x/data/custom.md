@@ -12,7 +12,10 @@ TFC defines the following custom data types:
 
 <!--linky_begin_sort_alphabetical-->
 
+- [Climate Ranges](#climate-ranges)
 - [Drinkables](#drinkables)
+- [Entity Damage Resistances](#entity-damage-resistances)
+- [Fauna](#fauna)
 - [Fertilizers](#fertilizers)
 - [Food Items](#food-items)
 - [Fuels](#fuels)
@@ -25,6 +28,34 @@ TFC defines the following custom data types:
 <!--linky_end_sort_alphabetical-->
 
 <hr>
+
+## Climate Ranges
+
+A climate range allows TFC Blocks to reference configurable data related to climate. They specify the range of values that a block can grow in.
+
+**Note:** Climate ranges cannot be added through datapacks, only modified.
+
+A climate range has the following properties:
+
+- `min_hydration` An optional integer [0, 100], by default 0, specifying the minimum hydration.
+- `max_hydration`: An optional integer [0, 100], by default 100, specifying the maximum hydration.
+- `hydration_wiggle_range`: An optional integer, by default 0, specifying the 'wiggle' range of the block when consulting wiggliness is enabled.
+- `min_temperature`: An optional integer, by default -100, specifying the minimum temperature.
+- `max_temperature`: An optional integer, by default 100, specifying the maximum temperature.
+- `temperature_wiggle_range`: An optional integer, by default 0, specifying the 'wiggle' range of the block when consulting wiggliness is enabled.
+
+#### Examples
+```jsonc
+// Reference: data/tfc/tfc/climate_ranges/barley
+{
+  "min_hydration": 18,
+  "max_hydration": 75,
+  "hydration_wiggle_range": 0,
+  "min_temperature": -8,
+  "max_temperature": 26,
+  "temperature_wiggle_range": 5
+}
+```
 
 ## Drinkables
 
@@ -58,6 +89,57 @@ A drinkable has the following properties:
 ```
 
 <hr>
+
+## Entity Damage Resistances
+
+Entity Damage Resistances specify extra resistance certain mobs have to certain damage types.
+
+Entity Damage Resistances have the following properties:
+
+- `entity`: An [Entity Type Tag](../tags/#entity-tags), specifying entity doing the resisting.
+- `piercing`: An optional integer, the entity's resistance to piercing damage
+- `slashing`: An optional integer, the entity's resistance to slashing damage
+- `crushing`: An optional integer, the entity's resistance to crushing damage
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/tfc/entity_damage_resistances/skeletons
+{
+  "entity": "tfc:skeletons",
+  "piercing": 1000000000, // large number to cause very high resistance
+  "slashing": 0,
+  "crushing": -50 // negative number to cause weakness
+}
+```
+
+## Fauna
+
+Fauna allow datapacks to specify some spawning requirements for mobs.
+
+**Note:** Fauna cannot be added with datapacks, only modified.
+
+Fauna have the following properties:
+
+- `chance`: An optional integer, by default 1, of the chance in 1/N chunks that something will spawn. Note that the ratio between mob spawns is better set in the [Biome](../../worldgen/biomes) json, as those values are baked into the spawn generator.
+- `distance_below_sea_level`: An optional integer that sets the distance below sea level something must spawn. This should only be set for underwater creatures.
+- `climate`: A [Climate Decorator](../../worldgen/decorators/#climate) configuration for the climate requirements of the fauna.
+- `solid_ground`: A boolean. Requires the mob to spawn on a `minecraft:valid_spawn` block tag.
+- `max_brightness`: An optional integer specifying the maximum brightness a mob may spawn at.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/tfc/fauna/orca
+{
+  "chance": 10,
+  "distance_below_sea_level": 35,
+  "climate": {
+    "max_temperature": 19,
+    "min_rainfall": 100
+  }
+}
+```
 
 ## Fertilizers
 
