@@ -6,22 +6,29 @@ permalink: /1.18.x/worldgen/decorators/
 
 # Decorators
 
-*[Vanilla Reference for Decorators](https://minecraft.fandom.com/wiki/Custom_world_generation#Decorators)*
+*[Vanilla Reference for Placement Modifiers / Decorators](https://minecraft.fandom.com/wiki/Placed_feature)*
 
-TFC adds the following decorators, for use in the `minecraft:decorated` configured feature:
+Note that historically, Placement Modifiers / Placed Features were called Decorators, and TFC still refers to the two interchangeably. TFC adds the following placement modifier types, for use in placed features:
 
 <!--linky_begin_sort_alphabetical-->
 
+- [Biome](#biome)
 - [Carving Mask](#carving-mask)
 - [Climate](#climate)
 - [Flat Enough](#flat-enough)
-- [On Top](#on-top)
 - [Near Water](#near-water)
+- [On Top](#on-top)
 - [Shallow Water](#shallow-water)
 - [Underground](#underground)
 - [Volcano](#volcano)
 
 <!--linky_end_sort_alphabetical-->
+
+### Biome
+
+This is an extension of the vanilla `minecraft:biome_filter` decorator, but which respects the way TFC features are used in biomes (via tags). This exists to fix an unfortunate bug in [Forge](https://github.com/MinecraftForge/MinecraftForge/issues/8743) in 1.18.
+
+- Type: `tfc:biome`
 
 ### Carving Mask
 
@@ -61,14 +68,6 @@ This decorator will check an area around the initial position for solid blocks. 
   - `radius` is an optional positive integer (Default: `2`), which is the radius around the initial position that the area is checked for solid blocks.
   - `max_depth` is an optional positive integer (Default: `4`), which is how deep from the original position the decorator should try and search.
 
-### On Top
-
-This decorator checks the block below for a predicate, and passes if that predicate passes.
-
-- Type: `tfc:on_top`
-- Config:
-  - `predicate`: A vanilla Block Predicate.
-
 ### Near Water
 
 This decorator will conditionally place a feature if there is water within a `radius` in the x and z directions, and within `[-radius, 0]` in the y direction. Water is checked against the fluid tag `minecraft:water`. It is used to create near-water clay deposits.
@@ -76,6 +75,14 @@ This decorator will conditionally place a feature if there is water within a `ra
 - Type: `tfc:near_water`
 - Config:
   - `radius`: An integer representing the distance to search for water.
+
+### On Top
+
+This decorator checks the block below for a predicate, and passes if that predicate passes.
+
+- Type: `tfc:on_top`
+- Config:
+  - `predicate`: A vanilla Block Predicate.
 
 ### Shallow Water
 

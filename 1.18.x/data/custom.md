@@ -121,7 +121,7 @@ Fauna allow datapacks to specify some spawning requirements for mobs.
 
 Fauna have the following properties:
 
-- `chance`: An optional integer, by default 1, of the chance in 1/N chunks that something will spawn. Note that the ratio between mob spawns is better set in the [Biome](../../worldgen/biomes) json, as those values are baked into the spawn generator.
+- `chance`: An optional integer, by default 1, of the chance in 1/N chunks that something will spawn. Note that the ratio between mob spawns is better set in the [Biome](../../worldgen/biomes/) json, as those values are baked into the spawn generator.
 - `distance_below_sea_level`: An optional integer that sets the distance below sea level something must spawn. This should only be set for underwater creatures.
 - `climate`: A [Climate Decorator](../../worldgen/decorators/#climate) configuration for the climate requirements of the fauna.
 - `solid_ground`: A boolean. Requires the mob to spawn on a `minecraft:valid_spawn` block tag.
