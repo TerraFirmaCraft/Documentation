@@ -95,13 +95,11 @@ def main():
 def do_validate():
     tree = build_tree()
     index = {p.path: p for p in tree}
-    #print(index)
 
     for path in tree:
         batch = BatchedPrint('Found broken links in %s' % path.file)
         for link in path.links:
             target = link.follow()
-            #print(path.path, link.raw, link.path, target)
             if target not in index:
                 batch.print('  L%-5d: \'%s\' -> \'%s\'' % (link.line, link.raw, target))
             elif link.has_section():
@@ -201,7 +199,7 @@ def build_tree() -> Tuple[Path, ...]:
             path_obj = Path(path, sanitize_path(path), lines, [], [])
 
             for i, line in enumerate(lines):
-                for match in re.finditer(r'\[([^\(\)\[\]\n\r]+)\]\(([./A-Za-z0-9_-]*)\/?\#?([A-Za-z0-9_-]*)\)', line):
+                for match in re.finditer(r'\[([^\(\)\[\]\n\r]+)\]\(([./A-Za-z0-9_-]*)\/?\#?([./A-Za-z0-9_-]*)\)', line):
                     name, root, section = match.groups()
                     start, end = match.span()
                     path_obj.links.append(Link(path_obj, 1 + i, line[start:end], name, './%s/' % root, section))

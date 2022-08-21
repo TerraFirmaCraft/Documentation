@@ -279,7 +279,7 @@ Note: when using vein features, they must be added to **all** biomes in the same
 
 Vein configs have several common configuration options that apply to all veins:
 
-- `blocks`: A [Block Replacement Map](#../common-typesblock-replacement-map) defining what blocks the ore vein will place.
+- `blocks`: A [Block Replacement Map](../common-types/#block-replacement-map) defining what blocks the ore vein will place.
 - `rarity`: An optional positive integer (Default: `60`). The vein will occur in 1 / `rarity` chunks on average.
 - `size`: An optional integer (Default: `8`).
 - `density`: An optional number in the range [0, 1] (Default: `0.2`).
