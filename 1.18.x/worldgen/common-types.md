@@ -8,82 +8,38 @@ permalink: /1.18.x/worldgen/common-types/
 
 There are a number of JSON types that are used in many different configurations for many different operations. These are all referenced here rather than repeating their definitions across every config they may belong to.
 
-- [Key Value List](#key-value-list)
-- [Weighted List](#weighted-list)
-- [Lenient Blockstate](#lenient-blockstate)
+<!--linky_begin_sort_alphabetical-->
+
+- [Biome Category](#biome-category)
+- [Biome Dictionary](#biome-dictionary)
 - [Block Replacement Map](#block-replacement-map)
 - [Forest Type](#forest-type)
+- [Holder Set](#holder-set)
+- [Key Value List](#key-value-list)
+- [Lenient Blockstate](#lenient-blockstate)
+- [Structure](#structure)
 - [Vertical Anchor](#vertical-anchor)
+- [Weighted List](#weighted-list)
 
-### Key Value List
+<!--linky_end_sort_alphabetical-->
 
-This is a list that represents a map. It is a json array of objects, where each one has a key field, and a value field. There must be no duplicate key fields in the entire list.
+<hr>
 
-Note, the names `key` and `value` may be different depending on the actual list in question.
+## Biome Category
 
-Example:
+A biome category is the `category` field of a biome. Valid values are:
 
-```json
-[
-    {
-        "key": "a key",
-        "value": 3
-    },
-    {
-        "key": "another key",
-        "value": 6
-    }
-]
-```
+- `none`, `tagia`, `extreme_hills`, `jungle`, `mesa`, `plains`, `savanna`, `icy`, `the_end`, `beach`, `forest`, `ocean`, `desert`, `river`, `swamp`, `mushroom`, `nether`, `underground`
 
-### Weighted List
+<hr>
 
-A weighted list is similar to a [Key Value List](#key-value-list) in that it is a list of pairs, except in this list, each object has two fields, where one is a `weight` entry. The `weight` determines the relative weight of that element of the list, and can be any positive number. The other entry might be any other field depending on the actual list in question.
+## Biome Dictionary
 
-The `weight` can also be omitted, in which case the entry will assume a default value of `1`.
+A biome dictionary tag is a tag, all uppercase (like `WET`), which describes a property of a biome. They are added by Forge and other mods.
 
-Example:
+<hr>
 
-```json
-[
-    {
-        "value": "minecraft:coal",
-        "weight": 1
-    },
-    {
-        "value": "minecraft:diamond",
-        "weight": 0.01
-    }
-]
-```
-
-### Lenient Blockstate
-
-This is a more lenient version of the vanilla block state requirement. It can *either* be:
-
-It is an object, with the following properties:
-
-- `Name`: The registry name of the block to use
-- `Properties`: An object with a collection of key -> value pairs for each block state property.
-
-For example, the block state `minecraft:grass_block[snowy=false]` would become:
-
-```json
-{
-    "Name": "minecraft:grass_block",
-    "Properties": {
-        "snowy": "false",
-    }
-}
-```
-
-Or, it can be a string with the registry name of the block to use. In this case, all block state properties will have their default values assigned, e.g. the above would be:
-
-```json
-"minecraft:grass_block"
-```
-
-### Block Replacement Map
+## Block Replacement Map
 
 This defines a list of block -> block state replacements. For each block, it can be replaced with a random selection of blocks.
 
@@ -121,7 +77,9 @@ Example:
 ]
 ```
 
-### Forest Type
+<hr>
+
+## Forest Type
 
 A forest type is a string, from the following values:
 
@@ -129,18 +87,81 @@ A forest type is a string, from the following values:
 
 When compared, they compare relative to the above order. (So, `normal` is considered "greater than" `edge`, for example.)
 
+<hr>
 
-### Biome Category
+## Holder Set
 
-A biome category is the `category` field of a biome. Valid values are:
+A Holder Set is a collection of elements of a given registry. For example, Configured Features, Placed Feature, or Biomes.
 
-- `none`, `tagia`, `extreme_hills`, `jungle`, `mesa`, `plains`, `savanna`, `icy`, `the_end`, `beach`, `forest`, `ocean`, `desert`, `river`, `swamp`, `mushroom`, `nether`, `underground`
+1. A List of strings, where each entry is the name of a given registry entry.
+2. A String, prefixed by `#`, indicating a [Tag](../tags/)
 
-### Biome Dictionary
+<hr>
 
-A biome dictionary tag is a tag, all uppercase (like `WET`), which describes a property of a biome. They are added by Forge and other mods.
+## Key Value List
 
-### Vertical Anchor
+This is a list that represents a map. It is a json array of objects, where each one has a key field, and a value field. There must be no duplicate key fields in the entire list.
+
+Note, the names `key` and `value` may be different depending on the actual list in question.
+
+Example:
+
+```json
+[
+    {
+        "key": "a key",
+        "value": 3
+    },
+    {
+        "key": "another key",
+        "value": 6
+    }
+]
+```
+
+<hr>
+
+## Lenient Blockstate
+
+This is a more lenient version of the vanilla block state requirement. It can *either* be:
+
+It is an object, with the following properties:
+
+- `Name`: The registry name of the block to use
+- `Properties`: An object with a collection of key -> value pairs for each block state property.
+
+For example, the block state `minecraft:grass_block[snowy=false]` would become:
+
+```json
+{
+    "Name": "minecraft:grass_block",
+    "Properties": {
+        "snowy": "false",
+    }
+}
+```
+
+Or, it can be a string with the registry name of the block to use. In this case, all block state properties will have their default values assigned, e.g. the above would be:
+
+```json
+"minecraft:grass_block"
+```
+
+<hr>
+
+## Structure
+
+A structure is a reference to an NBT file. They can be created and loaded using [Structure Blocks](https://minecraft.fandom.com/wiki/Structure_Block).
+
+A structure file must have a file name such as `data/<domain>/structures/<path>.nbt`, which would then have the structure name `<domain>:<path>`.
+
+#### Example
+
+The structure [`data/tfc/structures/acacia/1.nbt`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.18.x/src/main/resources/data/tfc/structures/acacia/1.nbt) is referenced as [`tfc:acacia/1`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/e89f6c553e8178346c83a1266829c61437f0c50c/src/main/resources/data/tfc/worldgen/configured_feature/tree/acacia.json#L6).
+
+<hr>
+
+## Vertical Anchor
 
 This represents a relative y height. It is an object with exactly one of the three following fields:
 
@@ -153,4 +174,27 @@ Example (y = 63):
 {
     "absolute": 63
 }
+```
+
+<hr>
+
+## Weighted List
+
+A weighted list is similar to a [Key Value List](#key-value-list) in that it is a list of pairs, except in this list, each object has two fields, where one is a `weight` entry. The `weight` determines the relative weight of that element of the list, and can be any positive number. The other entry might be any other field depending on the actual list in question.
+
+The `weight` can also be omitted, in which case the entry will assume a default value of `1`.
+
+Example:
+
+```json
+[
+    {
+        "value": "minecraft:coal",
+        "weight": 1
+    },
+    {
+        "value": "minecraft:diamond",
+        "weight": 0.01
+    }
+]
 ```

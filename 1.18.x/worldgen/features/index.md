@@ -1,15 +1,18 @@
 ---
 layout: page
-title: "Configured Features"
+title: "Features"
 permalink: /1.18.x/worldgen/features/
 ---
 
-# Configured Features
+# Features
 
-*[Vanilla Reference for Features](https://minecraft.fandom.com/wiki/Configured_feature)*
+*[Vanilla Reference for Features](https://minecraft.fandom.com/wiki/Custom_feature)*
+
+Features are small decorations that modify individual chunks, based on the biome present in that chunk. In TFC, features are all added to biomes via the use of [Biome Tags](../tags/#biome-tags), which means that they can also be added to biomes via the use of these tags.
 
 TFC adds the following features:
 
+- [Trees and Forests](trees/)
 - Caves:
   - [Cave Spike](#cave-spike)
   - [Large Cave Spike](#large-cave-spike)
@@ -48,12 +51,6 @@ TFC adds the following features:
   - [Vines](#vines)
   - [Fruit Trees](#fruit-trees)
   - [Bananas](#bananas)
-- Trees and Forests:
-  - [Forest](#forest)
-  - [Forest Entry](#forest-entry)
-  - [Overlay Tree](#overlay-tree)
-  - [Random Tree](#random-tree)
-  - [Stacked Tree](#stacked-tree)
 - Technical:
   - [Erosion](#erosion)
   - [Ice And Snow](#ice-and-snow)
@@ -172,104 +169,6 @@ A copy of the vanilla spring feature.
 
 - Type: `tfc:spring`
 - Config: See the configuration for `minecraft:spring`.
-
-## Trees and Forests
-
-### Forest
-
-Places a complete forest, with trees and groundcover. A list of trees is specified, as well as parameters to be used for each forest type.
-
-- Type: `tfc:forest`
-- Config:
-  - `entries`: A tag or list of configured feature ids that are [Forest Entries](#forest-entry). These are the trees that can be placed.
-  - `type`: The map with [Forest Types](../common-types/#forest-type) as keys and the following config as values:
-    - `tree_count`: An integer or int provider specifying how many trees should spawn.
-	- `groundcover_count`: An integer or int provider specifying how much groundcover should spawn.
-	- `per_chunk_chance`: An optional float, by default 1, of the chance per chunk of this forest type spawning.
-	- `bush_count`: An optional integer or int provider specifying the amount of bushes that will try to spawn.
-	- `has_spoiler_old_growth`: A boolean specifying if a random old growth tree will occasionally spawn amongst the existing trees.
-	- `allows_old_growth`: A boolean specifying if old growth trees will spawn in this forest type.
-  - `use_weirdness`: A boolean specifying if forest weirdness will be used to gradually alternate between what forest entry is placed, causing more varied but less climate-accurate forests.
-
-### Forest Entry
-
-This feature is unique in that it is never made into a placed feature, it only serves as a configured feature to be added to the [Forest Feature](#forest). It specifies how one tree type should spawn.
-
-- Type: `tfc:forest_entry`
-- Config:
-  - `min_rain`: The minimum rainfall for this tree to spawn.
-  - `max_rain`: The maximum rainfall for this tree to spawn.
-  - `min_temp`: The minimum temperature for this tree to spawn.
-  - `max_temp`: The maximum temperature for this tree to spawn.
-  - `bush_log`: An optional [Lenient Blockstate](../common-types/#lenient-blockstate) specifying the log used for bushes. If omitted, no bushes will spawn.
-  - `bush_leaves`: An optional [Lenient Blockstate](../common-types/#lenient-blockstate) specifying the leaves used for bushes.
-  - `groundcover`: An optional [Weighted List](../common-types/#weighted-list) specifying the blocks that can spawn on the ground around the trees.
-  - `normal_tree`: A configured feature id corresponding to a tree feature.
-  - `dead_tree`: A configured feature id corresponding to a tree feature.
-  - `old_growth_tree`: An optional configured feature id corresponding to a tree feature.
-  - `old_growth_chance`: An optional integer, by default 6, specifying the chance for an old growth tree to spawn.
-  - `spoiler_old_growth_chance`: An optional integer, by default 200, specifying the chance for a 'spoiler' old growth to spawn in forest types that allow that.
-  - `fallen_tree_chance`: An optional integer, by default 14, specifying how often fallen trees spawn, in 1/N chunks.
-  - `dead_chance`: An optional integer, by default 75, specifying how often dead trees spawn, in 1/N trees.
-
-
-### Trunk Config
-
-This is the config specifying the shape and size of a tree's trunk.
-
-- Config:
-  - `state`: A [Lenient Blockstate](../common-types/#lenient-blockstate) of the trunk block.
-  - `min_height`: Theinteger minimum height of the trunk.
-  - `max_height`: The integer maximum height of the trunk.
-  - `width`: The integer width of the trunk, in blocks.
-
-### Tree Placement Config
-
-This is the config specifying how and when trees are placed in the world.
-
-- Config:
-  - `width`: An integer specifying width of ground clearance needed.
-  - `height`: An integer specifying the open height needed to place the tree.
-  - `allow_submerged`: A boolean, if the tree can spawn in one block of water.
-  - `allow_deeply_submerged`: A boolean, if the tree can spawn in any height of water.
-
-### Stacked Tree
-
-A tree that stacks a number of structures on top of each other to make a whole.
-
-- Type: `tfc:stacked_tree`
-- Config:
-  - `layers`: A list of layer configs:
-    - `templates`: A list of ids corresponding to structure templates.
-	- `min_count`: The minimum number of layers chosen to use.
-	- `max_count`: The maximum number of layers chosen to use.
-  - `trunk`: A [Trunk Config](#trunk-config) for the trunk below the structure.
-  - `radius`: An integer. This value is unused.
-  - `placement`: A [Tree Placement Config](#tree-placement-config)
-
-### Overlay Tree
-
-A tree that overlays two structures on top of each other. The overlayed structure is placed with only a certain percentage of its blocks used, to induce random shapes.
-
-- Type: `tfc:overlay_tree`
-- Config:
-  - `base`: An id corresponding to a structure template.
-  - `overlay`: An id corresponding to a structure template. This is overlaid on the other structure.
-  - `radius`: An integer. This value is unused.
-  - `trunk`: A [Trunk Config](#trunk-config) for the trunk below the structure.
-  - `overlay_integrity`: A float [0, 1] specifying the percent of the overlay structure that will be placed.
-  - `placement`: A [Tree Placement Config](#tree-placement-config)
-
-### Random Tree
-
-A tree that places a random structure from a list.
-
-- Type:`tfc:random_tree`
-- Config:
-  - `structures`: A list of structure ids.
-  - `trunk`: A [Trunk Config](#trunk-config) for the trunk below the structure.
-  - `radius`: An integer. This value is unused.
-  - `placement`: A [Tree Placement Config](#tree-placement-config)
 
 ## Veins
 
