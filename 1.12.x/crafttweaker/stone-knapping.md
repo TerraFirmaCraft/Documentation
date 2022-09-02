@@ -2,6 +2,7 @@
 layout: page
 title: "Stone Knapping Recipes"
 permalink: /1.12.x/crafttweaker/stone-knapping/
+excluded_in_search: true
 ---
 
 # Stone Knapping Recipes

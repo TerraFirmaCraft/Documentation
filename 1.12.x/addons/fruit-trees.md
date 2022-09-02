@@ -2,6 +2,7 @@
 layout: page
 title: "Fruit Trees"
 permalink: /1.12.x/addons/fruit-trees/
+excluded_in_search: true
 ---
 
 # Adding Fruit Trees

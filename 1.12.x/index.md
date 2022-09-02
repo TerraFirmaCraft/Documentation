@@ -2,6 +2,7 @@
 layout: page
 title: "1.12.x"
 permalink: /1.12.x/
+excluded_in_search: true
 ---
 
 # 1.12.x

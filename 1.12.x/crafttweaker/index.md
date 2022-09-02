@@ -2,6 +2,7 @@
 layout: page
 title: "Craft Tweaker Integration"
 permalink: /1.12.x/crafttweaker/
+excluded_in_search: true
 ---
 
 # Craft Tweaker Integration

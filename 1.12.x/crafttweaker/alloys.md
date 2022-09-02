@@ -2,6 +2,7 @@
 layout: page
 title: "Alloys"
 permalink: /1.12.x/crafttweaker/alloys/
+excluded_in_search: true
 ---
 
 # Alloy Recipes

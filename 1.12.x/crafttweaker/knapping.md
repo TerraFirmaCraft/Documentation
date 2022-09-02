@@ -2,6 +2,7 @@
 layout: page
 title: "Knapping Recipes"
 permalink: /1.12.x/crafttweaker/knapping/
+excluded_in_search: true
 ---
 
 # Knapping Recipes

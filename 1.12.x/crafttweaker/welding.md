@@ -2,6 +2,7 @@
 layout: page
 title: "Welding Recipes"
 permalink: /1.12.x/crafttweaker/welding/
+excluded_in_search: true
 ---
 
 # Welding Recipes

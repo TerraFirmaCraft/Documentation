@@ -2,6 +2,7 @@
 layout: page
 title: "Ore Generation"
 permalink: /1.12.x/oregen/
+excluded_in_search: true
 ---
 
 # Ore Generation

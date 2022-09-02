@@ -2,6 +2,7 @@
 layout: page
 title: "Addons"
 permalink: /1.12.x/addons/
+excluded_in_search: true
 ---
 
 This section is rather empty, as in most cases, the best way to find API hooks for things is to:

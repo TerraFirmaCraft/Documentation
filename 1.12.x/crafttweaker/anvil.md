@@ -2,6 +2,7 @@
 layout: page
 title: "Anvil Recipes"
 permalink: /1.12.x/crafttweaker/anvil/
+excluded_in_search: true
 ---
 
 # Anvil Recipes

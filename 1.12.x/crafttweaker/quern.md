@@ -2,6 +2,7 @@
 layout: page
 title: "Quern Recipes"
 permalink: /1.12.x/crafttweaker/quern/
+excluded_in_search: true
 ---
 
 # Quern Recipes

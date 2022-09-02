@@ -2,6 +2,7 @@
 layout: page
 title: "Temperatures"
 permalink: /1.12.x/temperatures/
+excluded_in_search: true
 ---
 
 # Temperatures

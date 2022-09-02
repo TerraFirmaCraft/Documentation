@@ -2,6 +2,7 @@
 layout: page
 title: "Metals"
 permalink: /1.12.x/metals/
+excluded_in_search: true
 ---
 
 # Metals

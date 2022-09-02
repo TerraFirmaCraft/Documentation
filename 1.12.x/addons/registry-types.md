@@ -2,6 +2,7 @@
 layout: page
 title: "Pre-Block Registry Types"
 permalink: /1.12.x/addons/registry-types/
+excluded_in_search: true
 ---
 
 # Pre-Block Registry Types

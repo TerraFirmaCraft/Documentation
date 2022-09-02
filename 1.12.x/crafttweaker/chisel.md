@@ -2,6 +2,7 @@
 layout: page
 title: "Chisel Recipes"
 permalink: /1.12.x/crafttweaker/chisel/
+excluded_in_search: true
 ---
 
 # Chisel Recipes

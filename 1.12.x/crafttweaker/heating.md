@@ -2,6 +2,7 @@
 layout: page
 title: "Heating Recipes"
 permalink: /1.12.x/crafttweaker/heating/
+excluded_in_search: true
 ---
 
 # Heating Recipes

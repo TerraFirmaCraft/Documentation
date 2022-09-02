@@ -4,10 +4,16 @@
     - title: "1.18.x"
       url: "1.18.x/"
       children:
-        - title: "World Generation"
-          url: "1.18.x/worldgen/"
         - title: "Data"
           url: "1.18.x/data/"
+        - title: "Crafting Recipes"
+          url: "1.18.x/data/crafting/"
+        - title: "TFC Recipes"
+          url: "1.18.x/data/recipes/"
+        - title: "Custom Data"
+          url: "1.18.x/data/custom/"
+        - title: "World Generation"
+          url: "1.18.x/worldgen/"
     - title: "1.12.x"
       url: "1.12.x/"
       children:

@@ -2,6 +2,7 @@
 layout: page
 title: "Loom"
 permalink: /1.12.x/crafttweaker/loom/
+excluded_in_search: true
 ---
 
 # Loom Recipes

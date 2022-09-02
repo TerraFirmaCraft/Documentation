@@ -2,6 +2,7 @@
 layout: page
 title: "Item Capabilities"
 permalink: /1.12.x/crafttweaker/items/
+excluded_in_search: true
 ---
 
 # Item Capabilities

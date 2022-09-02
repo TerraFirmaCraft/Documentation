@@ -2,6 +2,7 @@
 layout: page
 title: "Barrel Recipes"
 permalink: /1.12.x/crafttweaker/barrel/
+excluded_in_search: true
 ---
 
 # Barrel Recipes
