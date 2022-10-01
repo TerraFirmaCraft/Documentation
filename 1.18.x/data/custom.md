@@ -212,7 +212,7 @@ A fuel defines something that burns, and can be used in a fire pit, forge, or ot
 An item heat definition specifies if an item can be heated, and also properties of the heated item. It is a file located under the subfolder `item_heats`. It has the following properties:
 
 - `ingredient`: An [Ingredient](../ingredients/) to which this item heat definition applies to.
-- `heat_capacity`: A number which specifies how fast this item heats up relative to others.
+- `heat_capacity`: A number which specifies how fast this item heats up relative to others. This is measured in Energy / °C, meaning higher values indicate it takes more energy (time) to heat up.
 - `forging_temperature`: An optional number which specifies the temperature at which this item can be worked, in degrees Celsius. If omitted, this item will not require heat to work.
 - `welding_temperature`: An optional number which specifies the temperature at which this item can be worked, in degrees Celsius. If omitted, this item will not require heat to weld.
 
@@ -224,7 +224,7 @@ An item heat definition specifies if an item can be heated, and also properties 
     "ingredient": {
         "tag": "forge:ingots/bismuth_bronze"
     },
-    "heat_capacity": 0.35,
+    "heat_capacity": 2.857,
     "forging_temperature": 591.0,
     "welding_temperature": 788.0
 }
@@ -295,7 +295,7 @@ A metal specifies a new metal to be used by TFC. A metal is required in order to
 - `tier`: An optional integer, of the tier of the metal. Defaults to `0`.
 - `fluid`: The registry name of a fluid which corresponds to this metal.
 - `melt_temperature`: A number. The melting temperature of the fluid of this metal.
-- `heat_capacity`:  A number which specifies how fast this metal fluid heats up relative to others.
+- `specific_heat_capacity`:  A number which specifies how fast this metal fluid heats up relative to others. This is measured in Energy / (mB x °C), meaning it's scaled relative to a quantity of mB, and that higher values will cause it to require more energy (time) to heat up.
 - `ingots`: An [Ingredient](../ingredients/) which defines ingot items that are of this metal. This is used in order to allow other mod ingots to be placed in ingot piles.
 - `sheets`: An [Ingredient](../ingredients/) which defines sheet items that are of this metal. This is used in order to allow other mod sheets to be placed in sheet piles.
 
@@ -313,7 +313,7 @@ Each metal references a hardcoded texture location, by the name `tfc:block/metal
     "tier": 2,
     "fluid": "tfc:metal/bismuth_bronze",
     "melt_temperature": 985,
-    "heat_capacity": 0.35,
+    "heat_capacity": 0.00857,
     "ingots": {
         "tag": "forge:ingots/bismuth_bronze"
     },
