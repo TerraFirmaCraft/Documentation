@@ -65,7 +65,7 @@ Tag Id | Function
 ---|---
 `tfc:mixable` | Fluids that will mix together if they come in contact in the world.
 `tfc:hydrating` | Fluids that hydrate farmland, berry bushes, and other growing things
-`tfc:scribing_ink` } Fluids that can be used in the scribing table.
+`tfc:scribing_ink` | Fluids that can be used in the scribing table.
 `tfc:usable_in_pot` | Fluids that can be in a firepit's pot
 `tfc:usable_in_jug` | Fluids that can be in a jug
 `tfc:usable_in_wooden_bucket` | Fluids that can be in a wooden bucket.
