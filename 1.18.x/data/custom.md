@@ -234,7 +234,24 @@ An item heat definition specifies if an item can be heated, and also properties 
 
 ## Item Sizes
 
-An item size definition specifies the size and weight of items. Size affects what containers the item can fit in. Weight affects the stack size of the item (and TFC will override the stack size where possible). An Item Size Definition is a file located in under the subfolder `item_sizes`. It has the following properties:
+An item size definition specifies the size and weight of items. Size affects what containers the item can fit in:
+
+- Small vessels can hold items that are `Small` and lower.
+- Large vessels can hold items that are `Normal` and lower.
+- Chests can hold items that are `Large` and lower.
+- Pit Kilns can hold four items that are `Large` and lower, or one item which is `Very Large` or `Huge`
+
+Weight affects the stack size of the item (and TFC will override the stack size where possible):
+
+- `Very Light` items will stack to 64.
+- `Light` items will stack to 32.
+- `Medium` items will stack to 16.
+- `Heavy` items will stack to 4.
+- `Very Heavy` items will stack to 1.
+
+Finally, items that are both `Huge` size and `Very Heavy` weight will count towards the player being **Overburdened**. This includes Anvils, Sealed Barrels, and Sealed Large Vessels in TFC. 
+
+ An Item Size Definition is a file located in under the subfolder `item_sizes`. It has the following properties:
 
 - `ingredient`: An [Ingredient](../ingredients/) to which this item size definition applies to.
 - `size`: An optional string, which must be one of the following sizes: `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, or `huge`. Defaults to `normal`.
@@ -244,10 +261,10 @@ Note that TFC will attempt to apply defaults for all items that do not have item
 
 1. If the `Item` or `Block` specifies a custom item size implementation.
 2. If a item size definition is found matching the item.
-3. If the item is a `TieredItem`, it will be Large and Medium.
-4. If the item is an `ArmorItem`, it will be Large and Very Heavy.
-5. If the item is a `BlockItem`, it will be Small and Light.
-6. All other items will be Very Small and Very Light.
+3. If the item is a tool (`instanceof TieredItem`), it will be `Large` and `Medium`.
+4. If the item is a piece of armor (`instanceof ArmorItem`), it will be `Large` and `Very Heavy`.
+5. If the item is a block (`instanceof BlockItem`), it will be `Small` and `Light`.
+6. All other items will be `Very Small` and `Very Light`.
 
 #### Example
 
