@@ -6,7 +6,7 @@ permalink: /1.18.x/
 
 # 1.18.x
 
-This is for the **alpha** version of TFC v2.x, currently targeting Minecraft 1.18.x. Note, due to this being alpha, everything here is subject to change.
+This is the documentation for the **2.x.x** version of TFC, currently for **Minecraft 1.18.2**.
 
 ### [World Generation](worldgen/)
 

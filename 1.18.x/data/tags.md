@@ -73,6 +73,8 @@ Tag Id | Function
 `tfc:usable_in_blue_steel_bucket` | Fluids that can be in a blue steel bucket.
 `tfc:usable_in_barrel` | Fluids that can be in a barrel.
 `tfc:usable_in_sluice` | Fluids that can flow through a sluice.
+`tfc:usable_in_ingot_mold` | Fluids that can be placed in a ingot mold. (In TFC, all molten metals)
+`tfc:usable_in_tool_head_mold` | Fluids that can be placed in a tool head mold. (In TFC, only tool metals)
 
 <hr>
 
