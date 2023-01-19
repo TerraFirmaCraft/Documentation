@@ -13,8 +13,8 @@ TFC defines the following custom data types:
 <!--linky_begin_sort_alphabetical-->
 
 - [Climate Ranges](#climate-ranges)
+- [Damage Resistances](#damage-resistances)
 - [Drinkables](#drinkables)
-- [Entity Damage Resistances](#entity-damage-resistances)
 - [Fauna](#fauna)
 - [Fertilizers](#fertilizers)
 - [Food Items](#food-items)
@@ -57,6 +57,42 @@ A climate range has the following properties:
 }
 ```
 
+<hr>
+
+## Damage Resistances
+
+Damage Resistances specify extra resistance to certain damage types. They can be applied to either items (which will apply when worn as armor), or to entities (i.e. mobs).
+
+All Damage Resistances have the following properties, each of which specifies either a resistance (positive), or a weakness (negative) to a specific damage type:
+
+- `piercing`: An optional integer (Default: `0`).
+- `slashing`: An optional integer (Default: `0`).
+- `crushing`: An optional integer (Default: `0`).
+
+Resistance is calculated as a multiplicative factor to the damage dealt. The formula for damage dealt is `damage = base_damage * exp(-0.01 * <sum of all resistance and weaknesses>)`. This means that resistances are additive (i.e. two `+10`s are the same as a single `+20`), and cancel out (a `+10` resistance and `-10` weakness cancel each other out), and have diminishing returns the more resistance you accumulate.
+
+For **entities**, damage resistances are found under the subfolder `entity_damage_resistances`, and must have an additional property:
+
+- `entity`: An Entity Tag, specifying what entities this resistance applies to.
+
+For **armor items**, damage resistances are found under the subfolder `item_damage_resistances`, and must have an additional property:
+
+- `ingredient: An [Ingredient](../ingredients/), specifying what items this resistance applies to.
+
+#### Examples
+
+```jsonc
+// Reference: data/tfc/tfc/entity_damage_resistances/skeletons.json
+{
+  "entity": "tfc:skeletons",
+  "piercing": 1000000000, // large number to cause very high resistance
+  "slashing": 0,
+  "crushing": -50 // negative number to cause weakness
+}
+```
+
+<hr>
+
 ## Drinkables
 
 A drinkable defines that a fluid is directly drinkable. Drinkable fluids can be drank either from an empty hand while right clicking on a source block, or from a container such as the ceramic vessel which allows drinking. The drinkable also defines various effects that the fluid can have on the player when drank. It is located under the subfolder `drinkables`. 
@@ -89,29 +125,6 @@ A drinkable has the following properties:
 ```
 
 <hr>
-
-## Entity Damage Resistances
-
-Entity Damage Resistances specify extra resistance certain mobs have to certain damage types.
-
-Entity Damage Resistances have the following properties:
-
-- `entity`: An [Entity Type Tag](../tags/#entity-tags), specifying entity doing the resisting.
-- `piercing`: An optional integer, the entity's resistance to piercing damage
-- `slashing`: An optional integer, the entity's resistance to slashing damage
-- `crushing`: An optional integer, the entity's resistance to crushing damage
-
-#### Example
-
-```jsonc
-// Reference: data/tfc/tfc/entity_damage_resistances/skeletons
-{
-  "entity": "tfc:skeletons",
-  "piercing": 1000000000, // large number to cause very high resistance
-  "slashing": 0,
-  "crushing": -50 // negative number to cause weakness
-}
-```
 
 ## Fauna
 

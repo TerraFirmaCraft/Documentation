@@ -54,6 +54,7 @@ These are custom data types that are loaded by TFC.
 
 <!--linky_begin_sort_alphabetical-->
 
+- [Damage Resistances](custom/#damage-resistances)
 - [Drinkables](custom/#drinkables)
 - [Fertilizers](custom/#fertilizers)
 - [Food Items](custom/#food-items)
