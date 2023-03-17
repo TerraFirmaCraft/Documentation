@@ -608,3 +608,5 @@ Scraping recipes are used when any scrapable item - defined as having the `tfc:s
 - `type`: `tfc:scraping`
 - `ingredient`: An [Ingredient](../ingredients/). This is the input for the recipe.
 - `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.
+- `input_texture`: The identifier of the texture displayed on the block for the unfinished item. Must be an existing item/block texture or stitched to the atlas.
+- `output_texture`: The identifier of the texture displayed on the block for the finished item. Must be an existing item/block texture or stitched to the atlas.
