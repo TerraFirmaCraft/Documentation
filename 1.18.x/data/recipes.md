@@ -437,7 +437,9 @@ A collapse recipe has the following properties:
 
 ## Heating
 
-A heating recipe is used by any device which heats items, such as a firepit, charcoal forge, small vessel, bloomery, or blast furnace. They define what an item transforms into once heated: either converting into another item (such as cooking food), or melting into a liquid (such as melting ores). It has the following properties:
+A heating recipe is used by any device which heats items, such as a firepit, charcoal forge, small vessel, bloomery, or blast furnace. They define what an item transforms into once heated: either converting into another item (such as cooking food), or melting into a liquid (such as melting ores). Note that this **does not make the item heatable**. Any item used in a heating recipe also needs a [Item Heat](../custom/#item-heats) added for it.
+
+A heating recipe has the following properties:
 
 - `type`: `tfc:heating`
 - `ingredient`: An [Ingredient](../ingredients/). This defines what items the heating recipe applies to.
