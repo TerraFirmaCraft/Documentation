@@ -44,7 +44,7 @@ This represents a predicate on blocks in the world. It can be any of the followi
 A block state represents an output of a recipe in world. It must be a string which encodes a block. It must contain the registry name of the block, optionally followed by properties with key value pairs separated by `=`, within square brackets. For example:
 
 - `minecraft:dirt` : Just specifying a block name.
-- `minecraft:grass[snowy=true]` : Using the `snowy=true` property.
+- `minecraft:grass_block[snowy=true]` : Using the `snowy=true` property.
 - `minecraft:oak_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]` : Using multiple properties.
 
 <hr>

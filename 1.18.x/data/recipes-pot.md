@@ -14,43 +14,59 @@ TFC adds two types of pot recipe:
 
 <!--linky_begin_sort_alphabetical-->
 
-- [Fluid Pot](#fluid-pot)
+- [Simple Pot](#simple-pot)
 - [Soup Pot](#soup-pot)
 
 <!--linky_end_sort_alphabetical-->
 
 <hr>
 
-## Fluid Pot
+## Simple Pot
 
 Fluid pot recipes produce an output fluid directly in the pot. It has the following properties:
 
-- `type`: `tfc:fluid_pot`
+- `type`: `tfc:pot`
 - `ingredients`: An array of [Ingredients](../ingredients/) that the recipe consumes. Should not be more than five, otherwise the recipe will be impossible.
 - `fluid_ingredient`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients) that the recipe requires.
 - `duration`: An integer. The number of ticks that the pot must boil for.
 - `temperature`: An number. The minimum temperature in degrees Celsius that the pot must be above to start "boiling".
 - `fluid_output`: A [Fluid Stack](../common-types/#fluid-stack) that the pot produces upon completion.
+- `item_output`: An array of up to 5 [Item Stacks](../common-types/#item-stack) indicating what items should be left in the pot
 
 #### Example
 
 ```jsonc
-// Reference: data/tfc/recipes/pot/black_dye.json
+// Reference: data/tfc/recipes/pot/cooked_rice_2.json
 {
-    "type": "tfc:pot_fluid",
-    "ingredients": [{
-        "item": "minecraft:black_dye"
-    }],
-    "fluid_ingredient": {
-        "ingredient": "minecraft:water",
-        "amount": 1000
+  "type": "tfc:pot",
+  "ingredients": [
+    {
+      "type": "tfc:not_rotten",
+      "ingredient": {
+        "item": "tfc:food/rice_grain"
+      }
     },
-    "duration": 2000,
-    "temperature": 600,
-    "fluid_output": {
-        "fluid": "tfc:black_dye",
-        "amount": 1000
+    {
+      "type": "tfc:not_rotten",
+      "ingredient": {
+        "item": "tfc:food/rice_grain"
+      }
     }
+  ],
+  "fluid_ingredient": {
+    "ingredient": "minecraft:water",
+    "amount": 100
+  },
+  "duration": 1000,
+  "temperature": 300,
+  "item_output": [
+    {
+      "item": "tfc:food/cooked_rice"
+    },
+    {
+      "item": "tfc:food/cooked_rice"
+    }
+  ]
 }
 ```
 
