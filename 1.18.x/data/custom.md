@@ -432,7 +432,7 @@ Models defined here *must* be added to the Forge special model registry. This ca
 - TFC already registering the model
 - Pack makers adding models to the client config (`tfc-client.toml`) option `additionalSpecialModels` to have them registered automatically, but this option is not preferred.
 
-For packmakers using the config option, the model file should be at `domain:models/my/favorite/folder.json` where it implicitly has the name `domain:my/favorite/folder` in the eyes of the game. The implicit name is what should be specified in the config file.
+For packmakers using the config option, the model file should be at `domain:assets/models/my/favorite/folder.json` where it implicitly has the name `domain:my/favorite/folder` in the eyes of the game. The implicit name is what should be specified in the config file.
 
 ### Example
 

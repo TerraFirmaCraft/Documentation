@@ -46,8 +46,6 @@ Tag Id | Function
 `tfc:needs_black_steel_tool` | Blocks that need a black steel tool to mine.
 `tfc:needs_colored_steel_tool` | Blocks that need a red or blue steel tool to mine.
 `tfc:prospectable` | Blocks which can be found with the prospectors pick. When found, they will display a message with the translation key `<block translation key>.prospected`.
-`tfc:can_be_panned` | Blocks that can be picked up with a pan. Note that this does not necessarily mean that the anything will be dropped upon using the pan.
-`tfc:prospectable` | Blocks that can be found with a prospector`s pick
 `tfc:converts_to_humus` | Blocks that, when covered in snow and melted in the spring, get replaced with a humus block.
 `tfc:wild_crop_grows_on` | Blocks that wild crops can be placed or found on
 `tfc:farmland` | Farmland blocks. Used in some checks for block placement.
