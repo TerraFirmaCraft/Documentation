@@ -31,7 +31,7 @@ Fluid pot recipes produce an output fluid directly in the pot. It has the follow
 - `duration`: An integer. The number of ticks that the pot must boil for.
 - `temperature`: An number. The minimum temperature in degrees Celsius that the pot must be above to start "boiling".
 - `fluid_output`: A [Fluid Stack](../common-types/#fluid-stack) that the pot produces upon completion.
-- `item_output`: An array of up to 5 [Item Stacks](../common-types/#item-stack) indicating what items should be left in the pot
+- `item_output`: An array of up to 5 [Item Stacks](../common-types/#item-stacks) indicating what items should be left in the pot
 
 #### Example
 

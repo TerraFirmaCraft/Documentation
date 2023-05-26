@@ -70,7 +70,7 @@ This ingredient is the same as [Has Trait](#has-trait) but is inverted. It tests
 
 - `type`: `tfc:lacks_trait`
 - `trait`: String. The registry name of a [Food Trait](../common-types/#food-traits) which must be present.
-- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** items with the provided trait.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** items without the provided trait.
 
 #### Example
 

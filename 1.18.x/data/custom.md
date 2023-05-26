@@ -23,9 +23,9 @@ TFC defines the following custom data types:
 - [Item Sizes](#item-sizes)
 - [Lamp Fuels](#lamp-fuels)
 - [Metals](#metals)
-- [Supports](#supports)
-- [Sluicing](#sluicing)
 - [Panning](#panning)
+- [Sluicing](#sluicing)
+- [Supports](#supports)
 
 <!--linky_end_sort_alphabetical-->
 
