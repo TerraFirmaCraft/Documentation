@@ -44,7 +44,7 @@ This modifier takes as input a fishing rod, and searches elsewhere in the crafti
 
 This specifies that the provider should add a specific heat value. Note that adding a heat value where none was previously specified is the same as directly setting the heat. It has the following fields:
 
-- `type`: `tfc:add_trait`
+- `type`: `tfc:add_heat`
 - `temperature`: Integer. An amount in degrees Celsius to be added.
 
 <hr>
