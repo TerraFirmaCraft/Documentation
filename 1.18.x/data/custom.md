@@ -184,6 +184,7 @@ A fertilizer defines an item which can be used on farmland or crops to increase 
 A food item definition defines a food, and applies TFC style stats to it including decay, hunger, water, and nutrition. It is a file located under the subfolder `food_items`. It has the following properties:
 
 - `ingredient`: An [Ingredient](../ingredients/) to which this food item definition applies to.
+- `type`: An optional string, either `dynamic` or `dynamic_bowl`. If this parameter is specified, none of the parameters below should be used, as the food values are specified via code.
 - `hunger`: An integer (Default `4`). Defines how much hunger this food restores. The player's full hunger bar is equal to `20`.
 - `saturation`: A number (Default `0.0`). Defines how much saturation this food restores. Measured in the same units as hunger.
 - `water`: A number (Default `0.0`). Defines how much water this food restores. The player's full water bar is equal to `100`.
@@ -195,6 +196,22 @@ A food item definition defines a food, and applies TFC style stats to it includi
 - `dairy`: A number (Default `0.0`). Defines how much <span style="color:#AA00AA">**Dairy**</span> nutrient this food adds. 
 
 **Note:** Typical values for nutrients are 0-2 for small items (fruits, vegetables), and 1-4 for larger items (breads, meats), and higher for meals. Note that nutrients should also scale with hunger: A 2 nutrient/4 hunger food is the same (nutritionally) as a 4 nutrient/8 hunger food.
+
+**Dynamic Foods**
+
+Dynamic food items are used most typically for *meals*, foods who get their nutrition values from their constituent ingredients. For sandwiches (and datapack-added meals [created by crafting](../item-stack-modifiers#meal)) the `type` should be `dynamic`. For salads and soups, `dynamic_bowl` is required. Note that dynamic foods have *no* nutrition by default, so they require either special recipes or devices to work! This is doubly true for dynamic bowl foods. They will not work unless they are made via the in-game salad or soup methods!
+
+An example dynamic food json:
+```jsonc
+// Reference: data/tfc/tfc/food_items/barley_sandwich
+{
+  "ingredient": {
+    "item": "tfc:food/barley_bread_sandwich"
+  },
+  "type": "dynamic"
+}
+```
+
 
 <hr>
 
