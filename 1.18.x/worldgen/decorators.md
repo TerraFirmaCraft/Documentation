@@ -131,7 +131,7 @@ Note that in 1.18, structure generation via json was half-baked and experimental
   ],
   "placement": {
     "type": "tfc:chunk_data",
-	  "random_name": "mineshaft",
+    "random_name": "mineshaft",
     "climate": {
       "max_temperature": 0,
       "min_rainfall": 100

@@ -175,7 +175,7 @@ Places a large boulder, shaped like a deformed sphere.
 - Config:
   - `states`: A [Key Value List](../common-types/#key-value-list) with the following fields:
     - `rock` A [Lenient Blockstate](../common-types/#lenient-blockstate) corresponding to the 'raw' rock block of a rock type.
-	- `blocks` An array of [Lenient Blockstates](../common-types/#lenient-blockstate) that will be chosen from randomly when placing the boulder.
+  - `blocks` An array of [Lenient Blockstates](../common-types/#lenient-blockstate) that will be chosen from randomly when placing the boulder.
 
 ### Loose Rock
 Places a loose rock on the ground based on the rock type at the position.
@@ -190,7 +190,7 @@ Places a disc of blocks. Typically used for soil replacements like clay, but can
 - Config:
   - `states`: A [Key Value List](../common-types/#key-value-list) with the following fields:
     - `replace`: A [Lenient Blockstate](../common-types/#lenient-blockstate) to be replaced
-	- `with`: A [Lenient Blockstate](../common-types/#lenient-blockstate) that gets set in that block's place.
+  - `with`: A [Lenient Blockstate](../common-types/#lenient-blockstate) that gets set in that block's place.
   - `min_radius`: A positive integer specifying the minimum horizontal radius of the disc.
   - `max_radius`: A positive integer specifying the maximum horizontal radius of the disc.
   - `height`: An integer [0, 256] specifying how tall the disc should be.

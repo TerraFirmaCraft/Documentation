@@ -277,18 +277,18 @@ Blast furnace recipes have the following properties:
 ```jsonc
 // Reference: data/tfc/recipes/blast_furnace/pig_iron
 {
-	"type": "tfc:blast_furnace",
-	"fluid": {
-		"ingredient": "tfc:metal/cast_iron",
-		"amount": 1
-	},
-	"result": {
-		"fluid": "tfc:metal/pig_iron",
-		"amount": 1
-	},
-	"catalyst": {
-		"tag": "tfc:flux"
-	}
+    "type": "tfc:blast_furnace",
+    "fluid": {
+        "ingredient": "tfc:metal/cast_iron",
+        "amount": 1
+    },
+    "result": {
+        "fluid": "tfc:metal/pig_iron",
+        "amount": 1
+    },
+    "catalyst": {
+        "tag": "tfc:flux"
+    }
 }
 ```
 
@@ -390,13 +390,13 @@ Chisel recipes have the following properties:
 ```jsonc
 // Reference: data/tfc/recipes/chisel/slab/acacia_wood_slab
 {
-	"type": "tfc:chisel",
-	"ingredient": "tfc:wood/planks/acacia",
-	"result": "tfc:wood/planks/acacia_slab",
-	"mode": "slab",
-	"extra_drop": {
-		"item": "tfc:wood/planks/acacia_slab"
-	}
+    "type": "tfc:chisel",
+    "ingredient": "tfc:wood/planks/acacia",
+    "result": "tfc:wood/planks/acacia_slab",
+    "mode": "slab",
+    "extra_drop": {
+        "item": "tfc:wood/planks/acacia_slab"
+    }
 }
 ```
 

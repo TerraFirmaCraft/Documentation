@@ -14,7 +14,6 @@ TFC adds the following item stack modifier types:
 
 <!--linky_begin_sort_alphabetical-->
 
-- [Meal](#meal)
 - [Add Bait to Rod](#add-bait-to-rod)
 - [Add Heat](#add-heat)
 - [Add Trait](#add-trait)
@@ -23,60 +22,11 @@ TFC adds the following item stack modifier types:
 - [Copy Heat](#copy-heat)
 - [Copy Input](#copy-input)
 - [Empty Bowl](#empty-bowl)
+- [Meal](#meal)
 - [Remove Trait](#remove-trait)
 - [Reset Food](#reset-food)
 
 <!--linky_end_sort_alphabetical-->
-
-<hr>
-
-## Meal
-
-This modifier combines nutrients from various foods in a crafting grid into a single food result item. The resulting food must be a *dynamic food item*, such as sandwiches. You can read about how dynamic foods work [here](../custom/#food-items). It has the following parameters:
-
-- `type`: `tfc:meal`
-- `food`: A food data object that describes stats that will always be added to the final food item, specifying all the same parameters for a food's nutrients, decay, water, etc. It follows the same specification as specifying a static food in [a food item json](../custom/#food-items), but without the `ingredient` parameter.
-- `portions`: A list of meal portion objects. These objects are checked in order, and the first one to match a food in the crafting grid has its food data added to the result item according to the specification. Note that portions describe how the components of the specified recipe are *used*. They have no bearing on what ingredients are *allowed* in the recipe. A meal portion has the following parameters:
-    - `ingredient`: An optional [Ingredient](../ingredients/). If not included, the portion will match all foods. Typically, a meal portion with no ingredient would be specified last in the array of portions, in order to catch all the remaining foods that haven't been used.
-    - `nutrient_modifier`: An optional float, default `1.0`, that multiplies the nutrition from the food using this portion.
-    - `water_modifier`: An optional float, default `1.0`, that multiplies the water from the food using this portion.
-    - `saturation_modifier`: An optional float, default `1.0`, that multiplies the saturation from the food using this portion.
-
-An example for how to specify a meal modifier is below. Note that the `//` comments in the json are for educational purposes and will cause loading to fail in some json specifications.
-```jsonc
-// Reference: data/tfc/recipes/crafting/oat_sandwich.json
-{
-    "type": "tfc:meal",
-    // this food information is always added to the final sandwich
-    "food": {
-        "hunger": 4,
-        "water": 0.5,
-        "saturation": 1,
-        "decay_modifier": 4.5
-    },
-    "portions": [
-        {
-            // first, we check for sandwich bread
-            // anything that matches the sandwich bread tag will get their values multiplied by 0.5 and added to the sandwich
-            "ingredient": {
-                "tag": "tfc:sandwich_bread"
-            },
-            "nutrient_modifier": 0.5,
-            "saturation_modifier": 0.5,
-            "water_modifier": 0.5
-        },
-        {
-            // no ingredient is specified, so any food will match these
-            // however, the first portion already 'claimed' the sandwiches, so only the remaining ingredients are used.
-            "nutrient_modifier": 0.8,
-            "water_modifier": 0.8,
-            "saturation_modifier": 0.8
-        }
-    ]
-}
-```
-
-**This modifier is only usable in crafting recipes which support item stack providers.**
 
 <hr>
 
@@ -145,6 +95,56 @@ This specifies that the provider should copy the input to the recipe, and ignore
 This specifies that the output item should be the empty bowl of the input. This is supported for soup items, which return the bowl they were created with. It has the following fields:
 
 - `type`: `tfc:empty_bowl`
+
+<hr>
+
+## Meal
+
+This modifier combines nutrients from various foods in a crafting grid into a single food result item. The resulting food must be a *dynamic food item*, such as sandwiches. You can read about how dynamic foods work [here](../custom/#food-items). It has the following parameters:
+
+- `type`: `tfc:meal`
+- `food`: A food data object that describes stats that will always be added to the final food item, specifying all the same parameters for a food's nutrients, decay, water, etc. It follows the same specification as specifying a static food in [a food item json](../custom/#food-items), but without the `ingredient` parameter.
+- `portions`: A list of meal portion objects. These objects are checked in order, and the first one to match a food in the crafting grid has its food data added to the result item according to the specification. Note that portions describe how the components of the specified recipe are *used*. They have no bearing on what ingredients are *allowed* in the recipe. A meal portion has the following parameters:
+    - `ingredient`: An optional [Ingredient](../ingredients/). If not included, the portion will match all foods. Typically, a meal portion with no ingredient would be specified last in the array of portions, in order to catch all the remaining foods that haven't been used.
+    - `nutrient_modifier`: An optional float, default `1.0`, that multiplies the nutrition from the food using this portion.
+    - `water_modifier`: An optional float, default `1.0`, that multiplies the water from the food using this portion.
+    - `saturation_modifier`: An optional float, default `1.0`, that multiplies the saturation from the food using this portion.
+
+An example for how to specify a meal modifier is below. Note that the `//` comments in the json are for educational purposes and will cause loading to fail in some json specifications.
+```jsonc
+// Reference: data/tfc/recipes/crafting/oat_sandwich.json
+{
+    "type": "tfc:meal",
+    // this food information is always added to the final sandwich
+    "food": {
+        "hunger": 4,
+        "water": 0.5,
+        "saturation": 1,
+        "decay_modifier": 4.5
+    },
+    "portions": [
+        {
+            // first, we check for sandwich bread
+            // anything that matches the sandwich bread tag will get their values multiplied by 0.5 and added to the sandwich
+            "ingredient": {
+                "tag": "tfc:sandwich_bread"
+            },
+            "nutrient_modifier": 0.5,
+            "saturation_modifier": 0.5,
+            "water_modifier": 0.5
+        },
+        {
+            // no ingredient is specified, so any food will match these
+            // however, the first portion already 'claimed' the sandwiches, so only the remaining ingredients are used.
+            "nutrient_modifier": 0.8,
+            "water_modifier": 0.8,
+            "saturation_modifier": 0.8
+        }
+    ]
+}
+```
+
+**This modifier is only usable in crafting recipes which support item stack providers.**
 
 <hr>
 

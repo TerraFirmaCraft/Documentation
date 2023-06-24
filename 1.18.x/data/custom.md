@@ -199,7 +199,7 @@ A food item definition defines a food, and applies TFC style stats to it includi
 
 **Dynamic Foods**
 
-Dynamic food items are used most typically for *meals*, foods who get their nutrition values from their constituent ingredients. For sandwiches (and datapack-added meals [created by crafting](../item-stack-modifiers#meal)) the `type` should be `dynamic`. For salads and soups, `dynamic_bowl` is required. Note that dynamic foods have *no* nutrition by default, so they require either special recipes or devices to work! This is doubly true for dynamic bowl foods. They will not work unless they are made via the in-game salad or soup methods!
+Dynamic food items are used most typically for *meals*, foods who get their nutrition values from their constituent ingredients. For sandwiches (and datapack-added meals [created by crafting](../item-stack-modifiers/#meal)) the `type` should be `dynamic`. For salads and soups, `dynamic_bowl` is required. Note that dynamic foods have *no* nutrition by default, so they require either special recipes or devices to work! This is doubly true for dynamic bowl foods. They will not work unless they are made via the in-game salad or soup methods!
 
 An example dynamic food json:
 ```jsonc

@@ -18,6 +18,9 @@ help :
 deploy: test
 	bundle exec jekyll serve
 
+.PHONY: fix
+fix: dos2unix tab2space test
+
 .PHONY: test
 test:
 	$(LINKY) validate
@@ -26,6 +29,14 @@ test:
 .PHONY: dos2unix
 dos2unix:
 	@dos2unix $(MD_SRC)
+
+.PHONY: tab2space
+tab2space:
+	-@for f in $(MD_SRC) ; do \
+		expand -t 4 $$f > $$f.new ; \
+		rm $$f ; \
+		mv $$f.new $$f ; \
+	done
 
 .PHONY: setup-wsl
 setup-wsl:

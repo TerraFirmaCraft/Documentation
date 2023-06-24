@@ -23,11 +23,11 @@ This feature is added to all biomes via being present in the [Placed Feature Tag
   - `entries`: A [Configured Feature Holder Set](../../common-types/#holder-set). Each entry **must** be a [Forest Entry](#forest-entry). In TFC, this references the 
   - `type`: The map with [Forest Types](../../common-types/#forest-type) as keys and the following config as values:
     - `tree_count`: An integer provider specifying how many trees should spawn.
-	- `groundcover_count`: An integer provider specifying how much groundcover should spawn.
-	- `per_chunk_chance`: An optional float, by default 1, of the chance per chunk of this forest type spawning.
-	- `bush_count`: An optional integer provider specifying the amount of bushes that will try to spawn.
-	- `has_spoiler_old_growth`: A boolean specifying if a random old growth tree will occasionally spawn amongst the existing trees.
-	- `allows_old_growth`: A boolean specifying if old growth trees will spawn in this forest type.
+    - `groundcover_count`: An integer provider specifying how much groundcover should spawn.
+    - `per_chunk_chance`: An optional float, by default 1, of the chance per chunk of this forest type spawning.
+    - `bush_count`: An optional integer provider specifying the amount of bushes that will try to spawn.
+    - `has_spoiler_old_growth`: A boolean specifying if a random old growth tree will occasionally spawn amongst the existing trees.
+    - `allows_old_growth`: A boolean specifying if old growth trees will spawn in this forest type.
   - `use_weirdness`: A boolean specifying if forest weirdness will be used to gradually alternate between what forest entry is placed, causing more varied but less climate-accurate forests.
 
 <hr>
@@ -86,8 +86,8 @@ This feature uses multiple layers of structures to create a stacked appearance. 
 - Config:
   - `layers`: A list of **layers**. Each layer must be an object with the following fields:
     - `templates`: A list of [Structures](../../common-types/#structure).
-	- `min_count`: The minimum number of structures from this layer to use.
-	- `max_count`: The maximum number of structures from this layer to use.
+    - `min_count`: The minimum number of structures from this layer to use.
+    - `max_count`: The maximum number of structures from this layer to use.
   - `trunk`: A [Trunk](#trunk) for the trunk below the structure.
   - `placement`: A [Tree Placement](#tree-placement)
 
