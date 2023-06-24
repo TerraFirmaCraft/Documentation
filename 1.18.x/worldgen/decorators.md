@@ -107,3 +107,41 @@ This decorator places things near, or at, volcanoes.
 - Config:
   - `center`: A boolean. If `true`, this decorator will ignore the `distance` argument and place the feature at the exact center of any volcanoes.
   - `distance`: A float in the range `[0, 1]`, representing the distance from the center of a volcano that this position must be in order to generate. 1 is the maximum radius of the volcano.
+
+### Structure Chunk Data Placement
+
+This decorator should not be used with features, but with structures. This provides a means to restrict TFC structures by climate. Note that structures added with this placement do not show up with the `/locate` command. It has the following parameters:
+
+- `type`: `tfc:chunk_data`
+- `climate`: A [Climate Decorator](#climate) object
+- `random_name` A string random name for seeding the random, eg. `my_structure`
+- `placement`: The placement object to delegate to.
+  - `type`: This is either `minecraft:random_spread` or `minecraft:concentric_rings`. Each has a set of its own parameters that go on the same level as `type`.
+
+Note that in 1.18, structure generation via json was half-baked and experimental. Some things work weirdly. It's worth looking at examples from other mods for help. An example structure set is below:
+
+```jsonc
+{
+  "structures": [
+    {
+      // this is a configured structure feature
+      "structure": "tfc:mineshaft",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "tfc:chunk_data",
+	  "random_name": "mineshaft",
+    "climate": {
+      "max_temperature": 0,
+      "min_rainfall": 100
+    },
+    "placement": {
+      "type": "minecraft:random_spread",
+      "salt": 1182022,
+      "spacing": 8,
+      "separation": 4
+    }
+  }
+}
+```

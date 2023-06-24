@@ -36,7 +36,7 @@ This modifier combines nutrients from various foods in a crafting grid into a si
 
 - `type`: `tfc:meal`
 - `food`: A food data object that describes stats that will always be added to the final food item, specifying all the same parameters for a food's nutrients, decay, water, etc. It follows the same specification as specifying a static food in [a food item json](../custom/#food-items), but without the `ingredient` parameter.
-- `portions`: A list of meal portion objects. These objects are checked in order, and the first one to match a food in the crafting grid has its food data added to the result item according to the specification. A meal portion has the following parameters:
+- `portions`: A list of meal portion objects. These objects are checked in order, and the first one to match a food in the crafting grid has its food data added to the result item according to the specification. Note that portions describe how the components of the specified recipe are *used*. They have no bearing on what ingredients are *allowed* in the recipe. A meal portion has the following parameters:
     - `ingredient`: An optional [Ingredient](../ingredients/). If not included, the portion will match all foods. Typically, a meal portion with no ingredient would be specified last in the array of portions, in order to catch all the remaining foods that haven't been used.
     - `nutrient_modifier`: An optional float, default `1.0`, that multiplies the nutrition from the food using this portion.
     - `water_modifier`: An optional float, default `1.0`, that multiplies the water from the food using this portion.
