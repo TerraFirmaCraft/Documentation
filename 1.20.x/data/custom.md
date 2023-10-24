@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Custom Data"
-permalink: /1.18.x/data/custom/
+permalink: /1.20.x/data/custom/
 ---
 
 # Custom Data
@@ -21,6 +21,7 @@ TFC defines the following custom data types:
 - [Fuels](#fuels)
 - [Item Heats](#item-heats)
 - [Item Sizes](#item-sizes)
+- [Knapping Types](#knapping-types)
 - [Lamp Fuels](#lamp-fuels)
 - [Metals](#metals)
 - [Panning](#panning)
@@ -199,7 +200,7 @@ A food item definition defines a food, and applies TFC style stats to it includi
 
 **Dynamic Foods**
 
-Dynamic food items are used most typically for *meals*, foods who get their nutrition values from their constituent ingredients. For sandwiches (and datapack-added meals [created by crafting](../item-stack-modifiers/#meal)) the `type` should be `dynamic`. For salads and soups, `dynamic_bowl` is required. Note that dynamic foods have *no* nutrition by default, so they require either special recipes or devices to work! This is doubly true for dynamic bowl foods. They will not work unless they are made via the in-game salad or soup methods!
+Dynamic food items are used most typically for *meals*, foods who get their nutrition values from their constituent ingredients. For sandwiches (and datapack-added meals [created by crafting](../item-stack-modifiers#meal)) the `type` should be `dynamic`. For salads and soups, `dynamic_bowl` is required. Note that dynamic foods have *no* nutrition by default, so they require either special recipes or devices to work! This is doubly true for dynamic bowl foods. They will not work unless they are made via the in-game salad or soup methods!
 
 An example dynamic food json:
 ```jsonc
@@ -310,6 +311,47 @@ Note that TFC will attempt to apply defaults for all items that do not have item
     "weight": "very_light"
 }
 ```
+
+<hr>
+
+## Knapping Types
+
+A knapping type specifies a new thing that can be knapped, and how it is knapped. Knapping types are specified as part of [Knapping Recipes](../recipes/#knapping)
+
+Button textures for knapping screens are specified based on the registry name of the item. For example, `minecraft:leather` points to `tfc:textures/gui/knapping/leather`. Note that it is only the path of the item that gets used, and that it always points to the `tfc` namespace to avoid mod conflicts. For a disabled texture, add `_disabled` to the path.
+
+It has the following properties:
+
+- `input`: An [Item Stack Ingredient](../common-types/#item-stack-ingredients) for what item has to be knapped. These items typically are tagged (for example, `tfc:leather_knapping` for leathers that can be knapped). The item (or tag) must be added to the `tfc:any_knapping` tag for this to work.
+- `amount_to_consume`: An Integer. The amount of the item that gets used by the recipe.
+- `click_sound`: A registered sound that plays when the knapping occurs.
+- `consume_after_complete`: A boolean. If the `amount_to_consume` of your `input` should be consumed as soon as you click one square or when the item is removed from the result slot.
+- `use_disabled_texture`: A boolean. If true, a clicked slot will show a different texture rather than nothing at all.
+- `spawns_particles`: A boolean. If true, the screen will spawn small 'particles' when clicking the buttons.
+- `jei_icon_item`: An [Item Stack](../common-types/#item-stacks) that is shown in the automatically generated JEI category for this knapping type.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/tfc/knapping_types/rock.json
+{
+    "input": {
+        "ingredient": {
+            "tag": "tfc:rock_knapping"
+        },
+        "count": 2
+    },
+    "amount_to_consume": 1,
+    "click_sound": "tfc:item.knapping.stone",
+    "consume_after_complete": false,
+    "use_disabled_texture": false,
+    "spawns_particles": true,
+    "jei_icon_item": {
+        "item": "tfc:rock/loose/granite"
+    }
+}
+```
+
 
 <hr>
 

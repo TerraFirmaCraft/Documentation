@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Trees and Forests"
-permalink: /1.18.x/worldgen/features/trees/
+permalink: /1.20.x/worldgen/features/trees/
 ---
 
 # Trees and Forests
@@ -23,11 +23,11 @@ This feature is added to all biomes via being present in the [Placed Feature Tag
   - `entries`: A [Configured Feature Holder Set](../../common-types/#holder-set). Each entry **must** be a [Forest Entry](#forest-entry). In TFC, this references the 
   - `type`: The map with [Forest Types](../../common-types/#forest-type) as keys and the following config as values:
     - `tree_count`: An integer provider specifying how many trees should spawn.
-    - `groundcover_count`: An integer provider specifying how much groundcover should spawn.
-    - `per_chunk_chance`: An optional float, by default 1, of the chance per chunk of this forest type spawning.
-    - `bush_count`: An optional integer provider specifying the amount of bushes that will try to spawn.
-    - `has_spoiler_old_growth`: A boolean specifying if a random old growth tree will occasionally spawn amongst the existing trees.
-    - `allows_old_growth`: A boolean specifying if old growth trees will spawn in this forest type.
+	- `groundcover_count`: An integer provider specifying how much groundcover should spawn.
+	- `per_chunk_chance`: An optional float, by default 1, of the chance per chunk of this forest type spawning.
+	- `bush_count`: An optional integer provider specifying the amount of bushes that will try to spawn.
+	- `has_spoiler_old_growth`: A boolean specifying if a random old growth tree will occasionally spawn amongst the existing trees.
+	- `allows_old_growth`: A boolean specifying if old growth trees will spawn in this forest type.
   - `use_weirdness`: A boolean specifying if forest weirdness will be used to gradually alternate between what forest entry is placed, causing more varied but less climate-accurate forests.
 
 <hr>
@@ -45,9 +45,9 @@ This feature is used to describe the spawning conditions of a single tree. They 
   - `bush_log`: An optional [Lenient Blockstate](../../common-types/#lenient-blockstate) specifying the log used for bushes. If omitted, no bushes will spawn.
   - `bush_leaves`: An optional [Lenient Blockstate](../../common-types/#lenient-blockstate) specifying the leaves used for bushes.
   - `groundcover`: An optional [Weighted List](../../common-types/#weighted-list) specifying the blocks that can spawn on the ground around the trees.
-  - `normal_tree`: A [Configured Feature](https://minecraft.wiki/w/Configured_featuree) which will be used to place a normal tree.
-  - `dead_tree`: A [Configured Feature](https://minecraft.wiki/w/Configured_feature) which will be used to place a dead tree.
-  - `old_growth_tree`: An optional [Configured Feature](https://minecraft.wiki/w/Configured_feature) which will be used to place a rare "old growth" tree.
+  - `normal_tree`: A [Configured Feature](https://minecraft.wiki/w/Custom_feature#Configured_Feature) which will be used to place a normal tree.
+  - `dead_tree`: A [Configured Feature](https://minecraft.wiki/w/Custom_feature#Configured_Feature) which will be used to place a dead tree.
+  - `old_growth_tree`: An optional [Configured Feature](https://minecraft.wiki/w/Custom_feature#Configured_Feature) which will be used to place a rare "old growth" tree.
   - `old_growth_chance`: (Default: `6`) An optional integer, representing the chance for an old growth tree to be selected. On average, 1 / `old_growth_chance` of trees will be old growth.
   - `spoiler_old_growth_chance`: (Default: `200`) An optional integer, representing the chance for a old growth tree to spawn in non-old-growth forests. On average, 1 / `spoiler_old_growth_chance` of trees in these areas will be old growth.
   - `fallen_tree_chance`: (Default: `14`) An optional integer, specifying how often fallen trees spawn. On average, 1 / `fallen_tree_chance` chunks will contain a fallen tree.
@@ -86,8 +86,8 @@ This feature uses multiple layers of structures to create a stacked appearance. 
 - Config:
   - `layers`: A list of **layers**. Each layer must be an object with the following fields:
     - `templates`: A list of [Structures](../../common-types/#structure).
-    - `min_count`: The minimum number of structures from this layer to use.
-    - `max_count`: The maximum number of structures from this layer to use.
+	- `min_count`: The minimum number of structures from this layer to use.
+	- `max_count`: The maximum number of structures from this layer to use.
   - `trunk`: A [Trunk](#trunk) for the trunk below the structure.
   - `placement`: A [Tree Placement](#tree-placement)
 

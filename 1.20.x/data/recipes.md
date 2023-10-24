@@ -1,12 +1,12 @@
 ---
 layout: page
 title: "Recipes"
-permalink: /1.18.x/data/recipes/
+permalink: /1.20.x/data/recipes/
 ---
 
 # Recipe Types
 
-Recipes can be configured through [datapacks](https://minecraft.wiki/w/Recipe). TFC adds a number of recipe types for its custom crafting operations, and they can be used to add, remove, or modify existing recipes. A complete reference of all of TFC's defined recipes, organized into folders depending on their type can be found in the [TFC Github](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.18.x/src/main/resources/data/tfc/recipes).
+Recipes can be configured through [datapacks](https://minecraft.wiki/w/Recipe). TFC adds a number of recipe types for its custom crafting operations, and they can be used to add, remove, or modify existing recipes. A complete reference of all of TFC's defined recipes, organized into folders depending on their type can be found in the [TFC Github](https://github.com/TerraFirmaCraft/TerraFirmaCraft/tree/1.20.x/src/main/resources/data/tfc/recipes).
 
 TFC adds the following recipe types:
 
@@ -23,8 +23,9 @@ TFC adds the following recipe types:
 - [Casting](#casting)
 - [Chiseling](#chiseling)
 - [Collapse](#collapse)
+- [Glassworking](#glassworking)
 - [Heating](#heating)
-- [Knapping (Clay, Fire Clay, Leather)](#knapping)
+- [Knapping](#knapping)
 - [Landslide](#landslide)
 - [Loom](#loom)
 - [Pot](../recipes-pot/)
@@ -277,18 +278,18 @@ Blast furnace recipes have the following properties:
 ```jsonc
 // Reference: data/tfc/recipes/blast_furnace/pig_iron
 {
-    "type": "tfc:blast_furnace",
-    "fluid": {
-        "ingredient": "tfc:metal/cast_iron",
-        "amount": 1
-    },
-    "result": {
-        "fluid": "tfc:metal/pig_iron",
-        "amount": 1
-    },
-    "catalyst": {
-        "tag": "tfc:flux"
-    }
+	"type": "tfc:blast_furnace",
+	"fluid": {
+		"ingredient": "tfc:metal/cast_iron",
+		"amount": 1
+	},
+	"result": {
+		"fluid": "tfc:metal/pig_iron",
+		"amount": 1
+	},
+	"catalyst": {
+		"tag": "tfc:flux"
+	}
 }
 ```
 
@@ -390,13 +391,13 @@ Chisel recipes have the following properties:
 ```jsonc
 // Reference: data/tfc/recipes/chisel/slab/acacia_wood_slab
 {
-    "type": "tfc:chisel",
-    "ingredient": "tfc:wood/planks/acacia",
-    "result": "tfc:wood/planks/acacia_slab",
-    "mode": "slab",
-    "extra_drop": {
-        "item": "tfc:wood/planks/acacia_slab"
-    }
+	"type": "tfc:chisel",
+	"ingredient": "tfc:wood/planks/acacia",
+	"result": "tfc:wood/planks/acacia_slab",
+	"mode": "slab",
+	"extra_drop": {
+		"item": "tfc:wood/planks/acacia_slab"
+	}
 }
 ```
 
@@ -430,6 +431,42 @@ A collapse recipe has the following properties:
     "ingredient": "tfc:rock/spike/andesite",
     "copy_input": true,
     // Note that no 'result' field is required, as 'copy_input' is true.
+}
+```
+
+<hr>
+
+## Glassworking
+
+A glassworking recipe is a flexible recipe type that represents a series of *operations* that are performed, most typically on a blowpipe item. When a blowpipe's list of steps on the tooltip matches a recipe, the glass batch is removed from the blowpipe and the result item spawns or is given to the player.
+
+The following operations are possible: `blow`, `roll`, `stretch`, `pinch`, `flatten`, `saw`, `table_pour`, `basin_pour`, `amethyst`, `soda_ash`, `sulfur`, `iron`, `ruby`, `lapis_lazuli`, `pyrite`, `sapphire`, `gold`, `graphite`, `copper`, `nickel`, `tin`, `silver`, `table_pour`, `basin_pour`
+
+A glassworking recipe has the following properties:
+
+- `type`: `tfc:glassworking`
+- `operations`: An array of string identifiers for operations, from the list above.
+- `batch`: An [Ingredient](../ingredients/) representing the required item that must be attached to the blowpipe. The item should have the `tfc:glass_batches` item tag in order to be able to be added to the blowpipe.
+- `result`: An [Item Stack](../common-types/#item-stacks) representing the item result of the recipe.
+
+#### Example
+
+```jsonc
+// Reference: data/tfc/recipes/glassworking/lens.json
+{
+    "type": "tfc:glassworking",
+    "operations": [
+        "blow",
+        "stretch",
+        "roll",
+        "saw"
+    ],
+    "batch": {
+        "item": "tfc:silica_glass_batch"
+    },
+    "result": {
+        "item": "tfc:lens"
+    }
 }
 ```
 
@@ -471,14 +508,14 @@ A heating recipe has the following properties:
 
 ## Knapping
 
-Knapping recipes include clay knapping, fire clay knapping, and leather knapping. They define patterns that can be used in the knapping grid. Note that knapping patterns are not automatically rotated or mirrored, and each desired rotation or mirror of a given pattern must be added explicitly. It has the following properties:
+Knapping recipes include all types of knapping. The properties of the knapping recipe are defined by [Knapping Types](../custom/#knapping-types). They define patterns that can be used in the knapping grid. Note that knapping patterns are not automatically rotated or mirrored, and each desired rotation or mirror of a given pattern must be added explicitly. It has the following properties:
 
-- `type`: `tfc:clay_knapping`, `tfc:fire_clay_knapping`, or `tfc:leather_knapping`
+- `type`: `tfc:knapping`
+- `knapping_type`: An id of a [Knapping Type](../custom/#knapping-types).
 - `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.
+- `ingredient`: An optional [Ingredient] that must match the item clicked. Used to restrict recipes beyond the ingredient in the knapping type, for example how some rock knapping recipes only work for certain rocks. If not provided, there is no restriction beyond that in the knapping type.
 - `pattern`: The knapping pattern. Must be an array of strings representing the knapping grid. It can be up to 5 x 5. Spaces are counted as empty space, any other character is treated as a filled spot.
 - `outside_slot_required`: Boolean. (Default: `true`) For knapping patterns that are smaller than 5 x 5, this defines if the slots outside that grid are required to be filled, or empty.
-
-**Note** For rock knapping, see [Rock Knapping](#rock-knapping)
 
 #### Example
 
@@ -529,14 +566,32 @@ A landslide recipe has the following properties:
 
 ## Loom
 
-Loom recipes are used for producing items with a Loom. It has the following properties:
+Loom recipes are used for producing items with a Loom. Note that loom recipes are unique to their input. This means that you can't have two loom recipes that have the same ingredient. Loom recipes have the following properties:
 
 - `type`: `tfc:loom`
-- `ingredient`: An [Ingredient](../ingredients/). This is the input for the recipe.
-- `input_count`: An integer, which determines how many input items need to be added to produce one product item.
+- `ingredient`: An [Item Stack Ingredient](../common-types/#item-stack-ingredients). This is the input for the recipe. Note that this is an Item Stack Ingredient, which means it specifies the count of items required in the ingredient. It is typical for loom recipes to require more than one item.
 - `result`: An [Item Stack Provider](../common-types/#item-stack-providers). The result produced by this recipe.
 - `steps_required`: An integer, which determines how many steps of the loom's working animation need to be completed to produce one product item.
 - `in_progress_texture`: The texture used in the loom rendering when this recipe is in progress.
+
+```jsonc
+// Reference: data/tfc/recipes/loom/wool_block.json
+{
+    "type": "tfc:loom",
+    "ingredient": {
+       "ingredient": {
+           "item": "tfc:wool_cloth"
+        },
+        "count": 4
+    },
+    "result": {
+        "item": "minecraft:white_wool",
+        "count": 8
+    },
+    "steps_required": 4,
+    "in_progress_texture": "minecraft:block/white_wool"
+}
+```
 
 <hr>
 
@@ -560,43 +615,6 @@ Quern recipes are used for grinding items in the Quern. The handstone slot is sp
     "result": {
         "item": "minecraft:bone_meal",
         "count": 3
-    }
-}
-```
-
-<hr>
-
-## Rock Knapping
-
-Rock knapping recipes can be used when knapping loose rocks. They define patterns that can be used in the knapping grid. Note that knapping patterns are not automatically rotated or mirrored, and each desired rotation or mirror of a given pattern must be added explicitly. It has the following properties:
-
-- `type`: `tfc:rock_knapping`
-- `ingredient`: An [Ingredient](../ingredients/). This defines what loose rock items this recipe applies to.
-- `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.
-- `pattern`: The knapping pattern. Must be an array of strings representing the knapping grid. It can be up to 5 x 5. Spaces are counted as empty space, any other character is treated as a filled spot.
-- `outside_slot_required`: Boolean. (Default: `true`) For knapping patterns that are smaller than 5 x 5, this defines if the slots outside that grid are required to be filled, or empty.
-
-**Note** For other types of knapping, see [Knapping](#knapping)
-
-#### Example
-
-```jsonc
-// Reference: data/tfc/recipes/rock_knapping/axe_head_sedimentary.json
-{
-    "type": "tfc:rock_knapping",
-    "outside_slot_required": false,
-    "pattern": [
-        " X   ",
-        "XXXX ",
-        "XXXXX",
-        "XXXX ",
-        " X   "
-    ],
-    "result": {
-        "item": "tfc:stone/axe_head/sedimentary"
-    },
-    "ingredient": {
-        "tag": "tfc:sedimentary_rock"
     }
 }
 ```

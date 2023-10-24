@@ -1,12 +1,12 @@
 ---
 layout: page
 title: "Decorators"
-permalink: /1.18.x/worldgen/decorators/
+permalink: /1.20.x/worldgen/decorators/
 ---
 
 # Decorators
 
-*[Vanilla Reference for Placement Modifiers / Decorators](https://minecraft.wiki/w/Placed_feature)*
+*[Vanilla Reference for Placement Modifiers / Decorators](https://minecraft.wiki/w/Custom_feature#Placed_feature)*
 
 Note that historically, Placement Modifiers / Placed Features were called Decorators, and TFC still refers to the two interchangeably. TFC adds the following placement modifier types, for use in placed features:
 
@@ -16,7 +16,7 @@ Note that historically, Placement Modifiers / Placed Features were called Decora
 - [Carving Mask](#carving-mask)
 - [Climate](#climate)
 - [Flat Enough](#flat-enough)
-- [Near Water](#near-water)
+- [Near Fluid](#near-fluid)
 - [On Top](#on-top)
 - [Shallow Water](#shallow-water)
 - [Underground](#underground)
@@ -25,6 +25,8 @@ Note that historically, Placement Modifiers / Placed Features were called Decora
 <!--linky_end_sort_alphabetical-->
 
 ### Biome
+
+# TODO PORTING FIXME
 
 This is an extension of the vanilla `minecraft:biome_filter` decorator, but which respects the way TFC features are used in biomes (via tags). This exists to fix an unfortunate bug in [Forge](https://github.com/MinecraftForge/MinecraftForge/issues/8743) in 1.18.
 
@@ -68,13 +70,14 @@ This decorator will check an area around the initial position for solid blocks. 
   - `radius` is an optional positive integer (Default: `2`), which is the radius around the initial position that the area is checked for solid blocks.
   - `max_depth` is an optional positive integer (Default: `4`), which is how deep from the original position the decorator should try and search.
 
-### Near Water
+### Near Fluid
 
-This decorator will conditionally place a feature if there is water within a `radius` in the x and z directions, and within `[-radius, 0]` in the y direction. Water is checked against the fluid tag `minecraft:water`. It is used to create near-water clay deposits.
+This decorator will conditionally place a feature if there is a given fluid within a `radius` in the x and z directions, and within `[-radius, 0]` in the y direction.
 
-- Type: `tfc:near_water`
+- Type: `tfc:near_fluid`
 - Config:
   - `radius`: An integer representing the distance to search for water.
+  - `fluids`: An optional array of fluid ids that it will search for. If none are provided, any fluid will match (except air).
 
 ### On Top
 
@@ -107,41 +110,4 @@ This decorator places things near, or at, volcanoes.
 - Config:
   - `center`: A boolean. If `true`, this decorator will ignore the `distance` argument and place the feature at the exact center of any volcanoes.
   - `distance`: A float in the range `[0, 1]`, representing the distance from the center of a volcano that this position must be in order to generate. 1 is the maximum radius of the volcano.
-
-### Structure Chunk Data Placement
-
-This decorator should not be used with features, but with structures. This provides a means to restrict TFC structures by climate. Note that structures added with this placement do not show up with the `/locate` command. It has the following parameters:
-
-- `type`: `tfc:chunk_data`
-- `climate`: A [Climate Decorator](#climate) object
-- `random_name` A string random name for seeding the random, eg. `my_structure`
-- `placement`: The placement object to delegate to.
-  - `type`: This is either `minecraft:random_spread` or `minecraft:concentric_rings`. Each has a set of its own parameters that go on the same level as `type`.
-
-Note that in 1.18, structure generation via json was half-baked and experimental. Some things work weirdly. It's worth looking at examples from other mods for help. An example structure set is below:
-
-```jsonc
-{
-  "structures": [
-    {
-      // this is a configured structure feature
-      "structure": "tfc:mineshaft",
-      "weight": 1
-    }
-  ],
-  "placement": {
-    "type": "tfc:chunk_data",
-    "random_name": "mineshaft",
-    "climate": {
-      "max_temperature": 0,
-      "min_rainfall": 100
-    },
-    "placement": {
-      "type": "minecraft:random_spread",
-      "salt": 1182022,
-      "spacing": 8,
-      "separation": 4
-    }
-  }
-}
-```
+  

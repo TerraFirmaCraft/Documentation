@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Ore Veins"
-permalink: /1.18.x/worldgen/features/veins/
+permalink: /1.20.x/worldgen/features/veins/
 ---
 
 # Ore Veins

@@ -1,21 +1,22 @@
 ---
 layout: page
 title: "Dimension"
-permalink: /1.18.x/worldgen/dimension/
+permalink: /1.20.x/worldgen/dimension/
 ---
 
 In order to modify the `TerraFirmaCraft` world preset, it is necessary to override the vanilla overworld dimension (`data/minecraft/dimension/overworld.json`). The format of a dimension can be found [here](https://minecraft.wiki/w/Custom_dimension#Syntax_2). Included here is [an example](#example) of an override for the vanilla overworld, with TFC properties set to defaults.
 
 Configuration:
 
-- `type` is the namespaced ID of the [dimension type](https://minecraft.wiki/w/Custom_dimension#Dimension). The default is `minecraft:overworld`.
+- `type` is the namespaced ID of the [dimension type](https://minecraft.wiki/w/Custom_dimension#Dimension_type). The default is `minecraft:overworld`.
 - `generator` is an object:
     - `type` is the namespaced ID of the chunk generator. It must be `tfc:overworld`.
     - `seed` is an optional `long` (Default: `0`). It is the seed of the world.
-    - `noise_settings` is the [noise settings](https://minecraft.wiki/w/Custom_world_generation#Noise) used in the chunk generator. The default is `minecraft:overworld`.
+    - `noise_settings` is the [noise settings](https://minecraft.wiki/w/Custom_noise) used in the chunk generator. The default is `minecraft:overworld`.
     - `flat_bedrock` is a `boolean`. It controls if the bottom layer of bedrock in the world is flat.
     - `biome_source` is an object:
         - `type` is the namespaced ID of the biome source. It must be `tfc:overworld`.
+    - `tfc_settings` is an object:
         - `seed` is an optional `long` (Default: `0`). It is the seed used for the biome source.
         - `spawn_distance` is an integer. It is the farthest distance away from the spawn center location the player is allowed to spawn.
         - `spawn_center_x` is an integer. It is the center x position that the player tries to spawn at.
@@ -23,7 +24,8 @@ Configuration:
         - `rock_layer_settings` is a [rock layer settings](#rock-layer-settings), which describes the rock layers of the world.
         - `temperature_settings` is a [climate settings](#climate-settings), which describes the temperature settings of the world.
         - `rainfall_settings` is a [climate settings](#climate-settings), which describes the rainfall settings of the world.
-- `forge:use_server_seed` is a `boolean`. If true, this dimension will ignore the `seed` property specified above in the generator and biome source fields, and instead use the seed from either `server.properties` (if on a server), or the create world screen (if on a client).
+        - `flat_bedrock` is a boolean (Default: `false`) that determines if bedrock is flat.
+        - `continentalness` is a float [`0`, `1`] (Default: `0.5`) that determines the share of land to water in the world. Higher values mean more land.
 
 
 #### Example

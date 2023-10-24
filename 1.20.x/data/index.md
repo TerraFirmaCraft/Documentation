@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Data"
-permalink: /1.18.x/data/
+permalink: /1.20.x/data/
 ---
 
 # Data

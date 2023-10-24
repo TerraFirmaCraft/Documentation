@@ -1,12 +1,12 @@
 ---
 layout: page
 title: "Features"
-permalink: /1.18.x/worldgen/features/
+permalink: /1.20.x/worldgen/features/
 ---
 
 # Features
 
-*[Vanilla Reference for Features](https://minecraft.wiki/w/Custom_feature)*
+*[Vanilla Reference for Features](https://minecraft..com/wiki/Custom_feature)*
 
 Features are small decorations that modify individual chunks, based on the biome present in that chunk. In TFC, features are all added to biomes via the use of [Biome Tags](../tags/#biome-tags), which means that they can also be added to biomes via the use of these tags.
 
@@ -29,18 +29,22 @@ TFC adds the following features:
   - [Spring](#spring)
 - Decoration:
   - [Boulder](#boulder)
+  - [Branching Cactus](#branching-cactus)
   - [Loose Rock](#loose-rock)
   - [Soil Disc](#soil-disc)
   - [Iceberg](#iceberg)
   - [Powder Snow](#powder-snow)
   - [Weeping Vines](#weeping-vines)
   - [Twisting Vines](#twisting-vines)
+  - [Creeping Plant](#creeping-plant)
+  - [Epiphyte Plant](#epiphyte-plant)
   - [Kelp](#kelp)
   - [Kelp Tree](#kelp-tree)
   - [Emergent Plant](#emergent-plant)
   - [Tall Plant](#tall-plant)
   - [Tall Wild Crop](#tall-wild-crop)
   - [Spreading Bush](#spreading-bush)
+  - [Tide Pool](#tide-pool)
   - [Block With Fluid](#block-with-fluid)
   - [Coral Claw](#coral-claw)
   - [Coral Mushroom](#coral-mushroom)
@@ -54,6 +58,7 @@ TFC adds the following features:
   - [Multiple](#multiple)
   - [If Then](#if-then)
   - [Noisy Multiple](#noisy-multiple)
+  - [Dynamic Random Patch](#dynamic-random-patch)
 
 
 ## Caves
@@ -175,7 +180,14 @@ Places a large boulder, shaped like a deformed sphere.
 - Config:
   - `states`: A [Key Value List](../common-types/#key-value-list) with the following fields:
     - `rock` A [Lenient Blockstate](../common-types/#lenient-blockstate) corresponding to the 'raw' rock block of a rock type.
-  - `blocks` An array of [Lenient Blockstates](../common-types/#lenient-blockstate) that will be chosen from randomly when placing the boulder.
+	- `blocks` An array of [Lenient Blockstates](../common-types/#lenient-blockstate) that will be chosen from randomly when placing the boulder.
+
+### Branching Cactus
+Places a kind of branching cactus (eg. the Saguaro)
+
+- Type: `tfc:branching_cactus`
+- Config:
+  - `block`: A branching cactus block.
 
 ### Loose Rock
 Places a loose rock on the ground based on the rock type at the position.
@@ -190,10 +202,11 @@ Places a disc of blocks. Typically used for soil replacements like clay, but can
 - Config:
   - `states`: A [Key Value List](../common-types/#key-value-list) with the following fields:
     - `replace`: A [Lenient Blockstate](../common-types/#lenient-blockstate) to be replaced
-  - `with`: A [Lenient Blockstate](../common-types/#lenient-blockstate) that gets set in that block's place.
+	- `with`: A [Lenient Blockstate](../common-types/#lenient-blockstate) that gets set in that block's place.
   - `min_radius`: A positive integer specifying the minimum horizontal radius of the disc.
   - `max_radius`: A positive integer specifying the maximum horizontal radius of the disc.
   - `height`: An integer [0, 256] specifying how tall the disc should be.
+  - `integrity`: A float [0, 1] (Default: `1.0`) specifying the probability any given block in the disc will place. If `1.0`, it will always place.
 
 ### Iceberg
 A modified version of vanilla's iceberg feature to use salt water.
@@ -226,6 +239,23 @@ The same as [Weeping Vines](#weeping-vines), but it places plants that grow up f
 
 - Type: `tfc:twisting_vines`
 - Config: See [Weeping Vines](#weeping-vines)
+
+### Creeping Plant
+Places a cylinder of creeping plants on any block it is able to.
+
+- Type: `tfc:creeping_plant`
+- Config:
+  - `block`: A block id of a creeping plant.
+  - `radius`: The radius of the cylinder.
+  - `height`: The height of the cylinder.
+  - `integrity`: A float [0, 1] (Default: `1.0`) specifying for any given block the chance it will be placed. If `1.0`, all will try to place.
+
+### Epiphyte Plant
+Tries to place an epiphyte up to 12 blocks in the air from the position the feature is placed.
+
+- Type: `tfc:epiphyte_plant`
+- Config:
+  - `block`: The block id of an epiphyte plant.
 
 ### Kelp
 The same as [Twisting Vines](#twisting-vines), but built to only place underwater plants on the sea floor.
@@ -267,6 +297,12 @@ Places a spreading bush, with some growth already completed.
 - Type: `tfc:spreading_bush`
 - Config:
   - `block`: A spreading bush block to be grown.
+
+### Tide Pool
+Places a small tide pool similar to vanilla's basalt deltas (but made of water). Use the tag `tfc:tide_pool_blocks` to add blocks that can spawn waterlogged in the water pools.
+
+- Type; `tfc:tide_pool`
+- Config: None
 
 ### Block With Fluid
 Places a block, attempting to fill it with the fluid at the position it finds. If the block cannot contain the fluid, nothing is placed.
@@ -361,3 +397,14 @@ Similar to [Multiple](#multiple), except that only two of the provided features 
 - Type: `tfc:noisy_multiple`
 - Config:
   - `features`: A string array of configured feature ids to place.
+
+### Dynamic Random Patch
+
+This feature is identical to vanilla's random patch feature, but limits the amount of `tries` (the amount of times the given feature will attempt to place) based on forest type and elevation.
+
+- Type: `tfc:dynamic_random_patch`
+- Config:
+  - `feature`: A placed feature id to be placed.
+  - `xz_spread`: A positive Integer (Default: `7`), how far away laterally it will place the feature.
+  - `y_spread`: A positive Integer (Default: `3`), how far up and down it will place the feature.
+  - `tries`: The maximum amount of attempts to place this feature under perfect conditions. This feature dynamically limits this amount.
