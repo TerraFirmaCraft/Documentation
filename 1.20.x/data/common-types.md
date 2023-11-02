@@ -22,8 +22,8 @@ Below are a number of common types used by recipes and custom data.
 - [Temperature](#temperature)
 
 <!--linky_end_sort_alphabetical-->
-
 <hr>
+<!--linky_begin_sort_categories-->
 
 ## Block Ingredients
 
@@ -32,10 +32,7 @@ This represents a predicate on blocks in the world. It can be any of the followi
 - A String, with the registry name of a single block.
 - A JSON object, with a single `block` key, with the registry name of a single block.
 - A JSON object, with a single `tag` key, with the name of a block tag to match.
-- A JSON object, with a `type` key which specifies a custom block ingredient type to use.
 - A JSON array, whose entries are [Block Ingredients](#block-ingredients), which are logically OR'd together.
-
-**Note:** TFC only adds the `tfc:block` and `tfc:tag` types, which are already usable via the above syntaxes for `block` and `tag`, and as a result, are not detailed here. Addons may define other block ingredient types.
 
 <hr>
 
@@ -104,6 +101,8 @@ A food trait is a String, which must be one of the following options. Note addon
 
 - `tfc:salted`, `tfc:pickled`, `tfc:brined`, `tfc:preserved`, `tfc:vinegar`, `tfc:charcoal_grilled`, `tfc:wood_grilled`, `tfc:burnt_to_a_crisp`
 
+<hr>
+
 ## Item Stack Ingredients
 
 An item stack ingredient is a combination of an ingredient, and a count. It is a JSON object with the following fields:
@@ -154,6 +153,8 @@ An item stack provider represents an output of a recipe, an item stack with any 
 }
 ```
 
+<hr>
+
 ## Item Stacks
 
 This represents a vanilla Minecraft item stack. It is a JSON object with the following fields:
@@ -174,8 +175,6 @@ This represents a vanilla Minecraft item stack. It is a JSON object with the fol
 
 <hr>
 
-<hr>
-
 ## Temperature
 
 A temperature is a number, which corresponds to a value in degrees Celsius (&deg;C). In-game, the tooltip displays the color based on the internal temperature value:
@@ -193,3 +192,7 @@ Temperature Range (&deg;C) | Color
 1300 - 1400 | <span style="color:#FFFF55">**Yellow-White**</span>
 1400 - 1500 | <span style="color:#FFFFFF;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;">**White**</span>
 > 1500 | <span style="color:#FFFFFF;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;">**Brilliant White**</span>
+
+<hr>
+
+<!--linky_end_sort_categories-->

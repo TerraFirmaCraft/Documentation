@@ -23,12 +23,109 @@ TFC adds the following item stack modifier types:
 - [Copy Forging Bonus](#copy-forging-bonus)
 - [Copy Heat](#copy-heat)
 - [Copy Input](#copy-input)
+- [Copy Oldest Food](#copy-oldest-food)
 - [Empty Bowl](#empty-bowl)
+- [Meal](#meal)
 - [Remove Trait](#remove-trait)
 - [Reset Food](#reset-food)
-- [Meal](#meal)
 
 <!--linky_end_sort_alphabetical-->
+<hr>
+<!--linky_begin_sort_categories-->
+
+## Add Bait to Rod
+
+This modifier takes as input a fishing rod, and searches elsewhere in the crafting grid for a bait type item, which is then attaches to the fishing rod as the result. It has the following fields:
+
+- `type`: `tfc:add_bait_to_rod`
+
+**This modifier is only usable in crafting recipes which support item stack providers.**
+
+<hr>
+
+## Add Glass
+
+This modifier is used as part of [Glassworking](../recipes/#glassworking) recipes. This modifier attaches a glass batch to the output item's nbt from the input item.
+
+- `type`: `tfc:add_glass`
+
+<hr>
+
+## Add Heat
+
+This specifies that the provider should add a specific heat value. Note that adding a heat value where none was previously specified is the same as directly setting the heat. It has the following fields:
+
+- `type`: `tfc:add_heat`
+- `temperature`: Integer. An amount in degrees Celsius to be added.
+
+<hr>
+
+## Add Powder
+
+This modifier is used as part of [Glassworking](../recipes/#glassworking) recipes. It performs the glass operation for the given powder.
+
+- `type`: `tfc:add_powder`
+
+**This modifier is only usable in crafting recipes which support item stack providers.**
+
+<hr>
+
+## Add Trait
+
+This specifies that the provider should add a food trait to the item. It has the following fields:
+
+- `type`: `tfc:add_trait`
+- `trait`: A [Food Trait](../common-types/#food-traits) to be added.
+
+<hr>
+
+## Copy Food
+
+This specifies that the provider should copy the food properties (expiration date, food traits) from the input stack. It has the following fields:
+
+- `type`: `tfc:copy_food`
+
+<hr>
+
+## Copy Forging Bonus
+
+This specifies that the provider should copy the Forging bonus, which is recorded as a NBT tag on the stack, from the input stack. It has the following fields:
+
+- `type`: `tfc:copy_forging_bonus`
+
+<hr>
+
+## Copy Heat
+
+This specifies that the provider should copy the current heat from the input stack. It has the following fields:
+
+- `type`: `tfc:copy_heat`
+
+<hr>
+
+## Copy Input
+
+This specifies that the provider should copy the input to the recipe, and ignore the `stack` parameter. The stack defined as the "input" stack will be different depending on the recipe the provider is used in. It has the following fields:
+
+- `type`: `tfc:copy_input`
+
+<hr>
+
+## Copy Oldest Food
+
+In a crafting recipe, this specifies that the provider should copy the food properties (expiration date, food traits) from the item that is the closest to expiration. It has the following fields:
+
+- `type`: `tfc:copy_oldest_food`
+
+**This modifier is only usable in crafting recipes which support item stack providers.**
+
+<hr>
+
+## Empty Bowl
+
+This specifies that the output item should be the empty bowl of the input. This is supported for soup items, which return the bowl they were created with. It has the following fields:
+
+- `type`: `tfc:empty_bowl`
 
 <hr>
 
@@ -82,84 +179,6 @@ An example for how to specify a meal modifier is below. Note that the `//` comme
 
 <hr>
 
-## Add Bait to Rod
-
-This modifier takes as input a fishing rod, and searches elsewhere in the crafting grid for a bait type item, which is then attaches to the fishing rod as the result. It has the following fields:
-
-- `type`: `tfc:add_bait_to_rod`
-
-**This modifier is only usable in crafting recipes which support item stack providers.**
-
-<hr>
-
-## Add Heat
-
-This specifies that the provider should add a specific heat value. Note that adding a heat value where none was previously specified is the same as directly setting the heat. It has the following fields:
-
-- `type`: `tfc:add_heat`
-- `temperature`: Integer. An amount in degrees Celsius to be added.
-
-<hr>
-
-## Add Trait
-
-This specifies that the provider should add a food trait to the item. It has the following fields:
-
-- `type`: `tfc:add_trait`
-- `trait`: A [Food Trait](../common-types/#food-traits) to be added.
-
-<hr>
-
-## Copy Food
-
-This specifies that the provider should copy the food properties (expiration date, food traits) from the input stack. It has the following fields:
-
-- `type`: `tfc:copy_food`
-
-<hr>
-
-## Copy Oldest Food
-
-In a crafting recipe, this specifies that the provider should copy the food properties (expiration date, food traits) from the item that is the closest to expiration. It has the following fields:
-
-- `type`: `tfc:copy_oldest_food`
-
-**This modifier is only usable in crafting recipes which support item stack providers.**
-
-<hr>
-
-## Copy Forging Bonus
-
-This specifies that the provider should copy the Forging bonus, which is recorded as a NBT tag on the stack, from the input stack. It has the following fields:
-
-- `type`: `tfc:copy_forging_bonus`
-
-<hr>
-
-## Copy Heat
-
-This specifies that the provider should copy the current heat from the input stack. It has the following fields:
-
-- `type`: `tfc:copy_heat`
-
-<hr>
-
-## Copy Input
-
-This specifies that the provider should copy the input to the recipe, and ignore the `stack` parameter. The stack defined as the "input" stack will be different depending on the recipe the provider is used in. It has the following fields:
-
-- `type`: `tfc:copy_input`
-
-<hr>
-
-## Empty Bowl
-
-This specifies that the output item should be the empty bowl of the input. This is supported for soup items, which return the bowl they were created with. It has the following fields:
-
-- `type`: `tfc:empty_bowl`
-
-<hr>
-
 ## Remove Trait
 
 This specifies that the provider should remove a food trait from the item. It has the following fields:
@@ -177,30 +196,4 @@ This specifies that the provider should set the output item to be created at the
 
 <hr>
 
-## Sandwich
-
-This modifier constructs a sandwich using the input ingredients present in the recipe.
-
-- `type`: `tfc:sandwich`
-
-**This modifier is only usable in crafting recipes which support item stack providers.**
-
-<hr>
-
-## Add Glass
-
-This modifier is used as part of [Glassworking](../recipes/#glassworking) recipes. This modifier attaches a glass batch to the output item's nbt from the input item.
-
-- `type`: `tfc:add_glass`
-
-<hr>
-
-## Add Powder
-
-This modifier is used as part of [Glassworking](../recipes/#glassworking) recipes. It performs the glass operation for the given powder.
-
-- `type`: `tfc:add_powder`
-
-**This modifier is only usable in crafting recipes which support item stack providers.**
-
-<hr>
+<!--linky_end_sort_categories-->

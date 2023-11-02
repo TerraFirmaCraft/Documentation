@@ -19,8 +19,8 @@ TFC adds two types of pot recipe:
 - [Soup Pot](#soup-pot)
 
 <!--linky_end_sort_alphabetical-->
-
 <hr>
+<!--linky_begin_sort_categories-->
 
 ## Jam Pot
 
@@ -69,6 +69,8 @@ Jam pot recipes produce a special output that can be interacted with in the pot.
     "texture": "tfc:block/jar/banana"
 }
 ```
+
+<hr>
 
 ## Simple Pot
 
@@ -161,3 +163,7 @@ Soup pot recipes are used in making soups. When the soup is complete, it will re
     "temperature": 300
 }
 ```
+
+<hr>
+
+<!--linky_end_sort_categories-->

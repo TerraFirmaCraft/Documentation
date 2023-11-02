@@ -14,29 +14,36 @@ An ingredient represents an input to a recipe or other piece of data. All vanill
 
 In addition to the two ingredients added by Minecraft, TFC adds a number of custom ingredients which can be used anywhere an `Ingredient` is required, even by other mod's recipes. TFC adds the following ingredient types:
 
-- [Not Rotten](#not-rotten)
-- [Has Trait](#has-trait)
-- [Lacks Trait](#lacks-trait)
-- [Heatable](#heatable)
-- [Not](#not)
+<!--linky_begin_sort_alphabetical-->
+
 - [Fluid Item](#fluid-item)
+- [Has Trait](#has-trait)
+- [Heatable](#heatable)
+- [Lacks Trait](#lacks-trait)
+- [Not Rotten](#not-rotten)
+- [Not](#not)
 
+<!--linky_end_sort_alphabetical-->
 <hr>
+<!--linky_begin_sort_categories-->
 
-## Not Rotten
+## Fluid Item
 
-This is an ingredient which only accepts food items if they are not rotten. It has the following fields:
+An ingredient which expects an item to contain a fluid (such as a bucket). It has the following fields:
 
-- `type`: `tfc:not_rotten`
-- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** non-rotten items.
-
-#### Example:
+- `type`: `tfc:fluid_item`
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **any** item.
+- `fluid_ingredient`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), which must match the fluid contained in the item.
 
 ```jsonc
-// An ingredient which only accepts non-rotten minecraft:steak
+// An ingredient which accepts a ceramic jug containing fresh water
 {
-    "type": "tfc:not_rotten",
-    "ingredient": { "item": "minecraft:steak" }
+    "type": "tfc:fluid_item",
+    "ingredient": { "item": "tfc:ceramic/jug" },
+    "fluid_ingredient": {
+        "amount": 100,
+        "ingredient": { "fluid": "minecraft:water" }
+    }
 }
 ```
 
@@ -63,26 +70,6 @@ This is an ingredient which only accepts food items if they have a specific trai
 
 <hr>
 
-
-## Lacks Trait
-
-This ingredient is the same as [Has Trait](#has-trait) but is inverted. It tests if a food lacks a specified trait.
-
-- `type`: `tfc:lacks_trait`
-- `trait`: String. The registry name of a [Food Trait](../common-types/#food-traits) which must be present.
-- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** items without the provided trait.
-
-#### Example
-
-```jsonc
-// An ingredient which only accepts a tfc:food/apple which has not been brined
-{
-    "type": "tfc:lacks_trait",
-    "trait": "tfc:brined",
-    "ingredient": { "item": "tfc:food/apple" }
-}
-```
-
 ## Heatable
 
 This is an ingredient which only accepts items if they are heatable, and optionally currently within a certain temperature range. It has the following fields:
@@ -101,6 +88,27 @@ This is an ingredient which only accepts items if they are heatable, and optiona
     "min_temp": 300,
     "max_temp": 400,
     "ingredient": { "item": "minecraft:iron_ingot" }
+}
+```
+
+<hr>
+
+## Lacks Trait
+
+This ingredient is the same as [Has Trait](#has-trait) but is inverted. It tests if a food lacks a specified trait.
+
+- `type`: `tfc:lacks_trait`
+- `trait`: String. The registry name of a [Food Trait](../common-types/#food-traits) which must be present.
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** items without the provided trait.
+
+#### Example
+
+```jsonc
+// An ingredient which only accepts a tfc:food/apple which has not been brined
+{
+    "type": "tfc:lacks_trait",
+    "trait": "tfc:brined",
+    "ingredient": { "item": "tfc:food/apple" }
 }
 ```
 
@@ -127,22 +135,23 @@ An ingredient which inverts an existing ingredient. It has the following fields:
 
 <hr>
 
-## Fluid Item
+## Not Rotten
 
-An ingredient which expects an item to contain a fluid (such as a bucket). It has the following fields:
+This is an ingredient which only accepts food items if they are not rotten. It has the following fields:
 
-- `type`: `tfc:fluid_item`
-- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **any** item.
-- `fluid_ingredient`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), which must match the fluid contained in the item.
+- `type`: `tfc:not_rotten`
+- `ingredient`: An optional [Ingredient](../ingredients/), to which this is applied. If omitted, this will accept **all** non-rotten items.
+
+#### Example:
 
 ```jsonc
-// An ingredient which accepts a ceramic jug containing fresh water
+// An ingredient which only accepts non-rotten minecraft:steak
 {
-    "type": "tfc:fluid_item",
-    "ingredient": { "item": "tfc:ceramic/jug" },
-    "fluid_ingredient": {
-        "amount": 100,
-        "ingredient": { "fluid": "minecraft:water" }
-    }
+    "type": "tfc:not_rotten",
+    "ingredient": { "item": "minecraft:steak" }
 }
 ```
+
+<hr>
+
+<!--linky_end_sort_categories-->

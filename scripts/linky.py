@@ -12,6 +12,9 @@ ROOT = os.getcwd()
 BEGIN_SORT_ALPHABETICAL = '<!--linky_begin_sort_alphabetical-->'
 END_SORT_ALPHABETICAL = '<!--linky_end_sort_alphabetical-->'
 
+BEGIN_SORT_CATEGORIES = '<!--linky_begin_sort_categories-->'
+END_SORT_CATEGORIES = '<!--linky_end_sort_categories-->'
+
 
 class Path(NamedTuple):
     file: str
@@ -79,10 +82,6 @@ def main():
 
     _ = subparser.add_parser('validate', help='Validates all existing links, reporting broken ones')
     _ = subparser.add_parser('sanitize', help='Sanitizes and reformats all existing links')
-    #parser_mv = subparser.add_parser('mv', help='Moves a file, renaming all existing links to that file')
-
-    #parser_mv.add_argument('old', type=str)
-    #parser_mv.add_argument('new', type=str)
     
     args = parser.parse_args()
 
@@ -133,6 +132,14 @@ def do_sanitize():
         # Alphabetical Sorting
         sort_ranges = []
         sort_range = None
+
+        # Category Sorting
+        sort_category_start = None
+        sort_category_end = None
+        sort_categories = []
+        sort_category = None
+        in_sort_category = False
+
         for i, line in enumerate(path.lines):
             if sort_range is not None:
                 if line == END_SORT_ALPHABETICAL:
@@ -142,23 +149,63 @@ def do_sanitize():
                     sort_range.append((i, line))
             elif line == BEGIN_SORT_ALPHABETICAL:
                 sort_range = []
+
+            if in_sort_category:
+                if line == END_SORT_CATEGORIES:
+                    sort_category = None
+                    sort_category_end = i
+                    in_sort_category = False
+                elif line.startswith('## '):
+                    sort_category = []
+                    sort_categories.append((line, sort_category))
+                elif sort_category is not None:
+                    if line != '<hr>' and (line != '' or not sort_category or sort_category[-1] != ''):  # Don't include <hr> separator, or double empty lines
+                        sort_category.append(line)
+            elif line == BEGIN_SORT_CATEGORIES:
+                assert sort_category_start is None, 'Can only have one category sort per page'
+                sort_category = None
+                sort_category_start = i
+                in_sort_category = True
+        
         if sort_range is not None:
-            print('ERROR: Finished iterating for sort ranges but did not find a end tag?')
+            print('ERROR: Finished iterating for sort ranges but did not find an end tag?')
             continue
         
+        if in_sort_category:
+            print('ERROR: Finished iterating for sort categories but did not find an end tag?')
+
         batch = BatchedPrint('Sorting ranges in %s' % path.file)
         for sort_range in sort_ranges:
             sorted_lines = sorted([line for _, line in sort_range])
             sorted_indexes = sorted([i for i, _ in sort_range])
             sorting_done = False
+            
             for i, line in zip(sorted_indexes, sorted_lines):
                 if path.lines[i] != line:
                     modified = True
                     sorting_done = True
                 path.lines[i] = line
+            
             if sorting_done:
                 batch.print('  L%d-%d (%d lines)' % (sorted_indexes[0], sorted_indexes[-1], len(sorted_indexes)))
         
+        # Sort categories
+        if sort_categories:
+            new_lines = ['']
+            for header, cat_lines in sorted(sort_categories):
+                new_lines.append(header)
+                new_lines += cat_lines
+                new_lines.append('<hr>')
+                new_lines.append('')
+
+            # Splice the sorted joined section onto the new section
+            old_lines = path.lines[sort_category_start + 1:sort_category_end]
+            
+            if old_lines != new_lines:
+                path.lines[sort_category_start + 1:sort_category_end] = new_lines
+                batch.print('  L%d-%d (%d -> %d lines)' % (sort_category_start + 1, sort_category_end + 1, sort_category_end - sort_category_start - 1, len(new_lines)))
+                modified = True
+
         if modified:  # Modified
             path.save()
 

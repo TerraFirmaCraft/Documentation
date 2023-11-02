@@ -102,10 +102,8 @@ Tag Id | Function
 `tfc:chisels` | Items that are chisels. Required for chiseling functionality.
 `tfc:flux` | Items that are usable as the catalyst ingredient for welding.
 `tfc:tuyeres` | Items that can go in the Blast Furnace`s tuyere slot.
-`tfc:rock_knapping` | Items that can be right clicked to knap, with a valid [Rock Knapping Recipe](../recipes/#rock-knapping).
-`tfc:clay_knapping` | Items that can be right clicked to knap, with a valid [Clay Knapping Recipe](../recipes/#knapping).
-`tfc:fire_clay_knapping` | Items that can be right clicked to knap, with a valid [Fire Clay Knapping Recipe](../recipes/#knapping).
-`tfc:leather_knapping` | Items that can be right clicked to knap, with a valid [Leather Knapping Recipe](../recipes/#knapping).
+`tfc:any_knapping` | Items that can be used to knap items, provided they have a valid [Knapping Recipe](../recipes/#knapping).
+`tfc:rock_knapping` | Items that can be used for rock knapping. This is used in the Field Guide and does not affect the ability to knap.
 `tfc:axes_that_log` | Tools that can be used to fell entire trees, via TFC`s tree chopping functionality.
 `tfc:bush_cutting_tools` | Tools that can be right-clicked on berry bushes to get cuttings from them.
 `tfc:compost_greens` | Items that are considered `green` items by the composter.

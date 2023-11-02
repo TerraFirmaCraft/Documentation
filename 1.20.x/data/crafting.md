@@ -18,8 +18,8 @@ In addition to custom recipe types, TFC also adds several recipe types that can 
 - [Food Combining](#food-combining)
 
 <!--linky_end_sort_alphabetical-->
-
 <hr>
+<!--linky_begin_sort_categories-->
 
 ## Advanced Shaped Crafting
 
@@ -138,6 +138,8 @@ This is a recipe type which wraps a normal crafting recipe, but it's used for pr
 }
 ```
 
+<hr>
+
 ## Food Combining
 
 This is a crafting recipe which merges foods of the same traits, but with different creation dates. It has no configurable options by itself.
@@ -145,3 +147,5 @@ This is a crafting recipe which merges foods of the same traits, but with differ
 - `type`: `tfc:food_combining`
 
 <hr>
+
+<!--linky_end_sort_categories-->

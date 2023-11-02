@@ -38,12 +38,11 @@ These are custom recipe types that are loaded by TFC, for TFC devices.
 - [Casting](recipes/#casting)
 - [Collapse](recipes/#collapse)
 - [Heating](recipes/#heating)
-- [Knapping (Clay, Fire Clay, Leather)](./recipes/#knapping)
+- [Knapping](recipes/#knapping)
 - [Landslide](recipes/#landslide)
 - [Loom](recipes/#loom)
 - [Pot](recipes-pot/)
 - [Quern](recipes/#quern)
-- [Rock Knapping](recipes/#rock-knapping)
 - [Scraping](recipes/#scraping)
 
 <!--linky_end_sort_alphabetical-->

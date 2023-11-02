@@ -30,12 +30,11 @@ TFC adds the following recipe types:
 - [Loom](#loom)
 - [Pot](../recipes-pot/)
 - [Quern](#quern)
-- [Rock Knapping](#rock-knapping)
 - [Scraping](#scraping)
 
 <!--linky_end_sort_alphabetical-->
-
 <hr>
+<!--linky_begin_sort_categories-->
 
 ## Alloy
 
@@ -149,41 +148,6 @@ Anvil recipes have the following properties:
 
 <hr>
 
-## Barrel Instant Fluid
-
-This is a variant of an instant barrel recipe which involves two fluid inputs. The primary fluid must be in the barrel's liquid tank, and the added fluid must be present in a fluid container item (such as a bucket), and can be added in the item input slot, **or** by placing the item in the fluid input slot. Like a instant barrel recipe, there must be enough fluid in the input item, to fully consume the fluid in the barrel.
-
-Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest common ratio form, and any multiple of this recipe is able to complete at once.
-
-- `type`: `tfc:barrel_instant_fluid`
-- `primary_fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the input fluid in the barrel.
-- `added_fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the fluid that must be added via a fluid container.
-- `output_fluid`: A [Fluid Stack](../common-types/#fluid-stack), representing the output fluid.
-- `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
-
-#### Example
-
-```jsonc
-// Reference: /data/tfc/recipes/barrel/brine.json
-{
-    "type": "tfc:barrel_instant_fluid",
-    "primary_fluid": {
-        "ingredient": "tfc:salt_water",
-        "amount": 9
-    },
-    "added_fluid": {
-        "ingredient": "tfc:vinegar",
-        "amount": 1
-    },
-    "output_fluid": {
-        "fluid": "tfc:brine",
-        "amount": 10
-    }
-}
-```
-
-<hr>
-
 ## Barrel Instant
 
 An instant barrel recipe is one which takes effect immediately when putting items in a barrel. It can have fluid or item ingredients, and fluid or item outputs, however if it has both fluid and item ingredients, and a fluid output, then the recipe will only activate if there is enough input items to *fully consume* the input fluid.
@@ -217,6 +181,41 @@ Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest
     "output_fluid": {
         "fluid": "tfc:limewater",
         "amount": 500
+    }
+}
+```
+
+<hr>
+
+## Barrel Instant Fluid
+
+This is a variant of an instant barrel recipe which involves two fluid inputs. The primary fluid must be in the barrel's liquid tank, and the added fluid must be present in a fluid container item (such as a bucket), and can be added in the item input slot, **or** by placing the item in the fluid input slot. Like a instant barrel recipe, there must be enough fluid in the input item, to fully consume the fluid in the barrel.
+
+Like [Sealed Barrel](#barrel-sealed) recipes, these are declared in their lowest common ratio form, and any multiple of this recipe is able to complete at once.
+
+- `type`: `tfc:barrel_instant_fluid`
+- `primary_fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the input fluid in the barrel.
+- `added_fluid`: A [Fluid Stack Ingredient](../common-types/#fluid-stack-ingredients), representing the fluid that must be added via a fluid container.
+- `output_fluid`: A [Fluid Stack](../common-types/#fluid-stack), representing the output fluid.
+- `sound`: A string, representing the registry name of a sound event, which is played when the recipe finishes. Defaults to `minecraft:block.brewing_stand.brew`.
+
+#### Example
+
+```jsonc
+// Reference: /data/tfc/recipes/barrel/brine.json
+{
+    "type": "tfc:barrel_instant_fluid",
+    "primary_fluid": {
+        "ingredient": "tfc:salt_water",
+        "amount": 9
+    },
+    "added_fluid": {
+        "ingredient": "tfc:vinegar",
+        "amount": 1
+    },
+    "output_fluid": {
+        "fluid": "tfc:brine",
+        "amount": 10
     }
 }
 ```
@@ -262,6 +261,8 @@ These recipes are declared in their least common ratio form, and the highest mul
     "duration": 8000
 }
 ```
+
+<hr>
 
 ## Blast Furnace
 
@@ -385,7 +386,6 @@ Chisel recipes have the following properties:
 - `mode`: The chisel mode ['smooth', 'stair', 'slab'] that is required.
 - `item_ingredient`: An optional [Ingredient](../ingredients/) specifying the chisel. Anything in this ingredient must be in the `tfc:chisels` [Item Tag](../tags/#item-tags)
 - `extra_drop`: An optional [Item Stack Provider](../common-types/#item-stack-providers) specifying an item to be dropped on chisel completion.
-
 
 #### Example
 ```jsonc
@@ -630,3 +630,7 @@ Scraping recipes are used when any scrapable item - defined as having the `tfc:s
 - `result`: An [Item Stack](../common-types/#item-stacks). The output of the recipe.
 - `input_texture`: The identifier of the texture displayed on the block for the unfinished item. Must be an existing item/block texture or stitched to the atlas.
 - `output_texture`: The identifier of the texture displayed on the block for the finished item. Must be an existing item/block texture or stitched to the atlas.
+
+<hr>
+
+<!--linky_end_sort_categories-->
