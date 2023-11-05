@@ -12,8 +12,9 @@ Note: **this is not a wiki!** If you are a player of TFC-TNG, you will not find 
 
 Select the documentation for the correct version of the game (and TFC) you are interested in:
 
-- [TFC v2.x for Minecraft 1.18.x](1.18.x/)
-- [TFC v1.x for Minecraft 1.12.x](1.12.x/)
+- [TFC v3.x for Minecraft 1.20.1](1.20.x/)
+- [TFC v2.x for Minecraft 1.18.2](1.18.x/)
+- [TFC v1.x for Minecraft 1.12.2](1.12.x/)
 
 More Links:
 
