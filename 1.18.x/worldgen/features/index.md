@@ -2,6 +2,7 @@
 layout: page
 title: "Features"
 permalink: /1.18.x/worldgen/features/
+excluded_in_search: true
 ---
 
 # Features

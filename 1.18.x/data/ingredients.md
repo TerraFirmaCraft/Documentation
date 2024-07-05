@@ -2,6 +2,7 @@
 layout: page
 title: "Ingredients"
 permalink: /1.18.x/data/ingredients/
+excluded_in_search: true
 ---
 
 # Ingredients

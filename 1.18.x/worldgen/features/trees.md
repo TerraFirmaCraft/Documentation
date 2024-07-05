@@ -2,6 +2,7 @@
 layout: page
 title: "Trees and Forests"
 permalink: /1.18.x/worldgen/features/trees/
+excluded_in_search: true
 ---
 
 # Trees and Forests

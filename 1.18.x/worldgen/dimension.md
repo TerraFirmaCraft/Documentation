@@ -2,6 +2,7 @@
 layout: page
 title: "Dimension"
 permalink: /1.18.x/worldgen/dimension/
+excluded_in_search: true
 ---
 
 In order to modify the `TerraFirmaCraft` world preset, it is necessary to override the vanilla overworld dimension (`data/minecraft/dimension/overworld.json`). The format of a dimension can be found [here](https://minecraft.wiki/w/Custom_dimension#Syntax_2). Included here is [an example](#example) of an override for the vanilla overworld, with TFC properties set to defaults.

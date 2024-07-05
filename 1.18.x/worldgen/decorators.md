@@ -2,6 +2,7 @@
 layout: page
 title: "Decorators"
 permalink: /1.18.x/worldgen/decorators/
+excluded_in_search: true
 ---
 
 # Decorators

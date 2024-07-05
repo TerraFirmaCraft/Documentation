@@ -2,11 +2,12 @@
 layout: page
 title: "World Generation"
 permalink: /1.18.x/worldgen/
+excluded_in_search: true
 ---
 
 # World Generation
 
-Note: this documentation will assume a working knowledge of how both data packs, and custom world generation works in vanilla Minecraft. If you are unfamiliar with those topics, the wiki provides a good starting point to learn about [Data Packs](https://minecraft.gamepedia.com/Data_Pack), [Custom World Generation](https://minecraft.gamepedia.com/Custom_world_generation), and [Custom Dimensions](https://minecraft.gamepedia.com/Custom_dimension).
+Note: this documentation will assume a working knowledge of how both data packs, and custom world generation works in vanilla Minecraft. If you are unfamiliar with those topics, the wiki provides a good starting point to learn about [Data Packs](https://minecraft.wiki/w/Data_pack), [Custom World Generation](https://minecraft.wiki/w/Custom_world_generation), and [Custom Dimensions](https://minecraft.wiki/w/Dimension_definition).
 
 TFC exposes the "TFC World Generation" `level-type` (for servers), and preset (for clients). When you create a new world using this generation, it creates a default chunk generator and biome source. In order to modify these, you will need to override the overworld dimension (`data/minecraft/dimension/overworld.json`), and use the TFC chunk generator and biome source. More information can be found in the [dimension](dimension/) article.
 

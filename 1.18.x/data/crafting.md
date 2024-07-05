@@ -2,6 +2,7 @@
 layout: page
 title: "Crafting Recipes"
 permalink: /1.18.x/data/crafting/
+excluded_in_search: true
 ---
 
 # Crafting Recipes

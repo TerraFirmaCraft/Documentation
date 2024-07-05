@@ -2,6 +2,7 @@
 layout: page
 title: "Biomes"
 permalink: /1.18.x/worldgen/biomes/
+excluded_in_search: true
 ---
 
 # Biomes

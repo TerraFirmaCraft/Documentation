@@ -2,6 +2,7 @@
 layout: page
 title: "Firepit Pot Recipes"
 permalink: /1.18.x/data/recipes-pot/
+excluded_in_search: true
 ---
 
 # Firepit Pot Recipes

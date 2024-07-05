@@ -2,6 +2,7 @@
 layout: page
 title: "Data"
 permalink: /1.18.x/data/
+excluded_in_search: true
 ---
 
 # Data

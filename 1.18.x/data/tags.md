@@ -2,6 +2,7 @@
 layout: page
 title: "Tags"
 permalink: /1.18.x/data/tags/
+excluded_in_search: true
 ---
 
 # Tags

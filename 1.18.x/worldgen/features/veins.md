@@ -2,6 +2,7 @@
 layout: page
 title: "Ore Veins"
 permalink: /1.18.x/worldgen/features/veins/
+excluded_in_search: true
 ---
 
 # Ore Veins

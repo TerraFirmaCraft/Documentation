@@ -2,6 +2,7 @@
 layout: page
 title: "Recipes"
 permalink: /1.18.x/data/recipes/
+excluded_in_search: true
 ---
 
 # Recipe Types

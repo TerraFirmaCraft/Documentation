@@ -2,6 +2,7 @@
 layout: page
 title: "WorldGen Tags"
 permalink: /1.18.x/worldgen/tags/
+excluded_in_search: true
 ---
 
 This page details all the world generation tags TFC adds. For generic tags, see [Tags](../../data/tags/).

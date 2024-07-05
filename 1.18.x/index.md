@@ -2,6 +2,7 @@
 layout: page
 title: 1.18.x
 permalink: /1.18.x/
+excluded_in_search: true
 ---
 
 # 1.18.x

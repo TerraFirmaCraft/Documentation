@@ -2,6 +2,7 @@
 layout: page
 title: "Custom Data"
 permalink: /1.18.x/data/custom/
+excluded_in_search: true
 ---
 
 # Custom Data

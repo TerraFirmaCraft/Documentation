@@ -2,6 +2,7 @@
 layout: page
 title: "Item Stack Modifiers"
 permalink: /1.18.x/data/item-stack-modifiers/
+excluded_in_search: true
 ---
 
 # Item Stack Modifiers

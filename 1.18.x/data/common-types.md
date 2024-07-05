@@ -2,6 +2,7 @@
 layout: page
 title: "Common Types"
 permalink: /1.18.x/data/common-types/
+excluded_in_search: true
 ---
 
 # Common Types
