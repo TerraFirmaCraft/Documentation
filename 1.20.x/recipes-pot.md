@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Firepit Pot Recipes"
-permalink: /1.20.x/data/recipes-pot/
+permalink: /1.20.x/recipes-pot/
 ---
 
 # Firepit Pot Recipes

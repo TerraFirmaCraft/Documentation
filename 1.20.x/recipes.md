@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Recipes"
-permalink: /1.20.x/data/recipes/
+permalink: /1.20.x/recipes/
 ---
 
 # Recipe Types

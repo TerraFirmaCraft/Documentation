@@ -6,7 +6,7 @@ permalink: /1.20.x/worldgen/carvers/
 
 # Configured Carvers
 
-*[Vanilla Reference for Carvers](https://minecraft.gamepedia.com/Custom_world_generation#Carvers)*
+*[Vanilla Reference for Carvers](https://minecraft.wiki/w/Carver_definition)*
 
 TFC adds two variants on vanilla carvers, which are modified to be able to both carve, and replace TFC rock blocks. These blocks are defined in the [dimension](../dimension/) settings.
 

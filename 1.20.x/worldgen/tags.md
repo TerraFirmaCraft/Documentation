@@ -4,7 +4,7 @@ title: "WorldGen Tags"
 permalink: /1.20.x/worldgen/tags/
 ---
 
-This page details all the world generation tags TFC adds. For generic tags, see [Tags](../../data/tags/).
+This page details all the world generation tags TFC adds. For generic tags, see [Tags](../../tags/).
 
 ## Biome Tags
 

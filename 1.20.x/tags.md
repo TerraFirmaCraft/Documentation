@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tags"
-permalink: /1.20.x/data/tags/
+permalink: /1.20.x/tags/
 ---
 
 # Tags

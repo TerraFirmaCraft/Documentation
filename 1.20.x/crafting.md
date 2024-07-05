@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Crafting Recipes"
-permalink: /1.20.x/data/crafting/
+permalink: /1.20.x/crafting/
 ---
 
 # Crafting Recipes

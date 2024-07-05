@@ -216,7 +216,7 @@ A modified version of vanilla's iceberg feature to use salt water.
   - `state`: The main block of the iceberg.
 
 ### Powder Snow
-Places a disc of a block, replacing anything with the `tfc:powder_snow_replaceable` [Block Tag](../../data/tags/)
+Places a disc of a block, replacing anything with the `tfc:powder_snow_replaceable` [Block Tag](../../tags/)
 
 - Type: `tfc:powder_snow`
 - Config:

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Common Types"
-permalink: /1.20.x/data/common-types/
+permalink: /1.20.x/common-types/
 ---
 
 # Common Types

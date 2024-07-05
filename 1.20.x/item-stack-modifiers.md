@@ -1,14 +1,14 @@
 ---
 layout: page
 title: "Item Stack Modifiers"
-permalink: /1.20.x/data/item-stack-modifiers/
+permalink: /1.20.x/item-stack-modifiers/
 ---
 
 # Item Stack Modifiers
 
 An item stack modifier is a entry in a [Item Stack Provider](../common-types/#item-stack-providers). It must contain at least a `type` field which identifies the type of the modifier. Modifiers may also require additional properties based on their type.
 
-Note that some modifiers only function when used in crafting recipes that support the use of an [Item Stack Provider](../common-types/#item-stack-providers), that is, [Advanced Shaped Recipe](../../data/crafting/#advanced-shaped-crafting) and [Advanced Shapeless Recipe](../../data/crafting/#advanced-shapeless-crafting).
+Note that some modifiers only function when used in crafting recipes that support the use of an [Item Stack Provider](../common-types/#item-stack-providers), that is, [Advanced Shaped Recipe](../crafting/#advanced-shaped-crafting) and [Advanced Shapeless Recipe](../crafting/#advanced-shapeless-crafting).
 
 TFC adds the following item stack modifier types:
 

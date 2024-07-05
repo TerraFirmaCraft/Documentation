@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Ingredients"
-permalink: /1.20.x/data/ingredients/
+permalink: /1.20.x/ingredients/
 ---
 
 # Ingredients
