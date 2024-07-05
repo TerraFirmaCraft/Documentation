@@ -387,8 +387,9 @@ A metal specifies a new metal to be used by TFC. A metal is required in order to
 - `fluid`: The registry name of a fluid which corresponds to this metal.
 - `melt_temperature`: A number. The melting temperature of the fluid of this metal.
 - `specific_heat_capacity`:  A number which specifies how fast this metal fluid heats up relative to others. This is measured in Energy / (mB x °C), meaning it's scaled relative to a quantity of mB, and that higher values will cause it to require more energy (time) to heat up.
-- `ingots`: An [Ingredient](../ingredients/) which defines ingot items that are of this metal. This is used in order to allow other mod ingots to be placed in ingot piles.
-- `sheets`: An [Ingredient](../ingredients/) which defines sheet items that are of this metal. This is used in order to allow other mod sheets to be placed in sheet piles.
+- `ingots`: An optional [Ingredient](../ingredients/) which defines ingot items that are of this metal. This is used in order to allow other mod ingots to be placed in ingot piles.
+- `double_ingots`: An optional [Ingredient](../ingredients/) which defines double ingot items that are of this metal. This is used in order to allow other mod ingots to be placed in double ingot piles.
+- `sheets`: An optional [Ingredient](../ingredients/) which defines sheet items that are of this metal. This is used in order to allow other mod sheets to be placed in sheet piles.
 
 **Note** There must be a **unique** fluid for every metal. Creating multiple metals that reference the same fluid is liable to cause undefined behavior and may introduce bugs!
 
@@ -397,16 +398,19 @@ A metal specifies a new metal to be used by TFC. A metal is required in order to
 ```jsonc
 // Reference: data/tfc/tfc/metals/bismuth_bronze.json
 {
-    "tier": 2,
-    "fluid": "tfc:metal/bismuth_bronze",
-    "melt_temperature": 985,
-    "specific_heat_capacity": 0.00857,
-    "ingots": {
-        "tag": "forge:ingots/bismuth_bronze"
-    },
-    "sheets": {
-        "tag": "forge:sheets/bismuth_bronze"
-    }
+  "tier": 2,
+  "fluid": "tfc:metal/bismuth_bronze",
+  "melt_temperature": 985,
+  "specific_heat_capacity": 0.00857,
+  "ingots": {
+    "tag": "forge:ingots/bismuth_bronze"
+  },
+  "double_ingots": {
+    "tag": "forge:double_ingots/bismuth_bronze"
+  },
+  "sheets": {
+    "tag": "forge:sheets/bismuth_bronze"
+  }
 }
 ```
 
