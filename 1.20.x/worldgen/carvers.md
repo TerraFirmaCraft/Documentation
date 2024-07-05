@@ -8,9 +8,7 @@ permalink: /1.20.x/worldgen/carvers/
 
 *[Vanilla Reference for Carvers](https://minecraft.wiki/w/Carver_definition)*
 
-TFC adds two variants on vanilla carvers, which are modified to be able to both carve, and replace TFC rock blocks. These blocks are defined in the [dimension](../dimension/) settings.
-
-TFC adds the following carver types:
+TFC adds two variants on vanilla carvers, which are modified to work better within a TFC world type:
 
 **Carvers**:
 
