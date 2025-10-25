@@ -416,28 +416,18 @@ A metal specifies a new metal to be used by TFC. A metal is required in order to
 
 ##### Adding Textures
 
-Each metal references a hardcoded texture location, by the name `<the metal namespace>:block/metal/full/<the metal name>`. This texture is then used to render both ingot piles and sheet piles. 
+Each metal references a hardcoded texture location, by the name `<the metal namespace>:block/metal/smooth/<the metal name>`. This texture is then used to render both ingot piles and sheet piles. 
 
 **Example**
 
-> `tfc:bismuth_bronze` references `tfc:textures/block/metal/full/bismuth_bronze.png`
-> `yourmod:yourmetal` would reference `yourmod:textures/block/metal/full/yourmetal.png`
-
-When adding a texture yourself (i.e. via a resource pack), it will also need to be added to the atlas. TFC can do this for you, by adding the texture to `tfc-client.toml`:
-
-```toml
-[compatibility]
-    # Defines additional metal sheet textures that should be added to the block atlas, as they would be otherwise unused, for use in ingot piles and metal sheet blocks.
-    # For Pack Makers: When adding a Metal via a datapack, with a custom texture "domain:block/my_texture", and you get missing textures in ingot piles and sheet blocks, that texture needs to be added here
-    additionalMetalSheetTextures = ["<yourmod>:block/metal/full/<yourmetal>"]
-```
+> `tfc:bismuth_bronze` references `tfc:textures/block/metal/smooth/bismuth_bronze.png`
+> `yourmod:yourmetal` would reference `yourmod:textures/block/metal/smooth/yourmetal.png`
 
 In summary:
 
 - If your metal is added at `data/yourmod/tfc/metals/yourmetal.json`
 - It implicitly has the name `yourmod:yourmetal`,
-- A texture must exist in a resource pack by the path `assets/yourmod/textures/block/metal/full/yourmetal.png`
-- In `tfc-client.toml`, you must add the entry `"yourmod:block/metal/full/yourmetal"` to the `additionalMetalSheetTextures` list.
+- A texture must exist in a resource pack by the path `assets/yourmod/textures/block/metal/smooth/yourmetal.png`
 
 <hr>
 
