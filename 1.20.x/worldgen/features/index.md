@@ -6,7 +6,7 @@ permalink: /1.20.x/worldgen/features/
 
 # Features
 
-*[Vanilla Reference for Features](https://minecraft..com/wiki/Custom_feature)*
+*[Vanilla Reference for Features](https://minecraft.wiki/w/Configured_feature)*
 
 Features are small decorations that modify individual chunks, based on the biome present in that chunk. In TFC, features are all added to biomes via the use of [Biome Tags](../tags/#biome-tags), which means that they can also be added to biomes via the use of these tags.
 
