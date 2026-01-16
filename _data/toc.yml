@@ -1,6 +1,19 @@
 - title: Documentation
   url: /
   links:
+    - title: "1.21.x"
+      url: "1.21.x"
+      children:
+        - title: "World Generation"
+          url: "1.21.x/worldgen/"
+        - title: "Crafting Recipes"
+          url: "1.21.x/crafting/"
+        - title: "TFC Recipes"
+          url: "1.21.x/recipes/"
+        - title: "TFC Data"
+          url: "1.21.x/custom/"
+        - title: "Tags"
+          url: "1.21.x/tags"
     - title: "1.20.x"
       url: "1.20.x"
       children:
